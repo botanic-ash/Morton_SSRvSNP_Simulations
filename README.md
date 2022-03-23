@@ -7,4 +7,4 @@ Simulations using different marker types are performed using the [fastSimcoal2 s
 This contains the scripts and parameter files used in preliminary fastsimcoal2 runs, comparing DNA and MSAT marker types.
 
 ## Contact
-For questions about this dataset, open an Issue or contact Austin Koontz.
+For questions about this project, open an Issue or contact Austin Koontz.
