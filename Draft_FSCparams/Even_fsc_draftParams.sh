@@ -5,6 +5,8 @@
 # Specify input directory, which contains relevant fasSimcoal2 parameter files
 dir=/home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_20220325_fscParams
 # In order to avoid space issues, this script needs to be run from the RAID1 directory
+# -g indicates genomic data (# of individuals = (# of samples * pop. effective size/2))  
+# -p indicates that the gametic phase is known in the Arlequin format
 
 # Create a variable to capture the number of replications, for each simulation instance
 reps=5
