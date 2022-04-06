@@ -6,9 +6,10 @@ library(stringr)
 setwd("/home/akoontz/Documents/SSRvSNP/Simulations/Code/")
 
 # Specify /RAID1 directory, where outputs are being held
-sim.directory <- "/RAID1/Simulations/Even_20220329_FSCdraft/"
-# Additional directory, for samples simulated using the -s flag (for DNA markers)
-# sim.directory <- "/RAID1/Simulations/SNP_20220404_FSCdraft/"
+sim.directory <- "/RAID1/Simulations/draft_fscParams/"
+
+# sim.directory <- "/RAID1/Simulations/draft_fscParams_lowMutation/"
+# sim.directory <- "/RAID1/Simulations/draft_fscParams_highMutation/"
 
 # Conversion using strataG package----
 library(strataG)
@@ -57,44 +58,38 @@ DNA_16pop_migHigh <- convertAllArp(paste0(sim.directory,"DNA_16pops_migHigh"))
 
 # Sense check----
 # 1. More alleles in scenarios with a larger number of populations
-# Exploring what DNA alleles matrices look like
-str(DNA_1pop_migLow[[1]]@tab)
-DNA_1pop_migLow[[1]]@tab[1:5,1:5]
+# MSAT
+mean(sapply(MSAT_1pop_migLow, function(x) ncol(x@tab)))
+mean(sapply(MSAT_4pop_migLow, function(x) ncol(x@tab)))
+mean(sapply(MSAT_16pop_migLow, function(x) ncol(x@tab)))
 
-str(DNA_4pop_migLow[[1]]@tab)
-DNA_4pop_migLow[[1]]@tab[1:5,1:5]
-
-unique(rowSums(DNA_1pop_migLow[[1]]@tab))
-length(which(DNA_1pop_migLow[[1]]@tab[1,] == 0))
-length(which(DNA_1pop_migLow[[1]]@tab[2,] == 0))
-
-length(which(DNA_1pop_migLow[[1]]@tab[,1] == 0))
-length(which(DNA_1pop_migLow[[1]]@tab[,2] == 0))
-
-# Microsatellites
-# Number of alleles for each simulation instance
-lapply(MSAT_1pop_migLow, FUN = function(x) ncol(x@tab))
-# Average
-mean(as.numeric(lapply(MSAT_1pop_migLow, FUN = function(x) ncol(x@tab))))
-# 4 populations
-lapply(MSAT_4pop_migLow, FUN = function(x) ncol(x@tab))
-mean(as.numeric(lapply(MSAT_4pop_migLow, FUN = function(x) ncol(x@tab))))
-# 16 populations
-lapply(MSAT_16pop_migLow, FUN = function(x) ncol(x@tab))
-mean(as.numeric(lapply(MSAT_16pop_migLow, FUN = function(x) ncol(x@tab))))
-
-mean(as.numeric(lapply(MSAT_1pop_migHigh, FUN = function(x) ncol(x@tab))))
-mean(as.numeric(lapply(MSAT_4pop_migHigh, FUN = function(x) ncol(x@tab))))
-mean(as.numeric(lapply(MSAT_16pop_migHigh, FUN = function(x) ncol(x@tab))))
+mean(sapply(MSAT_1pop_migHigh, function(x) ncol(x@tab)))
+mean(sapply(MSAT_4pop_migHigh, function(x) ncol(x@tab)))
+mean(sapply(MSAT_16pop_migHigh, function(x) ncol(x@tab)))
 
 # DNA
-# Number of alleles for each simulation instance
-lapply(DNA_1pop_migLow, FUN = function(x) ncol(x@tab))
-lapply(DNA_4pop_migLow, FUN = function(x) ncol(x@tab))
-lapply(DNA_16pop_migLow, FUN = function(x) ncol(x@tab))
-lapply(DNA_16pop_migHigh, FUN = function(x) ncol(x@tab))
+mean(sapply(DNA_1pop_migLow, function(x) ncol(x@tab)))
+mean(sapply(DNA_4pop_migLow, function(x) ncol(x@tab)))
+mean(sapply(DNA_16pop_migLow, function(x) ncol(x@tab)))
+
+mean(sapply(DNA_1pop_migHigh, function(x) ncol(x@tab)))
+mean(sapply(DNA_4pop_migHigh, function(x) ncol(x@tab)))
+mean(sapply(DNA_16pop_migHigh, function(x) ncol(x@tab)))
 
 # 2. Lower Fst for scenarios with lower migration rates
+# MSAT
+sapply(MSAT_4pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(MSAT_16pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+
+sapply(MSAT_4pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(MSAT_16pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+
+# DNA
+sapply(DNA_4pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(DNA_16pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+
+sapply(DNA_4pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(DNA_16pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 
 # # OUTDATED: Conversion using diveRsity package----
 # library(diveRsity)
