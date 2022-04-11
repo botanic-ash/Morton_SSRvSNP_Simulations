@@ -79,17 +79,20 @@ mean(sapply(DNA_16pop_migHigh, function(x) ncol(x@tab)))
 # 2. Lower Fst for scenarios with lower migration rates
 # MSAT
 sapply(MSAT_4pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
-sapply(MSAT_16pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
-
 sapply(MSAT_4pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+
+sapply(MSAT_16pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 sapply(MSAT_16pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 
 # DNA
 sapply(DNA_4pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
-sapply(DNA_16pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
-
 sapply(DNA_4pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+
+sapply(DNA_16pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE)) # Error
 sapply(DNA_16pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+
+# 3. Allele frequency spectra
+
 
 # # OUTDATED: Conversion using diveRsity package----
 # library(diveRsity)
