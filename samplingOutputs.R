@@ -10,6 +10,7 @@ sim.directory <- "/RAID1/Simulations/draft_fscParams/"
 
 # sim.directory <- "/RAID1/Simulations/draft_fscParams_lowMutation/"
 # sim.directory <- "/RAID1/Simulations/draft_fscParams_highMutation/"
+sim.directory <- "/RAID1/Simulations/draft_fscParams_DNA100/"
 
 # Conversion using strataG package----
 library(strataG)
@@ -35,6 +36,8 @@ convertAllArp <- function(arp.path){
   setwd(original.WD)
   return(genind.list)
 }
+# For all simulations, number of individuals = 1200
+nInd <- 1200
 
 # Microsatellite files
 MSAT_1pop_migLow <- convertAllArp(paste0(sim.directory,"MSAT_01pops_migLow"))
@@ -92,7 +95,52 @@ sapply(DNA_16pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))
 sapply(DNA_16pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 
 # 3. Allele frequency spectra
+# MSAT
+# DNA
 
+# 1 population
+unique(colSums(DNA_1pop_migLow[[1]]@tab))
+nInd(DNA_1pop_migLow[[1]])
+
+DNA_allFreq_1popLow_1 <- colSums(DNA_1pop_migLow[[1]]@tab)/(nInd*2)*100
+DNA_allFreq_1popLow_2 <- colSums(DNA_1pop_migLow[[2]]@tab)/(nInd*2)*100
+DNA_allFreq_1popLow_3 <- colSums(DNA_1pop_migLow[[3]]@tab)/(nInd*2)*100
+DNA_allFreq_1popLow_4 <- colSums(DNA_1pop_migLow[[4]]@tab)/(nInd*2)*100
+DNA_allFreq_1popLow_5 <- colSums(DNA_1pop_migLow[[5]]@tab)/(nInd*2)*100
+
+unique(DNA_allFreq_1popLow_1)
+unique(DNA_allFreq_1popLow_2)
+unique(DNA_allFreq_1popLow_3)
+unique(DNA_allFreq_1popLow_4)
+unique(DNA_allFreq_1popLow_5)
+
+hist(DNA_allFreq_1popLow_1)
+hist(DNA_allFreq_1popLow_2)
+hist(DNA_allFreq_1popLow_3)
+hist(DNA_allFreq_1popLow_4)
+hist(DNA_allFreq_1popLow_5)
+
+# 16 populations
+unique(colSums(DNA_16pop_migLow[[1]]@tab))
+nInd(DNA_16pop_migLow[[1]])
+
+DNA_allFreq_16popLow_1 <- colSums(DNA_16pop_migLow[[1]]@tab)/(nInd*2)*100
+DNA_allFreq_16popLow_2 <- colSums(DNA_16pop_migLow[[2]]@tab)/(nInd*2)*100
+DNA_allFreq_16popLow_3 <- colSums(DNA_16pop_migLow[[3]]@tab)/(nInd*2)*100
+DNA_allFreq_16popLow_4 <- colSums(DNA_16pop_migLow[[4]]@tab)/(nInd*2)*100
+DNA_allFreq_16popLow_5 <- colSums(DNA_16pop_migLow[[5]]@tab)/(nInd*2)*100
+
+unique(DNA_allFreq_16popLow_1)
+unique(DNA_allFreq_16popLow_2)
+unique(DNA_allFreq_16popLow_3)
+unique(DNA_allFreq_16popLow_4)
+unique(DNA_allFreq_16popLow_5)
+
+hist(DNA_allFreq_16popLow_1)
+hist(DNA_allFreq_16popLow_2)
+hist(DNA_allFreq_16popLow_3)
+hist(DNA_allFreq_16popLow_4)
+hist(DNA_allFreq_16popLow_5)
 
 # # OUTDATED: Conversion using diveRsity package----
 # library(diveRsity)
