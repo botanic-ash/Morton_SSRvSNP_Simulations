@@ -15,4 +15,4 @@
 // Chromosome structure 1 begins with number of loci
 1
 //per block: data type, number of loci, per generation recombination and mutation rates and optional parameters
-DNA      1        0          1e-5           0.33
+DNA      200        0          1e-5           0.33
