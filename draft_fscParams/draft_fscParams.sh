@@ -3,7 +3,6 @@
 # Script for starting fastSimcoal2 simulations, based on draft parameter files
 
 # Specify input directory, which contains relevant fasSimcoal2 parameter files
-# This directory refers to parameter files that have higher mutation rates
 dir=/home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams
 # In order to avoid space issues, this script needs to be run from the RAID1 directory
 # -g indicates genomic data (# of individuals = (# of samples * pop. effective size/2))  

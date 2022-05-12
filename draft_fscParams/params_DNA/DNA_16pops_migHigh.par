@@ -106,8 +106,11 @@
 50000 14 0 1 1.00 0 1
 50000 15 0 1 1.00 0 1
 //Number of independent loci [chromosome] (Number of sequences of 300 bp per gamete)
-50 0
+5 0
 // Chromosome structure 1 begins with number of loci
 1
 //per block: data type, number of loci, per generation recombination and mutation rates and optional parameters
-DNA      200        0          1e-5           0.33
+DNA      100        0          1e-5           0.33
+DNA      100        0          1e-5           0.33
+DNA      100        0          1e-5           0.33
+DNA      100        0          1e-5           0.33

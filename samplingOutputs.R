@@ -8,10 +8,6 @@ setwd("/home/akoontz/Documents/SSRvSNP/Simulations/Code/")
 # Specify /RAID1 directory, where outputs are being held
 sim.directory <- "/RAID1/Simulations/draft_fscParams/"
 
-# sim.directory <- "/RAID1/Simulations/draft_fscParams_lowMutation/"
-# sim.directory <- "/RAID1/Simulations/draft_fscParams_highMutation/"
-sim.directory <- "/RAID1/Simulations/draft_fscParams_DNA100/"
-
 # Conversion using strataG package----
 library(strataG)
 # Wrapper function for converting Arlequin (.arp) to genepop (.gen), using strataG functions
@@ -87,7 +83,7 @@ sapply(MSAT_4pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x)
 sapply(MSAT_16pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 sapply(MSAT_16pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 
-# DNA
+# DNA--errors: "Error in getal(data) : allele encoding with 3 digits maximum"
 sapply(DNA_4pop_migLow, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 sapply(DNA_4pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 
@@ -101,6 +97,8 @@ sapply(DNA_16pop_migHigh, function(x) mean(c(pairwise.neifst(genind2hierfstat(x)
 # 1 population
 unique(colSums(DNA_1pop_migLow[[1]]@tab))
 nInd(DNA_1pop_migLow[[1]])
+nLoc(DNA_1pop_migLow[[1]])
+ncol(DNA_1pop_migLow[[1]]@tab)
 
 DNA_allFreq_1popLow_1 <- colSums(DNA_1pop_migLow[[1]]@tab)/(nInd*2)*100
 DNA_allFreq_1popLow_2 <- colSums(DNA_1pop_migLow[[2]]@tab)/(nInd*2)*100
@@ -123,6 +121,8 @@ hist(DNA_allFreq_1popLow_5)
 # 16 populations
 unique(colSums(DNA_16pop_migLow[[1]]@tab))
 nInd(DNA_16pop_migLow[[1]])
+nLoc(DNA_16pop_migLow[[1]])
+ncol(DNA_16pop_migLow[[1]]@tab)
 
 DNA_allFreq_16popLow_1 <- colSums(DNA_16pop_migLow[[1]]@tab)/(nInd*2)*100
 DNA_allFreq_16popLow_2 <- colSums(DNA_16pop_migLow[[2]]@tab)/(nInd*2)*100
