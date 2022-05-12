@@ -8,6 +8,8 @@ setwd("/home/akoontz/Documents/SSRvSNP/Simulations/Code/")
 # Specify /RAID1 directory, where outputs are being held
 sim.directory <- "/RAID1/Simulations/draft_fscParams/"
 
+sim.directory <- "/RAID1/Simulations/TEST3_fscParams/"
+
 # Conversion using strataG package----
 library(strataG)
 # Wrapper function for converting Arlequin (.arp) to genepop (.gen), using strataG functions
@@ -117,6 +119,13 @@ hist(DNA_allFreq_1popLow_2)
 hist(DNA_allFreq_1popLow_3)
 hist(DNA_allFreq_1popLow_4)
 hist(DNA_allFreq_1popLow_5)
+
+# 4 populations
+unique(colSums(DNA_4pop_migLow[[1]]@tab))
+nInd(DNA_4pop_migLow[[1]])
+nLoc(DNA_4pop_migLow[[1]])
+ncol(DNA_4pop_migLow[[1]]@tab)
+DNA_4pop_migLow[[1]]@tab[1,1:2]
 
 # 16 populations
 unique(colSums(DNA_16pop_migLow[[1]]@tab))
