@@ -1,0 +1,2534 @@
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_MSAT/MSAT_01pops_migHigh.par -n 5 -g -p 
+
+Random generator seed : 481470
+
+Deme sizes
+Deme 0	2400
+
+
+Sample sizes
+Deme 0	2400
+
+Sample ages
+Deme 0	0
+
+Growth rates
+Deme 0	0
+
+
+Historical events
+No historical events defined in input file ...
+
+
+Number of independent loci to simulate : 20
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   1 partially linked MICROSAT:
+      recombination, mutation rates, geometric parameter, and range constraint : 0.0000000000   0.0005000000   0.00000   10
+
+No population growth detected in input file
+
+fastsimcoal2 is building 100 genealogies ...
+
+Simulating 20 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 6478
+MRCA time for non-recombining chromosome structure 1: 5791
+MRCA time for non-recombining chromosome structure 2: 5233
+MRCA time for non-recombining chromosome structure 3: 20559
+MRCA time for non-recombining chromosome structure 4: 10304
+MRCA time for non-recombining chromosome structure 5: 3219
+MRCA time for non-recombining chromosome structure 6: 3901
+MRCA time for non-recombining chromosome structure 7: 2934
+MRCA time for non-recombining chromosome structure 8: 3343
+MRCA time for non-recombining chromosome structure 9: 3538
+MRCA time for non-recombining chromosome structure 10: 4143
+MRCA time for non-recombining chromosome structure 11: 2053
+MRCA time for non-recombining chromosome structure 12: 3327
+MRCA time for non-recombining chromosome structure 13: 5555
+MRCA time for non-recombining chromosome structure 14: 10053
+MRCA time for non-recombining chromosome structure 15: 2213
+MRCA time for non-recombining chromosome structure 16: 6206
+MRCA time for non-recombining chromosome structure 17: 2738
+MRCA time for non-recombining chromosome structure 18: 10828
+MRCA time for non-recombining chromosome structure 19: 11794
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 2633
+MRCA time for non-recombining chromosome structure 1: 4326
+MRCA time for non-recombining chromosome structure 2: 4524
+MRCA time for non-recombining chromosome structure 3: 1881
+MRCA time for non-recombining chromosome structure 4: 6430
+MRCA time for non-recombining chromosome structure 5: 3882
+MRCA time for non-recombining chromosome structure 6: 9515
+MRCA time for non-recombining chromosome structure 7: 5648
+MRCA time for non-recombining chromosome structure 8: 7614
+MRCA time for non-recombining chromosome structure 9: 3369
+MRCA time for non-recombining chromosome structure 10: 3527
+MRCA time for non-recombining chromosome structure 11: 6981
+MRCA time for non-recombining chromosome structure 12: 3890
+MRCA time for non-recombining chromosome structure 13: 4318
+MRCA time for non-recombining chromosome structure 14: 3964
+MRCA time for non-recombining chromosome structure 15: 2629
+MRCA time for non-recombining chromosome structure 16: 2447
+MRCA time for non-recombining chromosome structure 17: 6323
+MRCA time for non-recombining chromosome structure 18: 2035
+MRCA time for non-recombining chromosome structure 19: 11759
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 1851
+MRCA time for non-recombining chromosome structure 1: 2706
+MRCA time for non-recombining chromosome structure 2: 4358
+MRCA time for non-recombining chromosome structure 3: 4979
+MRCA time for non-recombining chromosome structure 4: 4255
+MRCA time for non-recombining chromosome structure 5: 2386
+MRCA time for non-recombining chromosome structure 6: 12175
+MRCA time for non-recombining chromosome structure 7: 7058
+MRCA time for non-recombining chromosome structure 8: 2486
+MRCA time for non-recombining chromosome structure 9: 6383
+MRCA time for non-recombining chromosome structure 10: 2811
+MRCA time for non-recombining chromosome structure 11: 6028
+MRCA time for non-recombining chromosome structure 12: 5107
+MRCA time for non-recombining chromosome structure 13: 4707
+MRCA time for non-recombining chromosome structure 14: 3366
+MRCA time for non-recombining chromosome structure 15: 1658
+MRCA time for non-recombining chromosome structure 16: 3377
+MRCA time for non-recombining chromosome structure 17: 5515
+MRCA time for non-recombining chromosome structure 18: 4720
+MRCA time for non-recombining chromosome structure 19: 2339
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 4409
+MRCA time for non-recombining chromosome structure 1: 3115
+MRCA time for non-recombining chromosome structure 2: 7070
+MRCA time for non-recombining chromosome structure 3: 4998
+MRCA time for non-recombining chromosome structure 4: 7547
+MRCA time for non-recombining chromosome structure 5: 4519
+MRCA time for non-recombining chromosome structure 6: 2815
+MRCA time for non-recombining chromosome structure 7: 5331
+MRCA time for non-recombining chromosome structure 8: 4123
+MRCA time for non-recombining chromosome structure 9: 5890
+MRCA time for non-recombining chromosome structure 10: 3655
+MRCA time for non-recombining chromosome structure 11: 4288
+MRCA time for non-recombining chromosome structure 12: 9478
+MRCA time for non-recombining chromosome structure 13: 2265
+MRCA time for non-recombining chromosome structure 14: 1262
+MRCA time for non-recombining chromosome structure 15: 4264
+MRCA time for non-recombining chromosome structure 16: 8166
+MRCA time for non-recombining chromosome structure 17: 3677
+MRCA time for non-recombining chromosome structure 18: 8396
+MRCA time for non-recombining chromosome structure 19: 8275
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 3957
+MRCA time for non-recombining chromosome structure 1: 5013
+MRCA time for non-recombining chromosome structure 2: 5026
+MRCA time for non-recombining chromosome structure 3: 3096
+MRCA time for non-recombining chromosome structure 4: 7543
+MRCA time for non-recombining chromosome structure 5: 5867
+MRCA time for non-recombining chromosome structure 6: 3763
+MRCA time for non-recombining chromosome structure 7: 4655
+MRCA time for non-recombining chromosome structure 8: 3179
+MRCA time for non-recombining chromosome structure 9: 3655
+MRCA time for non-recombining chromosome structure 10: 4693
+MRCA time for non-recombining chromosome structure 11: 2482
+MRCA time for non-recombining chromosome structure 12: 2457
+MRCA time for non-recombining chromosome structure 13: 4167
+MRCA time for non-recombining chromosome structure 14: 1772
+MRCA time for non-recombining chromosome structure 15: 4018
+MRCA time for non-recombining chromosome structure 16: 2835
+MRCA time for non-recombining chromosome structure 17: 2779
+MRCA time for non-recombining chromosome structure 18: 1770
+MRCA time for non-recombining chromosome structure 19: 4861
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.370 secs
+
+
+Program total execution time: 0.374 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_MSAT/MSAT_01pops_migLow.par -n 5 -g -p 
+
+Random generator seed : 810471
+
+Deme sizes
+Deme 0	2400
+
+
+Sample sizes
+Deme 0	2400
+
+Sample ages
+Deme 0	0
+
+Growth rates
+Deme 0	0
+
+
+Historical events
+No historical events defined in input file ...
+
+
+Number of independent loci to simulate : 20
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   1 partially linked MICROSAT:
+      recombination, mutation rates, geometric parameter, and range constraint : 0.0000000000   0.0005000000   0.00000   10
+
+No population growth detected in input file
+
+fastsimcoal2 is building 100 genealogies ...
+
+Simulating 20 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 8030
+MRCA time for non-recombining chromosome structure 1: 2700
+MRCA time for non-recombining chromosome structure 2: 3968
+MRCA time for non-recombining chromosome structure 3: 2541
+MRCA time for non-recombining chromosome structure 4: 5882
+MRCA time for non-recombining chromosome structure 5: 6638
+MRCA time for non-recombining chromosome structure 6: 5498
+MRCA time for non-recombining chromosome structure 7: 6078
+MRCA time for non-recombining chromosome structure 8: 2898
+MRCA time for non-recombining chromosome structure 9: 8835
+MRCA time for non-recombining chromosome structure 10: 2347
+MRCA time for non-recombining chromosome structure 11: 4182
+MRCA time for non-recombining chromosome structure 12: 4251
+MRCA time for non-recombining chromosome structure 13: 3043
+MRCA time for non-recombining chromosome structure 14: 3779
+MRCA time for non-recombining chromosome structure 15: 4753
+MRCA time for non-recombining chromosome structure 16: 2746
+MRCA time for non-recombining chromosome structure 17: 6168
+MRCA time for non-recombining chromosome structure 18: 1600
+MRCA time for non-recombining chromosome structure 19: 6018
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 3036
+MRCA time for non-recombining chromosome structure 1: 3922
+MRCA time for non-recombining chromosome structure 2: 7429
+MRCA time for non-recombining chromosome structure 3: 2023
+MRCA time for non-recombining chromosome structure 4: 2529
+MRCA time for non-recombining chromosome structure 5: 12071
+MRCA time for non-recombining chromosome structure 6: 4781
+MRCA time for non-recombining chromosome structure 7: 5107
+MRCA time for non-recombining chromosome structure 8: 1743
+MRCA time for non-recombining chromosome structure 9: 4841
+MRCA time for non-recombining chromosome structure 10: 6153
+MRCA time for non-recombining chromosome structure 11: 2362
+MRCA time for non-recombining chromosome structure 12: 3316
+MRCA time for non-recombining chromosome structure 13: 2954
+MRCA time for non-recombining chromosome structure 14: 3914
+MRCA time for non-recombining chromosome structure 15: 3466
+MRCA time for non-recombining chromosome structure 16: 9568
+MRCA time for non-recombining chromosome structure 17: 3566
+MRCA time for non-recombining chromosome structure 18: 1836
+MRCA time for non-recombining chromosome structure 19: 5908
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 2762
+MRCA time for non-recombining chromosome structure 1: 2907
+MRCA time for non-recombining chromosome structure 2: 4037
+MRCA time for non-recombining chromosome structure 3: 3138
+MRCA time for non-recombining chromosome structure 4: 3261
+MRCA time for non-recombining chromosome structure 5: 3058
+MRCA time for non-recombining chromosome structure 6: 2841
+MRCA time for non-recombining chromosome structure 7: 4506
+MRCA time for non-recombining chromosome structure 8: 14637
+MRCA time for non-recombining chromosome structure 9: 7944
+MRCA time for non-recombining chromosome structure 10: 3237
+MRCA time for non-recombining chromosome structure 11: 2928
+MRCA time for non-recombining chromosome structure 12: 3190
+MRCA time for non-recombining chromosome structure 13: 4935
+MRCA time for non-recombining chromosome structure 14: 2752
+MRCA time for non-recombining chromosome structure 15: 7614
+MRCA time for non-recombining chromosome structure 16: 2173
+MRCA time for non-recombining chromosome structure 17: 4599
+MRCA time for non-recombining chromosome structure 18: 4930
+MRCA time for non-recombining chromosome structure 19: 7927
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 1750
+MRCA time for non-recombining chromosome structure 1: 9771
+MRCA time for non-recombining chromosome structure 2: 3597
+MRCA time for non-recombining chromosome structure 3: 7825
+MRCA time for non-recombining chromosome structure 4: 3068
+MRCA time for non-recombining chromosome structure 5: 4520
+MRCA time for non-recombining chromosome structure 6: 3634
+MRCA time for non-recombining chromosome structure 7: 3549
+MRCA time for non-recombining chromosome structure 8: 2690
+MRCA time for non-recombining chromosome structure 9: 4204
+MRCA time for non-recombining chromosome structure 10: 4664
+MRCA time for non-recombining chromosome structure 11: 2307
+MRCA time for non-recombining chromosome structure 12: 1744
+MRCA time for non-recombining chromosome structure 13: 8113
+MRCA time for non-recombining chromosome structure 14: 5177
+MRCA time for non-recombining chromosome structure 15: 5146
+MRCA time for non-recombining chromosome structure 16: 3905
+MRCA time for non-recombining chromosome structure 17: 3576
+MRCA time for non-recombining chromosome structure 18: 3426
+MRCA time for non-recombining chromosome structure 19: 3554
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 5576
+MRCA time for non-recombining chromosome structure 1: 1972
+MRCA time for non-recombining chromosome structure 2: 9443
+MRCA time for non-recombining chromosome structure 3: 4560
+MRCA time for non-recombining chromosome structure 4: 2065
+MRCA time for non-recombining chromosome structure 5: 3246
+MRCA time for non-recombining chromosome structure 6: 2191
+MRCA time for non-recombining chromosome structure 7: 7267
+MRCA time for non-recombining chromosome structure 8: 2116
+MRCA time for non-recombining chromosome structure 9: 5082
+MRCA time for non-recombining chromosome structure 10: 3954
+MRCA time for non-recombining chromosome structure 11: 5386
+MRCA time for non-recombining chromosome structure 12: 5108
+MRCA time for non-recombining chromosome structure 13: 5216
+MRCA time for non-recombining chromosome structure 14: 2560
+MRCA time for non-recombining chromosome structure 15: 2446
+MRCA time for non-recombining chromosome structure 16: 6739
+MRCA time for non-recombining chromosome structure 17: 5916
+MRCA time for non-recombining chromosome structure 18: 2736
+MRCA time for non-recombining chromosome structure 19: 1473
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.379 secs
+
+
+Program total execution time: 0.382 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_MSAT/MSAT_04pops_migHigh.par -n 5 -g -p 
+
+Random generator seed : 382979
+
+Deme sizes
+Deme 0	600
+Deme 1	600
+Deme 2	600
+Deme 3	600
+
+
+Sample sizes
+Deme 0	600
+Deme 1	600
+Deme 2	600
+Deme 3	600
+
+Sample ages
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+
+Growth rates
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+
+
+Migration matrix 0	(note that migration rates have been pre-multiplied by 1e+06n
+ 0.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000  0.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000  0.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000  0.0000000 
+
+
+Migration matrix 1	(note that migration rates have been pre-multiplied by 1000000.0000000n
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+
+
+Historical events
+Event 0
+
+#Time              : 50000
+#Source            : 0
+#Sink              : 0
+#Migrants          : 0.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 1
+
+#Time              : 50000
+#Source            : 1
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 2
+
+#Time              : 50000
+#Source            : 2
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 3
+
+#Time              : 50000
+#Source            : 3
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+
+
+Number of independent loci to simulate : 20
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   1 partially linked MICROSAT:
+      recombination, mutation rates, geometric parameter, and range constraint : 0.0000000000   0.0005000000   0.00000   10
+
+No population growth detected in input file
+
+fastsimcoal2 is building 100 genealogies ...
+
+Simulating 20 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 5822
+MRCA time for non-recombining chromosome structure 1: 2043
+MRCA time for non-recombining chromosome structure 2: 1630
+MRCA time for non-recombining chromosome structure 3: 3941
+MRCA time for non-recombining chromosome structure 4: 3090
+MRCA time for non-recombining chromosome structure 5: 3252
+MRCA time for non-recombining chromosome structure 6: 4700
+MRCA time for non-recombining chromosome structure 7: 5145
+MRCA time for non-recombining chromosome structure 8: 2212
+MRCA time for non-recombining chromosome structure 9: 4275
+MRCA time for non-recombining chromosome structure 10: 2902
+MRCA time for non-recombining chromosome structure 11: 4915
+MRCA time for non-recombining chromosome structure 12: 2562
+MRCA time for non-recombining chromosome structure 13: 2685
+MRCA time for non-recombining chromosome structure 14: 3554
+MRCA time for non-recombining chromosome structure 15: 2482
+MRCA time for non-recombining chromosome structure 16: 9511
+MRCA time for non-recombining chromosome structure 17: 2525
+MRCA time for non-recombining chromosome structure 18: 3381
+MRCA time for non-recombining chromosome structure 19: 4673
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 1940
+MRCA time for non-recombining chromosome structure 1: 7309
+MRCA time for non-recombining chromosome structure 2: 7928
+MRCA time for non-recombining chromosome structure 3: 1916
+MRCA time for non-recombining chromosome structure 4: 7665
+MRCA time for non-recombining chromosome structure 5: 4953
+MRCA time for non-recombining chromosome structure 6: 2076
+MRCA time for non-recombining chromosome structure 7: 2383
+MRCA time for non-recombining chromosome structure 8: 6282
+MRCA time for non-recombining chromosome structure 9: 4875
+MRCA time for non-recombining chromosome structure 10: 3186
+MRCA time for non-recombining chromosome structure 11: 8741
+MRCA time for non-recombining chromosome structure 12: 3982
+MRCA time for non-recombining chromosome structure 13: 2549
+MRCA time for non-recombining chromosome structure 14: 3126
+MRCA time for non-recombining chromosome structure 15: 3981
+MRCA time for non-recombining chromosome structure 16: 2267
+MRCA time for non-recombining chromosome structure 17: 4455
+MRCA time for non-recombining chromosome structure 18: 2480
+MRCA time for non-recombining chromosome structure 19: 5322
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 5515
+MRCA time for non-recombining chromosome structure 1: 5933
+MRCA time for non-recombining chromosome structure 2: 7640
+MRCA time for non-recombining chromosome structure 3: 6793
+MRCA time for non-recombining chromosome structure 4: 5317
+MRCA time for non-recombining chromosome structure 5: 4305
+MRCA time for non-recombining chromosome structure 6: 2608
+MRCA time for non-recombining chromosome structure 7: 5295
+MRCA time for non-recombining chromosome structure 8: 10692
+MRCA time for non-recombining chromosome structure 9: 3555
+MRCA time for non-recombining chromosome structure 10: 6260
+MRCA time for non-recombining chromosome structure 11: 3064
+MRCA time for non-recombining chromosome structure 12: 9431
+MRCA time for non-recombining chromosome structure 13: 7412
+MRCA time for non-recombining chromosome structure 14: 3230
+MRCA time for non-recombining chromosome structure 15: 6124
+MRCA time for non-recombining chromosome structure 16: 12717
+MRCA time for non-recombining chromosome structure 17: 3087
+MRCA time for non-recombining chromosome structure 18: 2670
+MRCA time for non-recombining chromosome structure 19: 2242
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 5064
+MRCA time for non-recombining chromosome structure 1: 12843
+MRCA time for non-recombining chromosome structure 2: 5169
+MRCA time for non-recombining chromosome structure 3: 2570
+MRCA time for non-recombining chromosome structure 4: 6339
+MRCA time for non-recombining chromosome structure 5: 6845
+MRCA time for non-recombining chromosome structure 6: 5149
+MRCA time for non-recombining chromosome structure 7: 8428
+MRCA time for non-recombining chromosome structure 8: 8539
+MRCA time for non-recombining chromosome structure 9: 3973
+MRCA time for non-recombining chromosome structure 10: 3812
+MRCA time for non-recombining chromosome structure 11: 3045
+MRCA time for non-recombining chromosome structure 12: 5087
+MRCA time for non-recombining chromosome structure 13: 3172
+MRCA time for non-recombining chromosome structure 14: 7431
+MRCA time for non-recombining chromosome structure 15: 8361
+MRCA time for non-recombining chromosome structure 16: 2700
+MRCA time for non-recombining chromosome structure 17: 4592
+MRCA time for non-recombining chromosome structure 18: 6397
+MRCA time for non-recombining chromosome structure 19: 4690
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 4792
+MRCA time for non-recombining chromosome structure 1: 6107
+MRCA time for non-recombining chromosome structure 2: 4952
+MRCA time for non-recombining chromosome structure 3: 10855
+MRCA time for non-recombining chromosome structure 4: 3553
+MRCA time for non-recombining chromosome structure 5: 4728
+MRCA time for non-recombining chromosome structure 6: 5141
+MRCA time for non-recombining chromosome structure 7: 3484
+MRCA time for non-recombining chromosome structure 8: 2101
+MRCA time for non-recombining chromosome structure 9: 5290
+MRCA time for non-recombining chromosome structure 10: 7001
+MRCA time for non-recombining chromosome structure 11: 9275
+MRCA time for non-recombining chromosome structure 12: 6140
+MRCA time for non-recombining chromosome structure 13: 4369
+MRCA time for non-recombining chromosome structure 14: 6564
+MRCA time for non-recombining chromosome structure 15: 3193
+MRCA time for non-recombining chromosome structure 16: 3981
+MRCA time for non-recombining chromosome structure 17: 4873
+MRCA time for non-recombining chromosome structure 18: 7744
+MRCA time for non-recombining chromosome structure 19: 3266
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.543 secs
+
+
+Program total execution time: 0.554 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_MSAT/MSAT_04pops_migLow.par -n 5 -g -p 
+
+Random generator seed : 890438
+
+Deme sizes
+Deme 0	600
+Deme 1	600
+Deme 2	600
+Deme 3	600
+
+
+Sample sizes
+Deme 0	600
+Deme 1	600
+Deme 2	600
+Deme 3	600
+
+Sample ages
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+
+Growth rates
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+
+
+Migration matrix 0	(note that migration rates have been pre-multiplied by 1e+06n
+ 0.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000  0.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000  0.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000  0.0000000 
+
+
+Migration matrix 1	(note that migration rates have been pre-multiplied by 1000000.0000000n
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+
+
+Historical events
+Event 0
+
+#Time              : 50000
+#Source            : 0
+#Sink              : 0
+#Migrants          : 0.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 1
+
+#Time              : 50000
+#Source            : 1
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 2
+
+#Time              : 50000
+#Source            : 2
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 3
+
+#Time              : 50000
+#Source            : 3
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+
+
+Number of independent loci to simulate : 20
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   1 partially linked MICROSAT:
+      recombination, mutation rates, geometric parameter, and range constraint : 0.0000000000   0.0005000000   0.00000   10
+
+No population growth detected in input file
+
+fastsimcoal2 is building 100 genealogies ...
+
+Simulating 20 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 2874
+MRCA time for non-recombining chromosome structure 1: 4004
+MRCA time for non-recombining chromosome structure 2: 3930
+MRCA time for non-recombining chromosome structure 3: 13180
+MRCA time for non-recombining chromosome structure 4: 3925
+MRCA time for non-recombining chromosome structure 5: 2188
+MRCA time for non-recombining chromosome structure 6: 2805
+MRCA time for non-recombining chromosome structure 7: 4510
+MRCA time for non-recombining chromosome structure 8: 4352
+MRCA time for non-recombining chromosome structure 9: 6595
+MRCA time for non-recombining chromosome structure 10: 2375
+MRCA time for non-recombining chromosome structure 11: 11470
+MRCA time for non-recombining chromosome structure 12: 5307
+MRCA time for non-recombining chromosome structure 13: 4102
+MRCA time for non-recombining chromosome structure 14: 2336
+MRCA time for non-recombining chromosome structure 15: 3928
+MRCA time for non-recombining chromosome structure 16: 8630
+MRCA time for non-recombining chromosome structure 17: 6626
+MRCA time for non-recombining chromosome structure 18: 4265
+MRCA time for non-recombining chromosome structure 19: 1297
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 5537
+MRCA time for non-recombining chromosome structure 1: 3572
+MRCA time for non-recombining chromosome structure 2: 4164
+MRCA time for non-recombining chromosome structure 3: 4520
+MRCA time for non-recombining chromosome structure 4: 4430
+MRCA time for non-recombining chromosome structure 5: 1673
+MRCA time for non-recombining chromosome structure 6: 7847
+MRCA time for non-recombining chromosome structure 7: 2341
+MRCA time for non-recombining chromosome structure 8: 4596
+MRCA time for non-recombining chromosome structure 9: 2648
+MRCA time for non-recombining chromosome structure 10: 1766
+MRCA time for non-recombining chromosome structure 11: 6735
+MRCA time for non-recombining chromosome structure 12: 3500
+MRCA time for non-recombining chromosome structure 13: 17605
+MRCA time for non-recombining chromosome structure 14: 6880
+MRCA time for non-recombining chromosome structure 15: 10854
+MRCA time for non-recombining chromosome structure 16: 4860
+MRCA time for non-recombining chromosome structure 17: 1644
+MRCA time for non-recombining chromosome structure 18: 3272
+MRCA time for non-recombining chromosome structure 19: 7202
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 4811
+MRCA time for non-recombining chromosome structure 1: 4126
+MRCA time for non-recombining chromosome structure 2: 3443
+MRCA time for non-recombining chromosome structure 3: 14416
+MRCA time for non-recombining chromosome structure 4: 6469
+MRCA time for non-recombining chromosome structure 5: 2944
+MRCA time for non-recombining chromosome structure 6: 5052
+MRCA time for non-recombining chromosome structure 7: 19666
+MRCA time for non-recombining chromosome structure 8: 3764
+MRCA time for non-recombining chromosome structure 9: 4272
+MRCA time for non-recombining chromosome structure 10: 4502
+MRCA time for non-recombining chromosome structure 11: 5157
+MRCA time for non-recombining chromosome structure 12: 6773
+MRCA time for non-recombining chromosome structure 13: 3800
+MRCA time for non-recombining chromosome structure 14: 3445
+MRCA time for non-recombining chromosome structure 15: 5848
+MRCA time for non-recombining chromosome structure 16: 2827
+MRCA time for non-recombining chromosome structure 17: 4291
+MRCA time for non-recombining chromosome structure 18: 2668
+MRCA time for non-recombining chromosome structure 19: 1641
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 9809
+MRCA time for non-recombining chromosome structure 1: 4748
+MRCA time for non-recombining chromosome structure 2: 5226
+MRCA time for non-recombining chromosome structure 3: 11860
+MRCA time for non-recombining chromosome structure 4: 5823
+MRCA time for non-recombining chromosome structure 5: 30625
+MRCA time for non-recombining chromosome structure 6: 19048
+MRCA time for non-recombining chromosome structure 7: 11068
+MRCA time for non-recombining chromosome structure 8: 11687
+MRCA time for non-recombining chromosome structure 9: 8742
+MRCA time for non-recombining chromosome structure 10: 12575
+MRCA time for non-recombining chromosome structure 11: 5438
+MRCA time for non-recombining chromosome structure 12: 2184
+MRCA time for non-recombining chromosome structure 13: 7199
+MRCA time for non-recombining chromosome structure 14: 5424
+MRCA time for non-recombining chromosome structure 15: 5399
+MRCA time for non-recombining chromosome structure 16: 7683
+MRCA time for non-recombining chromosome structure 17: 3668
+MRCA time for non-recombining chromosome structure 18: 6242
+MRCA time for non-recombining chromosome structure 19: 3383
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 5665
+MRCA time for non-recombining chromosome structure 1: 8981
+MRCA time for non-recombining chromosome structure 2: 5251
+MRCA time for non-recombining chromosome structure 3: 4040
+MRCA time for non-recombining chromosome structure 4: 6968
+MRCA time for non-recombining chromosome structure 5: 3224
+MRCA time for non-recombining chromosome structure 6: 3384
+MRCA time for non-recombining chromosome structure 7: 3142
+MRCA time for non-recombining chromosome structure 8: 2017
+MRCA time for non-recombining chromosome structure 9: 1902
+MRCA time for non-recombining chromosome structure 10: 5702
+MRCA time for non-recombining chromosome structure 11: 3611
+MRCA time for non-recombining chromosome structure 12: 9492
+MRCA time for non-recombining chromosome structure 13: 2766
+MRCA time for non-recombining chromosome structure 14: 4588
+MRCA time for non-recombining chromosome structure 15: 1689
+MRCA time for non-recombining chromosome structure 16: 4634
+MRCA time for non-recombining chromosome structure 17: 5018
+MRCA time for non-recombining chromosome structure 18: 3821
+MRCA time for non-recombining chromosome structure 19: 6386
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.482 secs
+
+
+Program total execution time: 0.485 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_MSAT/MSAT_16pops_migHigh.par -n 5 -g -p 
+
+Random generator seed : 421241
+
+Deme sizes
+Deme 0	150
+Deme 1	150
+Deme 2	150
+Deme 3	150
+Deme 4	150
+Deme 5	150
+Deme 6	150
+Deme 7	150
+Deme 8	150
+Deme 9	150
+Deme 10	150
+Deme 11	150
+Deme 12	150
+Deme 13	150
+Deme 14	150
+Deme 15	150
+
+
+Sample sizes
+Deme 0	150
+Deme 1	150
+Deme 2	150
+Deme 3	150
+Deme 4	150
+Deme 5	150
+Deme 6	150
+Deme 7	150
+Deme 8	150
+Deme 9	150
+Deme 10	150
+Deme 11	150
+Deme 12	150
+Deme 13	150
+Deme 14	150
+Deme 15	150
+
+Sample ages
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+Deme 4	0
+Deme 5	0
+Deme 6	0
+Deme 7	0
+Deme 8	0
+Deme 9	0
+Deme 10	0
+Deme 11	0
+Deme 12	0
+Deme 13	0
+Deme 14	0
+Deme 15	0
+
+Growth rates
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+Deme 4	0
+Deme 5	0
+Deme 6	0
+Deme 7	0
+Deme 8	0
+Deme 9	0
+Deme 10	0
+Deme 11	0
+Deme 12	0
+Deme 13	0
+Deme 14	0
+Deme 15	0
+
+
+Migration matrix 0	(note that migration rates have been pre-multiplied by 1e+06n
+ 0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 
+
+
+Migration matrix 1	(note that migration rates have been pre-multiplied by 1000000.0000000n
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+
+
+Historical events
+Event 0
+
+#Time              : 50000
+#Source            : 0
+#Sink              : 0
+#Migrants          : 0.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 1
+
+#Time              : 50000
+#Source            : 1
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 2
+
+#Time              : 50000
+#Source            : 2
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 3
+
+#Time              : 50000
+#Source            : 3
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 4
+
+#Time              : 50000
+#Source            : 4
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 5
+
+#Time              : 50000
+#Source            : 5
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 6
+
+#Time              : 50000
+#Source            : 6
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 7
+
+#Time              : 50000
+#Source            : 7
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 8
+
+#Time              : 50000
+#Source            : 8
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 9
+
+#Time              : 50000
+#Source            : 9
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 10
+
+#Time              : 50000
+#Source            : 10
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 11
+
+#Time              : 50000
+#Source            : 11
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 12
+
+#Time              : 50000
+#Source            : 12
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 13
+
+#Time              : 50000
+#Source            : 13
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 14
+
+#Time              : 50000
+#Source            : 14
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 15
+
+#Time              : 50000
+#Source            : 15
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+
+
+Number of independent loci to simulate : 20
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   1 partially linked MICROSAT:
+      recombination, mutation rates, geometric parameter, and range constraint : 0.0000000000   0.0005000000   0.00000   10
+
+No population growth detected in input file
+
+fastsimcoal2 is building 100 genealogies ...
+
+Simulating 20 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 4634
+MRCA time for non-recombining chromosome structure 1: 1565
+MRCA time for non-recombining chromosome structure 2: 7943
+MRCA time for non-recombining chromosome structure 3: 5688
+MRCA time for non-recombining chromosome structure 4: 3108
+MRCA time for non-recombining chromosome structure 5: 6862
+MRCA time for non-recombining chromosome structure 6: 2311
+MRCA time for non-recombining chromosome structure 7: 3260
+MRCA time for non-recombining chromosome structure 8: 3172
+MRCA time for non-recombining chromosome structure 9: 6061
+MRCA time for non-recombining chromosome structure 10: 3840
+MRCA time for non-recombining chromosome structure 11: 4895
+MRCA time for non-recombining chromosome structure 12: 2649
+MRCA time for non-recombining chromosome structure 13: 4824
+MRCA time for non-recombining chromosome structure 14: 3884
+MRCA time for non-recombining chromosome structure 15: 8246
+MRCA time for non-recombining chromosome structure 16: 4147
+MRCA time for non-recombining chromosome structure 17: 6004
+MRCA time for non-recombining chromosome structure 18: 3392
+MRCA time for non-recombining chromosome structure 19: 5378
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 4296
+MRCA time for non-recombining chromosome structure 1: 2121
+MRCA time for non-recombining chromosome structure 2: 5074
+MRCA time for non-recombining chromosome structure 3: 3537
+MRCA time for non-recombining chromosome structure 4: 3654
+MRCA time for non-recombining chromosome structure 5: 4025
+MRCA time for non-recombining chromosome structure 6: 4967
+MRCA time for non-recombining chromosome structure 7: 2967
+MRCA time for non-recombining chromosome structure 8: 5751
+MRCA time for non-recombining chromosome structure 9: 3231
+MRCA time for non-recombining chromosome structure 10: 7630
+MRCA time for non-recombining chromosome structure 11: 3146
+MRCA time for non-recombining chromosome structure 12: 7742
+MRCA time for non-recombining chromosome structure 13: 12553
+MRCA time for non-recombining chromosome structure 14: 5794
+MRCA time for non-recombining chromosome structure 15: 9318
+MRCA time for non-recombining chromosome structure 16: 3502
+MRCA time for non-recombining chromosome structure 17: 4608
+MRCA time for non-recombining chromosome structure 18: 5455
+MRCA time for non-recombining chromosome structure 19: 3648
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 5210
+MRCA time for non-recombining chromosome structure 1: 5337
+MRCA time for non-recombining chromosome structure 2: 3423
+MRCA time for non-recombining chromosome structure 3: 12260
+MRCA time for non-recombining chromosome structure 4: 2071
+MRCA time for non-recombining chromosome structure 5: 1943
+MRCA time for non-recombining chromosome structure 6: 4698
+MRCA time for non-recombining chromosome structure 7: 2648
+MRCA time for non-recombining chromosome structure 8: 2566
+MRCA time for non-recombining chromosome structure 9: 4010
+MRCA time for non-recombining chromosome structure 10: 9029
+MRCA time for non-recombining chromosome structure 11: 4155
+MRCA time for non-recombining chromosome structure 12: 11764
+MRCA time for non-recombining chromosome structure 13: 7176
+MRCA time for non-recombining chromosome structure 14: 10182
+MRCA time for non-recombining chromosome structure 15: 5987
+MRCA time for non-recombining chromosome structure 16: 1753
+MRCA time for non-recombining chromosome structure 17: 3566
+MRCA time for non-recombining chromosome structure 18: 2285
+MRCA time for non-recombining chromosome structure 19: 2266
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 1880
+MRCA time for non-recombining chromosome structure 1: 4355
+MRCA time for non-recombining chromosome structure 2: 2205
+MRCA time for non-recombining chromosome structure 3: 3333
+MRCA time for non-recombining chromosome structure 4: 2984
+MRCA time for non-recombining chromosome structure 5: 5767
+MRCA time for non-recombining chromosome structure 6: 5010
+MRCA time for non-recombining chromosome structure 7: 5611
+MRCA time for non-recombining chromosome structure 8: 4462
+MRCA time for non-recombining chromosome structure 9: 7975
+MRCA time for non-recombining chromosome structure 10: 1834
+MRCA time for non-recombining chromosome structure 11: 3544
+MRCA time for non-recombining chromosome structure 12: 6940
+MRCA time for non-recombining chromosome structure 13: 6686
+MRCA time for non-recombining chromosome structure 14: 4333
+MRCA time for non-recombining chromosome structure 15: 9859
+MRCA time for non-recombining chromosome structure 16: 2925
+MRCA time for non-recombining chromosome structure 17: 13897
+MRCA time for non-recombining chromosome structure 18: 7317
+MRCA time for non-recombining chromosome structure 19: 3531
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 2150
+MRCA time for non-recombining chromosome structure 1: 14613
+MRCA time for non-recombining chromosome structure 2: 3890
+MRCA time for non-recombining chromosome structure 3: 2106
+MRCA time for non-recombining chromosome structure 4: 3741
+MRCA time for non-recombining chromosome structure 5: 3108
+MRCA time for non-recombining chromosome structure 6: 4568
+MRCA time for non-recombining chromosome structure 7: 2715
+MRCA time for non-recombining chromosome structure 8: 1529
+MRCA time for non-recombining chromosome structure 9: 15592
+MRCA time for non-recombining chromosome structure 10: 2947
+MRCA time for non-recombining chromosome structure 11: 12558
+MRCA time for non-recombining chromosome structure 12: 21074
+MRCA time for non-recombining chromosome structure 13: 10652
+MRCA time for non-recombining chromosome structure 14: 2283
+MRCA time for non-recombining chromosome structure 15: 6708
+MRCA time for non-recombining chromosome structure 16: 4328
+MRCA time for non-recombining chromosome structure 17: 2122
+MRCA time for non-recombining chromosome structure 18: 2826
+MRCA time for non-recombining chromosome structure 19: 11871
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.624 secs
+
+
+Program total execution time: 0.628 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_MSAT/MSAT_16pops_migLow.par -n 5 -g -p 
+
+Random generator seed : 8505
+
+Deme sizes
+Deme 0	150
+Deme 1	150
+Deme 2	150
+Deme 3	150
+Deme 4	150
+Deme 5	150
+Deme 6	150
+Deme 7	150
+Deme 8	150
+Deme 9	150
+Deme 10	150
+Deme 11	150
+Deme 12	150
+Deme 13	150
+Deme 14	150
+Deme 15	150
+
+
+Sample sizes
+Deme 0	150
+Deme 1	150
+Deme 2	150
+Deme 3	150
+Deme 4	150
+Deme 5	150
+Deme 6	150
+Deme 7	150
+Deme 8	150
+Deme 9	150
+Deme 10	150
+Deme 11	150
+Deme 12	150
+Deme 13	150
+Deme 14	150
+Deme 15	150
+
+Sample ages
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+Deme 4	0
+Deme 5	0
+Deme 6	0
+Deme 7	0
+Deme 8	0
+Deme 9	0
+Deme 10	0
+Deme 11	0
+Deme 12	0
+Deme 13	0
+Deme 14	0
+Deme 15	0
+
+Growth rates
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+Deme 4	0
+Deme 5	0
+Deme 6	0
+Deme 7	0
+Deme 8	0
+Deme 9	0
+Deme 10	0
+Deme 11	0
+Deme 12	0
+Deme 13	0
+Deme 14	0
+Deme 15	0
+
+
+Migration matrix 0	(note that migration rates have been pre-multiplied by 1e+06n
+ 0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 
+
+
+Migration matrix 1	(note that migration rates have been pre-multiplied by 1000000.0000000n
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+
+
+Historical events
+Event 0
+
+#Time              : 50000
+#Source            : 0
+#Sink              : 0
+#Migrants          : 0.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 1
+
+#Time              : 50000
+#Source            : 1
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 2
+
+#Time              : 50000
+#Source            : 2
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 3
+
+#Time              : 50000
+#Source            : 3
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 4
+
+#Time              : 50000
+#Source            : 4
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 5
+
+#Time              : 50000
+#Source            : 5
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 6
+
+#Time              : 50000
+#Source            : 6
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 7
+
+#Time              : 50000
+#Source            : 7
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 8
+
+#Time              : 50000
+#Source            : 8
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 9
+
+#Time              : 50000
+#Source            : 9
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 10
+
+#Time              : 50000
+#Source            : 10
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 11
+
+#Time              : 50000
+#Source            : 11
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 12
+
+#Time              : 50000
+#Source            : 12
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 13
+
+#Time              : 50000
+#Source            : 13
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 14
+
+#Time              : 50000
+#Source            : 14
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 15
+
+#Time              : 50000
+#Source            : 15
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+
+
+Number of independent loci to simulate : 20
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   1 partially linked MICROSAT:
+      recombination, mutation rates, geometric parameter, and range constraint : 0.0000000000   0.0005000000   0.00000   10
+
+No population growth detected in input file
+
+fastsimcoal2 is building 100 genealogies ...
+
+Simulating 20 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 5747
+MRCA time for non-recombining chromosome structure 1: 13558
+MRCA time for non-recombining chromosome structure 2: 9150
+MRCA time for non-recombining chromosome structure 3: 5150
+MRCA time for non-recombining chromosome structure 4: 8294
+MRCA time for non-recombining chromosome structure 5: 11165
+MRCA time for non-recombining chromosome structure 6: 3236
+MRCA time for non-recombining chromosome structure 7: 3507
+MRCA time for non-recombining chromosome structure 8: 7173
+MRCA time for non-recombining chromosome structure 9: 2504
+MRCA time for non-recombining chromosome structure 10: 6333
+MRCA time for non-recombining chromosome structure 11: 1935
+MRCA time for non-recombining chromosome structure 12: 8127
+MRCA time for non-recombining chromosome structure 13: 3699
+MRCA time for non-recombining chromosome structure 14: 3546
+MRCA time for non-recombining chromosome structure 15: 4866
+MRCA time for non-recombining chromosome structure 16: 9715
+MRCA time for non-recombining chromosome structure 17: 2976
+MRCA time for non-recombining chromosome structure 18: 1510
+MRCA time for non-recombining chromosome structure 19: 5535
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 6335
+MRCA time for non-recombining chromosome structure 1: 3149
+MRCA time for non-recombining chromosome structure 2: 2488
+MRCA time for non-recombining chromosome structure 3: 5971
+MRCA time for non-recombining chromosome structure 4: 4726
+MRCA time for non-recombining chromosome structure 5: 6320
+MRCA time for non-recombining chromosome structure 6: 3217
+MRCA time for non-recombining chromosome structure 7: 5859
+MRCA time for non-recombining chromosome structure 8: 3565
+MRCA time for non-recombining chromosome structure 9: 4870
+MRCA time for non-recombining chromosome structure 10: 4185
+MRCA time for non-recombining chromosome structure 11: 4089
+MRCA time for non-recombining chromosome structure 12: 6451
+MRCA time for non-recombining chromosome structure 13: 6736
+MRCA time for non-recombining chromosome structure 14: 1583
+MRCA time for non-recombining chromosome structure 15: 3993
+MRCA time for non-recombining chromosome structure 16: 2998
+MRCA time for non-recombining chromosome structure 17: 5102
+MRCA time for non-recombining chromosome structure 18: 8517
+MRCA time for non-recombining chromosome structure 19: 8892
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 2622
+MRCA time for non-recombining chromosome structure 1: 4213
+MRCA time for non-recombining chromosome structure 2: 7473
+MRCA time for non-recombining chromosome structure 3: 5822
+MRCA time for non-recombining chromosome structure 4: 2645
+MRCA time for non-recombining chromosome structure 5: 4280
+MRCA time for non-recombining chromosome structure 6: 4100
+MRCA time for non-recombining chromosome structure 7: 2351
+MRCA time for non-recombining chromosome structure 8: 10376
+MRCA time for non-recombining chromosome structure 9: 7378
+MRCA time for non-recombining chromosome structure 10: 4339
+MRCA time for non-recombining chromosome structure 11: 7680
+MRCA time for non-recombining chromosome structure 12: 6251
+MRCA time for non-recombining chromosome structure 13: 2750
+MRCA time for non-recombining chromosome structure 14: 2093
+MRCA time for non-recombining chromosome structure 15: 4296
+MRCA time for non-recombining chromosome structure 16: 5089
+MRCA time for non-recombining chromosome structure 17: 2581
+MRCA time for non-recombining chromosome structure 18: 2140
+MRCA time for non-recombining chromosome structure 19: 6413
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 16542
+MRCA time for non-recombining chromosome structure 1: 6071
+MRCA time for non-recombining chromosome structure 2: 2564
+MRCA time for non-recombining chromosome structure 3: 5247
+MRCA time for non-recombining chromosome structure 4: 3537
+MRCA time for non-recombining chromosome structure 5: 8387
+MRCA time for non-recombining chromosome structure 6: 4878
+MRCA time for non-recombining chromosome structure 7: 3882
+MRCA time for non-recombining chromosome structure 8: 1612
+MRCA time for non-recombining chromosome structure 9: 4833
+MRCA time for non-recombining chromosome structure 10: 5551
+MRCA time for non-recombining chromosome structure 11: 3552
+MRCA time for non-recombining chromosome structure 12: 2248
+MRCA time for non-recombining chromosome structure 13: 5022
+MRCA time for non-recombining chromosome structure 14: 5503
+MRCA time for non-recombining chromosome structure 15: 4143
+MRCA time for non-recombining chromosome structure 16: 9801
+MRCA time for non-recombining chromosome structure 17: 5820
+MRCA time for non-recombining chromosome structure 18: 6283
+MRCA time for non-recombining chromosome structure 19: 6497
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 2963
+MRCA time for non-recombining chromosome structure 1: 6616
+MRCA time for non-recombining chromosome structure 2: 6543
+MRCA time for non-recombining chromosome structure 3: 4054
+MRCA time for non-recombining chromosome structure 4: 3968
+MRCA time for non-recombining chromosome structure 5: 6974
+MRCA time for non-recombining chromosome structure 6: 7639
+MRCA time for non-recombining chromosome structure 7: 4984
+MRCA time for non-recombining chromosome structure 8: 2795
+MRCA time for non-recombining chromosome structure 9: 15776
+MRCA time for non-recombining chromosome structure 10: 5727
+MRCA time for non-recombining chromosome structure 11: 10691
+MRCA time for non-recombining chromosome structure 12: 6689
+MRCA time for non-recombining chromosome structure 13: 5268
+MRCA time for non-recombining chromosome structure 14: 5425
+MRCA time for non-recombining chromosome structure 15: 1744
+MRCA time for non-recombining chromosome structure 16: 5987
+MRCA time for non-recombining chromosome structure 17: 7098
+MRCA time for non-recombining chromosome structure 18: 12062
+MRCA time for non-recombining chromosome structure 19: 7993
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.497 secs
+
+
+Program total execution time: 0.500 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_DNA/DNA_01pops_migHigh.par -n 5 -g -p -S 
+
+Random generator seed : 436954
+
+Deme sizes
+Deme 0	2400
+
+
+Sample sizes
+Deme 0	2400
+
+Sample ages
+Deme 0	0
+
+Growth rates
+Deme 0	0
+
+
+Historical events
+No historical events defined in input file ...
+
+
+Number of independent loci to simulate : 5
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   100 partially linked DNA     :
+      recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33000
+
+No population growth detected in input file
+
+fastsimcoal2 is building 25 genealogies ...
+
+Simulating 5 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 4699
+MRCA time for non-recombining chromosome structure 1: 6245
+MRCA time for non-recombining chromosome structure 2: 5666
+MRCA time for non-recombining chromosome structure 3: 6012
+MRCA time for non-recombining chromosome structure 4: 4064
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 7710
+MRCA time for non-recombining chromosome structure 1: 3823
+MRCA time for non-recombining chromosome structure 2: 10591
+MRCA time for non-recombining chromosome structure 3: 6690
+MRCA time for non-recombining chromosome structure 4: 5066
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 1905
+MRCA time for non-recombining chromosome structure 1: 4812
+MRCA time for non-recombining chromosome structure 2: 7914
+MRCA time for non-recombining chromosome structure 3: 8829
+MRCA time for non-recombining chromosome structure 4: 1880
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 5870
+MRCA time for non-recombining chromosome structure 1: 3981
+MRCA time for non-recombining chromosome structure 2: 3485
+MRCA time for non-recombining chromosome structure 3: 6872
+MRCA time for non-recombining chromosome structure 4: 7364
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 9462
+MRCA time for non-recombining chromosome structure 1: 1900
+MRCA time for non-recombining chromosome structure 2: 2677
+MRCA time for non-recombining chromosome structure 3: 6477
+MRCA time for non-recombining chromosome structure 4: 6885
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.459 secs
+
+
+Program total execution time: 0.463 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_DNA/DNA_01pops_migLow.par -n 5 -g -p -S 
+
+Random generator seed : 982962
+
+Deme sizes
+Deme 0	2400
+
+
+Sample sizes
+Deme 0	2400
+
+Sample ages
+Deme 0	0
+
+Growth rates
+Deme 0	0
+
+
+Historical events
+No historical events defined in input file ...
+
+
+Number of independent loci to simulate : 5
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   100 partially linked DNA     :
+      recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33000
+
+No population growth detected in input file
+
+fastsimcoal2 is building 25 genealogies ...
+
+Simulating 5 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 9007
+MRCA time for non-recombining chromosome structure 1: 4374
+MRCA time for non-recombining chromosome structure 2: 5231
+MRCA time for non-recombining chromosome structure 3: 8728
+MRCA time for non-recombining chromosome structure 4: 9278
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 7720
+MRCA time for non-recombining chromosome structure 1: 2683
+MRCA time for non-recombining chromosome structure 2: 2053
+MRCA time for non-recombining chromosome structure 3: 2189
+MRCA time for non-recombining chromosome structure 4: 5885
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 1662
+MRCA time for non-recombining chromosome structure 1: 3310
+MRCA time for non-recombining chromosome structure 2: 3889
+MRCA time for non-recombining chromosome structure 3: 7651
+MRCA time for non-recombining chromosome structure 4: 1415
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 6769
+MRCA time for non-recombining chromosome structure 1: 6007
+MRCA time for non-recombining chromosome structure 2: 1917
+MRCA time for non-recombining chromosome structure 3: 6284
+MRCA time for non-recombining chromosome structure 4: 3262
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 2510
+MRCA time for non-recombining chromosome structure 1: 3680
+MRCA time for non-recombining chromosome structure 2: 7479
+MRCA time for non-recombining chromosome structure 3: 6399
+MRCA time for non-recombining chromosome structure 4: 5871
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.460 secs
+
+
+Program total execution time: 0.463 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_DNA/DNA_04pops_migHigh.par -n 5 -g -p -S 
+
+Random generator seed : 499014
+
+Deme sizes
+Deme 0	600
+Deme 1	600
+Deme 2	600
+Deme 3	600
+
+
+Sample sizes
+Deme 0	600
+Deme 1	600
+Deme 2	600
+Deme 3	600
+
+Sample ages
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+
+Growth rates
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+
+
+Migration matrix 0	(note that migration rates have been pre-multiplied by 1e+06n
+ 0.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000  0.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000  0.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000  0.0000000 
+
+
+Migration matrix 1	(note that migration rates have been pre-multiplied by 1000000.0000000n
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+
+
+Historical events
+Event 0
+
+#Time              : 50000
+#Source            : 0
+#Sink              : 0
+#Migrants          : 0.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 1
+
+#Time              : 50000
+#Source            : 1
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 2
+
+#Time              : 50000
+#Source            : 2
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 3
+
+#Time              : 50000
+#Source            : 3
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+
+
+Number of independent loci to simulate : 5
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   100 partially linked DNA     :
+      recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33000
+
+No population growth detected in input file
+
+fastsimcoal2 is building 25 genealogies ...
+
+Simulating 5 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 7067
+MRCA time for non-recombining chromosome structure 1: 10647
+MRCA time for non-recombining chromosome structure 2: 4542
+MRCA time for non-recombining chromosome structure 3: 3445
+MRCA time for non-recombining chromosome structure 4: 3942
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 2697
+MRCA time for non-recombining chromosome structure 1: 6404
+MRCA time for non-recombining chromosome structure 2: 6335
+MRCA time for non-recombining chromosome structure 3: 4104
+MRCA time for non-recombining chromosome structure 4: 3904
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 3512
+MRCA time for non-recombining chromosome structure 1: 2614
+MRCA time for non-recombining chromosome structure 2: 5979
+MRCA time for non-recombining chromosome structure 3: 3019
+MRCA time for non-recombining chromosome structure 4: 5087
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 2667
+MRCA time for non-recombining chromosome structure 1: 10156
+MRCA time for non-recombining chromosome structure 2: 4999
+MRCA time for non-recombining chromosome structure 3: 9694
+MRCA time for non-recombining chromosome structure 4: 3396
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 11886
+MRCA time for non-recombining chromosome structure 1: 5511
+MRCA time for non-recombining chromosome structure 2: 5622
+MRCA time for non-recombining chromosome structure 3: 5488
+MRCA time for non-recombining chromosome structure 4: 13236
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.500 secs
+
+
+Program total execution time: 0.504 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_DNA/DNA_04pops_migLow.par -n 5 -g -p -S 
+
+Random generator seed : 827725
+
+Deme sizes
+Deme 0	600
+Deme 1	600
+Deme 2	600
+Deme 3	600
+
+
+Sample sizes
+Deme 0	600
+Deme 1	600
+Deme 2	600
+Deme 3	600
+
+Sample ages
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+
+Growth rates
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+
+
+Migration matrix 0	(note that migration rates have been pre-multiplied by 1e+06n
+ 0.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000  0.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000  0.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000  0.0000000 
+
+
+Migration matrix 1	(note that migration rates have been pre-multiplied by 1000000.0000000n
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000 
+
+
+Historical events
+Event 0
+
+#Time              : 50000
+#Source            : 0
+#Sink              : 0
+#Migrants          : 0.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 1
+
+#Time              : 50000
+#Source            : 1
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 2
+
+#Time              : 50000
+#Source            : 2
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 3
+
+#Time              : 50000
+#Source            : 3
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+
+
+Number of independent loci to simulate : 5
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   100 partially linked DNA     :
+      recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33000
+
+No population growth detected in input file
+
+fastsimcoal2 is building 25 genealogies ...
+
+Simulating 5 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 4438
+MRCA time for non-recombining chromosome structure 1: 5222
+MRCA time for non-recombining chromosome structure 2: 6630
+MRCA time for non-recombining chromosome structure 3: 4212
+MRCA time for non-recombining chromosome structure 4: 4253
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 6857
+MRCA time for non-recombining chromosome structure 1: 7568
+MRCA time for non-recombining chromosome structure 2: 2488
+MRCA time for non-recombining chromosome structure 3: 6996
+MRCA time for non-recombining chromosome structure 4: 5433
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 3101
+MRCA time for non-recombining chromosome structure 1: 3207
+MRCA time for non-recombining chromosome structure 2: 2982
+MRCA time for non-recombining chromosome structure 3: 4344
+MRCA time for non-recombining chromosome structure 4: 5699
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 6811
+MRCA time for non-recombining chromosome structure 1: 6927
+MRCA time for non-recombining chromosome structure 2: 3981
+MRCA time for non-recombining chromosome structure 3: 4868
+MRCA time for non-recombining chromosome structure 4: 10220
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 5404
+MRCA time for non-recombining chromosome structure 1: 4241
+MRCA time for non-recombining chromosome structure 2: 3601
+MRCA time for non-recombining chromosome structure 3: 6477
+MRCA time for non-recombining chromosome structure 4: 3635
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.467 secs
+
+
+Program total execution time: 0.470 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_DNA/DNA_16pops_migHigh.par -n 5 -g -p -S 
+
+Random generator seed : 354646
+
+Deme sizes
+Deme 0	150
+Deme 1	150
+Deme 2	150
+Deme 3	150
+Deme 4	150
+Deme 5	150
+Deme 6	150
+Deme 7	150
+Deme 8	150
+Deme 9	150
+Deme 10	150
+Deme 11	150
+Deme 12	150
+Deme 13	150
+Deme 14	150
+Deme 15	150
+
+
+Sample sizes
+Deme 0	150
+Deme 1	150
+Deme 2	150
+Deme 3	150
+Deme 4	150
+Deme 5	150
+Deme 6	150
+Deme 7	150
+Deme 8	150
+Deme 9	150
+Deme 10	150
+Deme 11	150
+Deme 12	150
+Deme 13	150
+Deme 14	150
+Deme 15	150
+
+Sample ages
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+Deme 4	0
+Deme 5	0
+Deme 6	0
+Deme 7	0
+Deme 8	0
+Deme 9	0
+Deme 10	0
+Deme 11	0
+Deme 12	0
+Deme 13	0
+Deme 14	0
+Deme 15	0
+
+Growth rates
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+Deme 4	0
+Deme 5	0
+Deme 6	0
+Deme 7	0
+Deme 8	0
+Deme 9	0
+Deme 10	0
+Deme 11	0
+Deme 12	0
+Deme 13	0
+Deme 14	0
+Deme 15	0
+
+
+Migration matrix 0	(note that migration rates have been pre-multiplied by 1e+06n
+ 0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 10000.0000000 
+10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000 10000.0000000  0.0000000 
+
+
+Migration matrix 1	(note that migration rates have been pre-multiplied by 1000000.0000000n
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+
+
+Historical events
+Event 0
+
+#Time              : 50000
+#Source            : 0
+#Sink              : 0
+#Migrants          : 0.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 1
+
+#Time              : 50000
+#Source            : 1
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 2
+
+#Time              : 50000
+#Source            : 2
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 3
+
+#Time              : 50000
+#Source            : 3
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 4
+
+#Time              : 50000
+#Source            : 4
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 5
+
+#Time              : 50000
+#Source            : 5
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 6
+
+#Time              : 50000
+#Source            : 6
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 7
+
+#Time              : 50000
+#Source            : 7
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 8
+
+#Time              : 50000
+#Source            : 8
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 9
+
+#Time              : 50000
+#Source            : 9
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 10
+
+#Time              : 50000
+#Source            : 10
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 11
+
+#Time              : 50000
+#Source            : 11
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 12
+
+#Time              : 50000
+#Source            : 12
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 13
+
+#Time              : 50000
+#Source            : 13
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 14
+
+#Time              : 50000
+#Source            : 14
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 15
+
+#Time              : 50000
+#Source            : 15
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+
+
+Number of independent loci to simulate : 5
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   100 partially linked DNA     :
+      recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33000
+
+No population growth detected in input file
+
+fastsimcoal2 is building 25 genealogies ...
+
+Simulating 5 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 2178
+MRCA time for non-recombining chromosome structure 1: 8048
+MRCA time for non-recombining chromosome structure 2: 3866
+MRCA time for non-recombining chromosome structure 3: 18293
+MRCA time for non-recombining chromosome structure 4: 3517
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 3285
+MRCA time for non-recombining chromosome structure 1: 2890
+MRCA time for non-recombining chromosome structure 2: 2098
+MRCA time for non-recombining chromosome structure 3: 3512
+MRCA time for non-recombining chromosome structure 4: 6489
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 2683
+MRCA time for non-recombining chromosome structure 1: 2454
+MRCA time for non-recombining chromosome structure 2: 2092
+MRCA time for non-recombining chromosome structure 3: 2280
+MRCA time for non-recombining chromosome structure 4: 4033
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 7814
+MRCA time for non-recombining chromosome structure 1: 2691
+MRCA time for non-recombining chromosome structure 2: 4036
+MRCA time for non-recombining chromosome structure 3: 2694
+MRCA time for non-recombining chromosome structure 4: 5328
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 2527
+MRCA time for non-recombining chromosome structure 1: 9803
+MRCA time for non-recombining chromosome structure 2: 2295
+MRCA time for non-recombining chromosome structure 3: 5952
+MRCA time for non-recombining chromosome structure 4: 6185
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.516 secs
+
+
+Program total execution time: 0.520 seconds
+
+fastsimcoal was invoked with the following command line arguments:
+fsc2702 -i /home/akoontz/Documents/SSRvSNP/Simulations/Code/draft_fscParams/params_DNA/DNA_16pops_migLow.par -n 5 -g -p -S 
+
+Random generator seed : 830679
+
+Deme sizes
+Deme 0	150
+Deme 1	150
+Deme 2	150
+Deme 3	150
+Deme 4	150
+Deme 5	150
+Deme 6	150
+Deme 7	150
+Deme 8	150
+Deme 9	150
+Deme 10	150
+Deme 11	150
+Deme 12	150
+Deme 13	150
+Deme 14	150
+Deme 15	150
+
+
+Sample sizes
+Deme 0	150
+Deme 1	150
+Deme 2	150
+Deme 3	150
+Deme 4	150
+Deme 5	150
+Deme 6	150
+Deme 7	150
+Deme 8	150
+Deme 9	150
+Deme 10	150
+Deme 11	150
+Deme 12	150
+Deme 13	150
+Deme 14	150
+Deme 15	150
+
+Sample ages
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+Deme 4	0
+Deme 5	0
+Deme 6	0
+Deme 7	0
+Deme 8	0
+Deme 9	0
+Deme 10	0
+Deme 11	0
+Deme 12	0
+Deme 13	0
+Deme 14	0
+Deme 15	0
+
+Growth rates
+Deme 0	0
+Deme 1	0
+Deme 2	0
+Deme 3	0
+Deme 4	0
+Deme 5	0
+Deme 6	0
+Deme 7	0
+Deme 8	0
+Deme 9	0
+Deme 10	0
+Deme 11	0
+Deme 12	0
+Deme 13	0
+Deme 14	0
+Deme 15	0
+
+
+Migration matrix 0	(note that migration rates have been pre-multiplied by 1e+06n
+ 0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 1000.0000000 
+1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000 1000.0000000  0.0000000 
+
+
+Migration matrix 1	(note that migration rates have been pre-multiplied by 1000000.0000000n
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+ 0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+
+
+Historical events
+Event 0
+
+#Time              : 50000
+#Source            : 0
+#Sink              : 0
+#Migrants          : 0.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 1
+
+#Time              : 50000
+#Source            : 1
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 2
+
+#Time              : 50000
+#Source            : 2
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 3
+
+#Time              : 50000
+#Source            : 3
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 4
+
+#Time              : 50000
+#Source            : 4
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 5
+
+#Time              : 50000
+#Source            : 5
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 6
+
+#Time              : 50000
+#Source            : 6
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 7
+
+#Time              : 50000
+#Source            : 7
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 8
+
+#Time              : 50000
+#Source            : 8
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 9
+
+#Time              : 50000
+#Source            : 9
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 10
+
+#Time              : 50000
+#Source            : 10
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 11
+
+#Time              : 50000
+#Source            : 11
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 12
+
+#Time              : 50000
+#Source            : 12
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 13
+
+#Time              : 50000
+#Source            : 13
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 14
+
+#Time              : 50000
+#Source            : 14
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+Event 15
+
+#Time              : 50000
+#Source            : 15
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
+
+
+Number of independent loci to simulate : 5
+with the same chromosomal structure
+
+Number of linkage blocks to simulate in structure 1: 1
+
+   100 partially linked DNA     :
+      recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33000
+
+No population growth detected in input file
+
+fastsimcoal2 is building 25 genealogies ...
+
+Simulating 5 independent chromosomes using 12 batches and 1 threads.
+
+MRCA time for non-recombining chromosome structure 0: 2352
+MRCA time for non-recombining chromosome structure 1: 4716
+MRCA time for non-recombining chromosome structure 2: 2140
+MRCA time for non-recombining chromosome structure 3: 5110
+MRCA time for non-recombining chromosome structure 4: 5771
+	Genealogy # 1/5
+MRCA time for non-recombining chromosome structure 0: 5006
+MRCA time for non-recombining chromosome structure 1: 2859
+MRCA time for non-recombining chromosome structure 2: 3994
+MRCA time for non-recombining chromosome structure 3: 6731
+MRCA time for non-recombining chromosome structure 4: 2504
+	Genealogy # 2/5
+MRCA time for non-recombining chromosome structure 0: 4029
+MRCA time for non-recombining chromosome structure 1: 4352
+MRCA time for non-recombining chromosome structure 2: 5090
+MRCA time for non-recombining chromosome structure 3: 1550
+MRCA time for non-recombining chromosome structure 4: 2226
+	Genealogy # 3/5
+MRCA time for non-recombining chromosome structure 0: 4082
+MRCA time for non-recombining chromosome structure 1: 4933
+MRCA time for non-recombining chromosome structure 2: 8218
+MRCA time for non-recombining chromosome structure 3: 2859
+MRCA time for non-recombining chromosome structure 4: 5050
+	Genealogy # 4/5
+MRCA time for non-recombining chromosome structure 0: 4471
+MRCA time for non-recombining chromosome structure 1: 7009
+MRCA time for non-recombining chromosome structure 2: 3649
+MRCA time for non-recombining chromosome structure 3: 3138
+MRCA time for non-recombining chromosome structure 4: 6409
+	Genealogy # 5/5
+
+Iteration 1/1 done in 0.528 secs
+
+
+Program total execution time: 0.532 seconds
+
