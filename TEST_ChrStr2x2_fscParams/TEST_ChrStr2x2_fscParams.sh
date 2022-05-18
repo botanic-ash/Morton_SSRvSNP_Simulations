@@ -3,7 +3,7 @@
 # Script for starting fastSimcoal2 simulations, based on draft parameter files
 
 # Specify input directory, which contains relevant fasSimcoal2 parameter files
-dir=/home/akoontz/Documents/SSRvSNP/Simulations/Code/TEST2_fscParams
+dir=/home/akoontz/Documents/SSRvSNP/Simulations/Code/TEST_ChrStr2x2_fscParams
 # In order to avoid space issues, this script needs to be run from the RAID1 directory
 # -g indicates genomic data (# of individuals = (# of samples * pop. effective size/2))  
 # -p indicates that the gametic phase is known in the Arlequin format

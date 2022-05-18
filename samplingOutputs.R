@@ -6,9 +6,11 @@ library(stringr)
 setwd("/home/akoontz/Documents/SSRvSNP/Simulations/Code/")
 
 # Specify /RAID1 directory, where outputs are being held
-sim.directory <- "/RAID1/Simulations/draft_fscParams/"
+sim.directory <- "/RAID1/Simulations/draft_fscParams/" # Currently specifies only 1 type of chromosome block
 
-sim.directory <- "/RAID1/Simulations/TEST3_fscParams/"
+sim.directory <- "/RAID1/Simulations/TEST_ChrStr4_fscParams/" # Specifying 4 chromosome blocks
+sim.directory <- "/RAID1/Simulations/TEST_ChrStr2x2_fscParams/" # Specifying 2 different "types" of chromosome blocks
+sim.directory <- "/RAID1/Simulations/TEST_ChrStr4_Flags_fscParams/" # Specifying 4 chromosome blocks, with -G flag
 
 # Conversion using strataG package----
 library(strataG)
@@ -58,6 +60,43 @@ DNA_16pop_migLow <- convertAllArp(paste0(sim.directory,"DNA_16pops_migLow"))
 DNA_16pop_migHigh <- convertAllArp(paste0(sim.directory,"DNA_16pops_migHigh"))
 
 # Sense check----
+# 0. Checking DNA files for a single locus
+nLoc(DNA_1pop_migLow[[1]]); ncol(DNA_1pop_migLow[[1]]@tab)
+nLoc(DNA_1pop_migLow[[2]]); ncol(DNA_1pop_migLow[[2]]@tab)
+nLoc(DNA_1pop_migLow[[3]]); ncol(DNA_1pop_migLow[[3]]@tab)
+nLoc(DNA_1pop_migLow[[4]]); ncol(DNA_1pop_migLow[[4]]@tab)
+nLoc(DNA_1pop_migLow[[5]]); ncol(DNA_1pop_migLow[[5]]@tab); DNA_1pop_migLow[[5]]@tab[1:2,1:2]
+
+nLoc(DNA_1pop_migHigh[[1]]); ncol(DNA_1pop_migHigh[[1]]@tab) 
+nLoc(DNA_1pop_migHigh[[2]]); ncol(DNA_1pop_migHigh[[2]]@tab)
+nLoc(DNA_1pop_migHigh[[3]]); ncol(DNA_1pop_migHigh[[3]]@tab)
+nLoc(DNA_1pop_migHigh[[4]]); ncol(DNA_1pop_migHigh[[4]]@tab)
+nLoc(DNA_1pop_migHigh[[5]]); ncol(DNA_1pop_migHigh[[5]]@tab); DNA_1pop_migHigh[[5]]@tab[1:2,1:2]
+
+nLoc(DNA_4pop_migLow[[1]]); ncol(DNA_4pop_migLow[[1]]@tab) 
+nLoc(DNA_4pop_migLow[[2]]); ncol(DNA_4pop_migLow[[2]]@tab)
+nLoc(DNA_4pop_migLow[[3]]); ncol(DNA_4pop_migLow[[3]]@tab)
+nLoc(DNA_4pop_migLow[[4]]); ncol(DNA_4pop_migLow[[4]]@tab)
+nLoc(DNA_4pop_migLow[[5]]); ncol(DNA_4pop_migLow[[5]]@tab); DNA_4pop_migLow[[5]]@tab[1:2,1:2]
+
+nLoc(DNA_4pop_migHigh[[1]]); ncol(DNA_4pop_migHigh[[1]]@tab) 
+nLoc(DNA_4pop_migHigh[[2]]); ncol(DNA_4pop_migHigh[[2]]@tab)
+nLoc(DNA_4pop_migHigh[[3]]); ncol(DNA_4pop_migHigh[[3]]@tab)
+nLoc(DNA_4pop_migHigh[[4]]); ncol(DNA_4pop_migHigh[[4]]@tab)
+nLoc(DNA_4pop_migHigh[[5]]); ncol(DNA_4pop_migHigh[[5]]@tab); DNA_4pop_migHigh[[5]]@tab[1:2,1:2]
+
+nLoc(DNA_16pop_migLow[[1]]); ncol(DNA_16pop_migLow[[1]]@tab) 
+nLoc(DNA_16pop_migLow[[2]]); ncol(DNA_16pop_migLow[[2]]@tab)
+nLoc(DNA_16pop_migLow[[3]]); ncol(DNA_16pop_migLow[[3]]@tab)
+nLoc(DNA_16pop_migLow[[4]]); ncol(DNA_16pop_migLow[[4]]@tab)
+nLoc(DNA_16pop_migLow[[5]]); ncol(DNA_16pop_migLow[[5]]@tab); DNA_16pop_migLow[[5]]@tab[1:2,1:2]
+
+nLoc(DNA_16pop_migHigh[[1]]); ncol(DNA_16pop_migHigh[[1]]@tab) 
+nLoc(DNA_16pop_migHigh[[2]]); ncol(DNA_16pop_migHigh[[2]]@tab)
+nLoc(DNA_16pop_migHigh[[3]]); ncol(DNA_16pop_migHigh[[3]]@tab)
+nLoc(DNA_16pop_migHigh[[4]]); ncol(DNA_16pop_migHigh[[4]]@tab)
+nLoc(DNA_16pop_migHigh[[5]]); ncol(DNA_16pop_migHigh[[5]]@tab); DNA_16pop_migHigh[[5]]@tab[1:2,1:2]
+
 # 1. More alleles in scenarios with a larger number of populations
 # MSAT
 mean(sapply(MSAT_1pop_migLow, function(x) ncol(x@tab)))
