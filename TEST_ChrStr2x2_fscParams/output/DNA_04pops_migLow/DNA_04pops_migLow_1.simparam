@@ -3,17 +3,17 @@ Simulation parameters for current simulations
 
 
 Deme sizes
-Deme 0	600
-Deme 1	600
-Deme 2	600
-Deme 3	600
+Deme 0	4
+Deme 1	4
+Deme 2	4
+Deme 3	4
 
 
 Sample sizes
-Deme 0	600
-Deme 1	600
-Deme 2	600
-Deme 3	600
+Deme 0	4
+Deme 1	4
+Deme 2	4
+Deme 3	4
 
 Sample ages
 Deme 0	0
@@ -88,25 +88,25 @@ Each with a different chromosomal structure
 
 Number of linkage blocks to simulate in structure 1: 2
 
-   100 partially linked DNA loci:
+   10 partially linked DNA loci:
       recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33000
 
-   100 partially linked DNA loci:
+   10 partially linked DNA loci:
       recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33000
 
 Number of linkage blocks to simulate in structure 2: 2
 
-   100 partially linked DNA loci:
+   10 partially linked DNA loci:
       recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33000
 
-   100 partially linked DNA loci:
+   10 partially linked DNA loci:
       recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33000
 
 
 
-Random generator initialized with : 972079
+Random generator initialized with : 306023
 
 
 
-done in 0.370 secs
+done in 0.094 secs
 

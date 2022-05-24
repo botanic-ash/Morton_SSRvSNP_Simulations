@@ -13,17 +13,6 @@ dir=/home/akoontz/Documents/SSRvSNP/Simulations/Code/TEST_ChrStr4_SNPflag_fscPar
 # Create a variable to capture the number of replications, for each simulation instance
 reps=5
 
-# ---Microsatellite simulations---
-# 1 population
-fsc2702 -i $dir/params_MSAT/MSAT_01pops_migHigh.par -n $reps -g -p
-fsc2702 -i $dir/params_MSAT/MSAT_01pops_migLow.par -n $reps -g -p
-# 4 populations
-fsc2702 -i $dir/params_MSAT/MSAT_04pops_migHigh.par -n $reps -g -p
-fsc2702 -i $dir/params_MSAT/MSAT_04pops_migLow.par -n $reps -g -p
-# 16 populations
-fsc2702 -i $dir/params_MSAT/MSAT_16pops_migHigh.par -n $reps -g -p
-fsc2702 -i $dir/params_MSAT/MSAT_16pops_migLow.par -n $reps -g -p
-
 # ---RADseq simulations---
 # 1 population
 fsc2702 -i $dir/params_DNA/DNA_01pops_migHigh.par -n $reps -g -p -S -s 0
@@ -31,6 +20,3 @@ fsc2702 -i $dir/params_DNA/DNA_01pops_migLow.par -n $reps -g -p -S -s 0
 # 4 populations
 fsc2702 -i $dir/params_DNA/DNA_04pops_migHigh.par -n $reps -g -p -S -s 0
 fsc2702 -i $dir/params_DNA/DNA_04pops_migLow.par -n $reps -g -p -S -s 0
-# 16 populations
-fsc2702 -i $dir/params_DNA/DNA_16pops_migHigh.par -n $reps -g -p -S -s 0
-fsc2702 -i $dir/params_DNA/DNA_16pops_migLow.par -n $reps -g -p -S -s 0

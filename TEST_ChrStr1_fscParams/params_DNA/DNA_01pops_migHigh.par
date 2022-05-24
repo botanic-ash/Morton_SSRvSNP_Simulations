@@ -1,9 +1,9 @@
 //Parameters for the coalescence simulation program : simcoal.exe
 1 sample to simulate 
 //Population effective sizes (number of genes 2*diploids)
-2400
+10
 //Sample sizes (number of genes 2*diploids)
-2400
+10
 //Growth rates	: negative growth implies population expansion
 0
 //Number of migration matrices : 0 implies no migration between demes
@@ -15,4 +15,4 @@
 //Per chromosome: Number of linkage blocks
 1
 //per block: data type, number of loci, per generation recombination and mutation rates and optional parameters
-DNA      100        0          1e-5           0.33
+DNA      10        0          1e-5           0.33
