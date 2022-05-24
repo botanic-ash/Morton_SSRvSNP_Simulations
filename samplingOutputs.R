@@ -12,6 +12,8 @@ sim.directory <- "/RAID1/Simulations/TEST_ChrStr4_fscParams/" # Specifying 4 chr
 sim.directory <- "/RAID1/Simulations/TEST_ChrStr2x2_fscParams/" # Specifying 2 different "types" of chromosome blocks
 sim.directory <- "/RAID1/Simulations/TEST_ChrStr4_Flags_fscParams/" # Specifying 4 chromosome blocks, with -G flag
 
+sim.directory <- "/RAID1/Simulations/TEST_4Blocks1DNALine_fscParams/" # Specifying 4 chromosome blocks, with 1 line at the end
+
 # Conversion using strataG package----
 library(strataG)
 # Wrapper function for converting Arlequin (.arp) to genepop (.gen), using strataG functions
@@ -61,7 +63,7 @@ DNA_16pop_migHigh <- convertAllArp(paste0(sim.directory,"DNA_16pops_migHigh"))
 
 # Sense check----
 # 0. Checking DNA files for a single locus
-nLoc(DNA_1pop_migLow[[1]]); ncol(DNA_1pop_migLow[[1]]@tab)
+nLoc(DNA_1pop_migLow[[1]]); ncol(DNA_1pop_migLow[[1]]@tab); DNA_1pop_migLow[[1]]@tab[1:2,1:2]
 nLoc(DNA_1pop_migLow[[2]]); ncol(DNA_1pop_migLow[[2]]@tab)
 nLoc(DNA_1pop_migLow[[3]]); ncol(DNA_1pop_migLow[[3]]@tab)
 nLoc(DNA_1pop_migLow[[4]]); ncol(DNA_1pop_migLow[[4]]@tab)
