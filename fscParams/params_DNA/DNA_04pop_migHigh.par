@@ -18,10 +18,10 @@
 //Number of migration matrices: 0 implies no migration between demes
 2
 //migration matrix
-0 0.001 0.001 0.001
-0.001 0 0.001 0.001
-0.001 0.001 0 0.001
-0.001 0.001 0.001 0
+0 0.01 0.01 0.01
+0.01 0 0.01 0.01
+0.01 0.01 0 0.01
+0.01 0.01 0.01 0
 //migration matrix
 0 0 0 0
 0 0 0 0
@@ -34,8 +34,11 @@
 50000 2 0 1 1 0 1
 50000 3 0 1 1 0 1
 //Number of independent loci [chromosomes]
-20 0
+5 0
 //Per chromosome: Number of linkage blocks
-1
+4
 //Per block: data type, num loci, rec. rate and mut rate + optional parameters
-MICROSAT 1 0 0.0005 0 10
+DNA 25 0 0.00001 0.333333333333333  
+DNA 25 0 0.00001 0.333333333333333  
+DNA 25 0 0.00001 0.333333333333333  
+DNA 25 0 0.00001 0.333333333333333  
