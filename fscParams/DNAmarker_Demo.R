@@ -14,7 +14,7 @@ setwd("~/Documents/SSRvSNP/Simulations/Code/fscParams/")
 num_reps <- 5
 fscVersion <- "fsc2702"
 # Single population
-demeA <- fscDeme(deme.size = 60, sample.size = 60)
+demeA <- fscDeme(deme.size = 10, sample.size = 10)
 # DNA Genetic parameters
 # This should generate 8 blocks (4 loci, for a diploid individual) of DNA sequences of length 15 bp
 dna <- fscBlock_dna(sequence.length = 15, mut.rate = 1e-4)
