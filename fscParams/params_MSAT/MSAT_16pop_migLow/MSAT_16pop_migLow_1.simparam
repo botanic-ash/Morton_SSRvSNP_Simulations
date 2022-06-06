@@ -119,164 +119,148 @@ Note that migration rates have been pre-multiplied by factor TDemeCollection::CT
 Historical events
 Event 0
 
-#Time             : 50000
-#Source           : 0
-#Sink             : 0
-#Migrants         : 0.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 0
+#Sink              : 0
+#Migrants          : 0.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 1
 
-#Time             : 50000
-#Source           : 1
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 1
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 2
 
-#Time             : 50000
-#Source           : 2
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 2
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 3
 
-#Time             : 50000
-#Source           : 3
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 3
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 4
 
-#Time             : 50000
-#Source           : 4
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 4
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 5
 
-#Time             : 50000
-#Source           : 5
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 5
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 6
 
-#Time             : 50000
-#Source           : 6
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 6
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 7
 
-#Time             : 50000
-#Source           : 7
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 7
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 8
 
-#Time             : 50000
-#Source           : 8
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 8
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 9
 
-#Time             : 50000
-#Source           : 9
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 9
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 10
 
-#Time             : 50000
-#Source           : 10
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 10
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 11
 
-#Time             : 50000
-#Source           : 11
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 11
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 12
 
-#Time             : 50000
-#Source           : 12
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 12
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 13
 
-#Time             : 50000
-#Source           : 13
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 13
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 14
 
-#Time             : 50000
-#Source           : 14
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 14
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 15
 
-#Time             : 50000
-#Source           : 15
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 15
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 
 
 Number of independent loci to simulate : 20
@@ -289,9 +273,9 @@ Number of linkage blocks to simulate in structure 1: 1
 
 
 
-Random generator initialized with : 42521
+Random generator initialized with : 748926
 
 
 
-done in 0.540 secs
+done in 0.506 secs
 

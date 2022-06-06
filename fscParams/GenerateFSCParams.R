@@ -1,12 +1,16 @@
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # %%% FSC PARAMETERS USING STRATAG %%%
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# This script uses strataG to create the fastsimcoal2 (fsc) parameter files used for the SSR v. SNP comparison project
+# Then, those parameter files are run, and the outputs stored
+# After declaring variables (used throughout the script), the code is broken into an MSAT section and a DNA section
 
 library(strataG)
 setwd("~/Documents/SSRvSNP/Simulations/Code/fscParams/")
 
 # ----VARIABLES----
 num_reps <- 5
+fscVersion <- "fsc2702"
 # Demes
 # 1 Population
 demeA <- fscDeme(deme.size = 1200, sample.size = 1200)
@@ -62,7 +66,7 @@ hist.event15 <- fscEvent(event.time = 50000, source = 15, sink = 0, prop.migrant
 msats <- fscBlock_microsat(num.loci = 1, mut.rate = 5e-4, range.constraint = 10)
 MSATgenetics <- fscSettingsGenetics(msats, num.chrom = 20)
 # DNA Genetic parameters
-dna <- fscBlock_dna(sequence.length = 25, mut.rate = 1e-5, chromosome = 4)
+dna <- fscBlock_dna(sequence.length = 25, mut.rate = 1e-5)
 DNAgenetics <- fscSettingsGenetics(dna, dna, dna, dna, num.chrom = 5)
 
 # ----MICROSATELLITE SIMULATIONS----
@@ -73,8 +77,8 @@ demes <- fscSettingsDemes(demeA)
 MSAT_01pop_migLow.params <- fscWrite(demes = demes, genetics = MSATgenetics, label = "MSAT_01pop_migLow", use.wd=TRUE)
 MSAT_01pop_migHigh.params <- fscWrite(demes = demes, genetics = MSATgenetics, label = "MSAT_01pop_migHigh", use.wd=TRUE)
 # Run parameter files
-MSAT_01pop_migLow.params <- fscRun(MSAT_01pop_migLow.params, num.sims = num_reps, exec = "fsc2702")
-MSAT_01pop_migHigh.params <- fscRun(MSAT_01pop_migHigh.params, num.sims = num_reps, exec = "fsc2702")
+MSAT_01pop_migLow.params <- fscRun(MSAT_01pop_migLow.params, num.sims = num_reps, exec = fscVersion)
+MSAT_01pop_migHigh.params <- fscRun(MSAT_01pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
 
 # 4 POPULATIONS----
 # Demes
@@ -90,8 +94,8 @@ MSAT_04pop_migLow.params <- fscWrite(demes = demes, migration = mig4Low, events 
 MSAT_04pop_migHigh.params <- fscWrite(demes = demes, migration = mig4High, events = histEvent, 
                                      genetics = MSATgenetics, label = "MSAT_04pop_migHigh", use.wd=TRUE)
 # Run parameter files
-MSAT_04pop_migLow.params <- fscRun(MSAT_04pop_migLow.params, num.sims = num_reps, exec = "fsc2702")
-MSAT_04pop_migHigh.params <- fscRun(MSAT_04pop_migHigh.params, num.sims = num_reps, exec = "fsc2702")
+MSAT_04pop_migLow.params <- fscRun(MSAT_04pop_migLow.params, num.sims = num_reps, exec = fscVersion)
+MSAT_04pop_migHigh.params <- fscRun(MSAT_04pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
 
 # 16 POPULATIONS----
 # Demes
@@ -109,8 +113,8 @@ MSAT_16pop_migLow.params <- fscWrite(demes = demes, migration = mig16Low, events
 MSAT_16pop_migHigh.params <- fscWrite(demes = demes, migration = mig16High, events = histEvent, 
                                       genetics = MSATgenetics, label = "MSAT_16pop_migHigh", use.wd=TRUE)
 # Run parameter files
-MSAT_16pop_migLow.params <- fscRun(MSAT_16pop_migLow.params, num.sims = num_reps, exec = "fsc2702")
-MSAT_16pop_migHigh.params <- fscRun(MSAT_16pop_migHigh.params, num.sims = num_reps, exec = "fsc2702")
+MSAT_16pop_migLow.params <- fscRun(MSAT_16pop_migLow.params, num.sims = num_reps, exec = fscVersion)
+MSAT_16pop_migHigh.params <- fscRun(MSAT_16pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
 
 # ----DNA SIMULATIONS----
 setwd("~/Documents/SSRvSNP/Simulations/Code/fscParams/params_DNA")
@@ -120,16 +124,25 @@ demes <- fscSettingsDemes(demeA)
 DNA_01pop_migLow.params <- fscWrite(demes = demes, genetics = DNAgenetics, label = "DNA_01pop_migLow", use.wd=TRUE)
 DNA_01pop_migHigh.params <- fscWrite(demes = demes, genetics = DNAgenetics, label = "DNA_01pop_migHigh", use.wd=TRUE)
 # Run parameter files
-DNA_01pop_migLow.params <- fscRun(DNA_01pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = "fsc2702")
-DNA_01pop_migHigh.params <- fscRun(DNA_01pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = "fsc2702")
+DNA_01pop_migLow.params <- fscRun(DNA_01pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNA_01pop_migHigh.params <- fscRun(DNA_01pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 
-DNA_01pop_migLow <- fscReadArp(DNA_01pop_migLow.params)
+DNA_01pop_migLow_1 <- fscReadArp(DNA_01pop_migLow.params, sim = c(1,1), marker = "dna")
+dim(DNA_01pop_migLow_1)
+DNA_01pop_migLow_2 <- fscReadArp(DNA_01pop_migLow.params, sim = c(1,5), marker = "dna")
+dim(DNA_01pop_migLow_2)
+DNA_01pop_migLow_3 <- fscReadArp(DNA_01pop_migLow.params, sim = c(1,4), marker = "dna")
+dim(DNA_01pop_migLow_3)
+DNA_01pop_migLow_4 <- fscReadArp(DNA_01pop_migLow.params, sim = c(1,3), marker = "dna")
+dim(DNA_01pop_migLow_4)
+DNA_01pop_migLow_5 <- fscReadArp(DNA_01pop_migLow.params, sim = c(1,2), marker = "dna")
+dim(DNA_01pop_migLow_5)
 
+# Can't convert fsc params to gtype: "Error: the number of genes in 'sequences' is not equal to the number of loci"
 DNA_01pop_migLow_genind <- fsc2gtypes(DNA_01pop_migLow.params,marker = "dna")
 DNA_01pop_migLow_genind <- fsc2gtypes(DNA_01pop_migLow,marker = "dna")
 
-
-
+# Can convert Arlequin output to genind, but resulting object only has 1 locus, rather than 40 (specified)
 test <- arlequinRead("DNA_01pop_migHigh/DNA_01pop_migHigh_1_3.arp")
 DNA_01pop_migLow_genind <- arp2gtypes(test)
 DNA_01pop_migLow_genind <- gtypes2genind(DNA_01pop_migLow_genind)
@@ -149,8 +162,8 @@ DNA_04pop_migLow.params <- fscWrite(demes = demes, migration = mig4Low, events =
 DNA_04pop_migHigh.params <- fscWrite(demes = demes, migration = mig4High, events = histEvent, 
                                       genetics = DNAgenetics, label = "DNA_04pop_migHigh", use.wd=TRUE)
 # Run parameter files
-DNA_04pop_migLow.params <- fscRun(DNA_04pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = "fsc2702")
-DNA_04pop_migHigh.params <- fscRun(DNA_04pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = "fsc2702")
+DNA_04pop_migLow.params <- fscRun(DNA_04pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNA_04pop_migHigh.params <- fscRun(DNA_04pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 
 # 16 POPULATIONS----
 # Demes
@@ -168,5 +181,5 @@ DNA_16pop_migLow.params <- fscWrite(demes = demes, migration = mig16Low, events 
 DNA_16pop_migHigh.params <- fscWrite(demes = demes, migration = mig16High, events = histEvent, 
                                       genetics = DNAgenetics, label = "DNA_16pop_migHigh", use.wd=TRUE)
 # Run parameter files
-DNA_16pop_migLow.params <- fscRun(DNA_16pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = "fsc2702")
-DNA_16pop_migHigh.params <- fscRun(DNA_16pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = "fsc2702")
+DNA_16pop_migLow.params <- fscRun(DNA_16pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNA_16pop_migHigh.params <- fscRun(DNA_16pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)

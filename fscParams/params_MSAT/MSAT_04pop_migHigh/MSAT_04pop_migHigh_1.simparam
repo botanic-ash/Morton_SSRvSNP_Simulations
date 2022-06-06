@@ -47,44 +47,40 @@ Note that migration rates have been pre-multiplied by factor TDemeCollection::CT
 Historical events
 Event 0
 
-#Time             : 50000
-#Source           : 0
-#Sink             : 0
-#Migrants         : 0.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 0
+#Sink              : 0
+#Migrants          : 0.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 1
 
-#Time             : 50000
-#Source           : 1
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 1
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 2
 
-#Time             : 50000
-#Source           : 2
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 2
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 Event 3
 
-#Time             : 50000
-#Source           : 3
-#Sink             : 0
-#Migrants         : 1.0000000
-#New size         : 1.0000000
-#New growth rate  : 0.0000000
-#New migr. matrix : 1
-
+#Time              : 50000
+#Source            : 3
+#Sink              : 0
+#Migrants          : 1.0000000
+#New relative size : 1.0000000
+#New growth rate   : 0.0000000
+#New migr. matrix  : 1
 
 
 Number of independent loci to simulate : 20
@@ -97,9 +93,9 @@ Number of linkage blocks to simulate in structure 1: 1
 
 
 
-Random generator initialized with : 699043
+Random generator initialized with : 38400
 
 
 
-done in 0.445 secs
+done in 0.660 secs
 
