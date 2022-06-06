@@ -3,8 +3,9 @@
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 # This script uses strataG to create the fastsimcoal2 (fsc) parameter files with DNA markers
-# It then demonstrates the issue of single loci, using these DNA markers (in ANALYZING OUTPUTS)
-# Multiple loci appear in the DNAmarker_Demo object, but only 1 in the DNAmarker_Demo_genind object
+# It then demonstrates the issue of a single locus, using these DNA markers (in ANALYZING OUTPUTS):
+# Multiple loci appear in the DNAmarker_Demo object (correctly), but trying to convert this to a genind object errors
+# When Arlequin outputs are converted to genind objects, only 1 locus is seen in the DNAmarker_Demo_genind object
 
 library(strataG)
 library(adegenet)
@@ -33,10 +34,12 @@ DNAmarker_Demo <- fscReadArp(DNAmarker_Demo.params, sim = c(1,1), marker = "dna"
 dim(DNAmarker_Demo)
 
 # ----ANALYZING OUTPUTS----
-# Can't convert fsc params to gtype: "Error: the number of genes in 'sequences' is not equal to the number of loci"
+# To convert to genind, we first need to convert to strataG "gtype" object, then to genind (using gtypes2genind function)
+# However, can't convert fsc params to gtype: 
+# "Error: the number of genes in 'sequences' is not equal to the number of loci"
 DNAmarker_Demo_gtype <- fsc2gtypes(DNAmarker_Demo.params,marker = "dna")
 
-# When converting Arlequin file to genind, same issue: single locus
+# When converting Arlequin file to genind, same issue as before: single locus
 DNAmarker_Demo_Arlequin <- arlequinRead("DNAmarker_Demo/DNAmarker_Demo_1_3.arp")
 DNAmarker_Demo_gtype <- arp2gtypes(DNAmarker_Demo_Arlequin)
 DNAmarker_Demo_genind <- gtypes2genind(DNAmarker_Demo_gtype)
