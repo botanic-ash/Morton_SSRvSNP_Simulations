@@ -24,10 +24,18 @@ DNAgenetics <- fscSettingsGenetics(dna, dna, dna, num.chrom = 1)
 
 # ----RUNNING FASTSIMCOAL2----
 # Generate a parameter file
-DNAmarker_Demo.params <- fscWrite(demes = fscSettingsDemes(demeA), genetics = DNAgenetics, 
-                                  label = "DNAmarker_Demo", use.wd=TRUE)
+DNAmarker_Demo.params.Haploid <- fscWrite(demes = fscSettingsDemes(demeA, ploidy = 1), genetics = DNAgenetics, 
+                                  label = "DNAmarker_Demo_Haploid", use.wd=TRUE)
+
+DNAmarker_Demo.params.Diploid <- fscWrite(demes = fscSettingsDemes(demeA, ploidy = 2), genetics = DNAgenetics, 
+                                  label = "DNAmarker_Demo_Diploid", use.wd=TRUE)
+
+DNAmarker_Demo.params.Triploid <- fscWrite(demes = fscSettingsDemes(demeA, ploidy = 3), genetics = DNAgenetics, 
+                                  label = "DNAmarker_Demo_Triploid", use.wd=TRUE)
 # Run the parameters file
-DNAmarker_Demo.params <- fscRun(DNAmarker_Demo.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNAmarker_Demo.params.Haploid <- fscRun(DNAmarker_Demo.params.Haploid, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNAmarker_Demo.params.Diploid <- fscRun(DNAmarker_Demo.params.Diploid, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNAmarker_Demo.params.Triploid <- fscRun(DNAmarker_Demo.params.Triploid, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 
 # Read the Arlequin outputs using strataG
 DNAmarker_Demo <- fscReadArp(DNAmarker_Demo.params, sim = c(1,1), marker = "dna")

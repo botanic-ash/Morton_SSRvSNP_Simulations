@@ -1,9 +1,9 @@
 //Number of population samples (demes)
 1
 //Population effective sizes (number of genes)
-20
+10
 //Sample sizes, times, inbreeding
-20 0 0
+10 0 0
 //Growth rates: negative growth implies population expansion
 0
 //Number of migration matrices: 0 implies no migration between demes
