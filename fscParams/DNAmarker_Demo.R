@@ -18,37 +18,19 @@ fscVersion <- "fsc2702"
 # Single population
 demeA <- fscDeme(deme.size = 10, sample.size = 10)
 # DNA Genetic parameters
-# This should generate 8 blocks (4 loci, for a diploid individual) of DNA sequences of length 15 bp
+# This should generate 6 blocks (3 loci, for a diploid individual) of DNA sequences of length 15 bp
 dna <- fscBlock_dna(sequence.length = 15, mut.rate = 1e-3)
 DNAgenetics <- fscSettingsGenetics(dna, dna, dna, num.chrom = 1)
 
 # ----RUNNING FASTSIMCOAL2----
 # Generate a parameter file
-DNAmarker_Demo.params.Haploid <- fscWrite(demes = fscSettingsDemes(demeA, ploidy = 1), genetics = DNAgenetics, 
-                                  label = "DNAmarker_Demo_Haploid", use.wd=TRUE)
-
-DNAmarker_Demo.params.Diploid <- fscWrite(demes = fscSettingsDemes(demeA, ploidy = 2), genetics = DNAgenetics, 
+DNAmarker_Demo.params <- fscWrite(demes = fscSettingsDemes(demeA, ploidy = 2), genetics = DNAgenetics, 
                                   label = "DNAmarker_Demo_Diploid", use.wd=TRUE)
-
-DNAmarker_Demo.params.Triploid <- fscWrite(demes = fscSettingsDemes(demeA, ploidy = 3), genetics = DNAgenetics, 
-                                  label = "DNAmarker_Demo_Triploid", use.wd=TRUE)
 # Run the parameters file
-DNAmarker_Demo.params.Haploid <- fscRun(DNAmarker_Demo.params.Haploid, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-DNAmarker_Demo.params.Diploid <- fscRun(DNAmarker_Demo.params.Diploid, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-DNAmarker_Demo.params.Triploid <- fscRun(DNAmarker_Demo.params.Triploid, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-
-# Read the Arlequin outputs using strataG
-DNAmarker_Demo <- fscReadArp(DNAmarker_Demo.params, sim = c(1,1), marker = "dna")
-dim(DNAmarker_Demo)
+DNAmarker_Demo.params <- fscRun(DNAmarker_Demo.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 
 # ----ANALYZING OUTPUTS----
-# To convert to genind, we first need to convert to strataG "gtype" object, then to genind (using gtypes2genind function)
-# However, can't convert fsc params to gtype: 
-# "Error: the number of genes in 'sequences' is not equal to the number of loci"
+# To convert to gtype, then genind
 DNAmarker_Demo_gtype <- fsc2gtypes(DNAmarker_Demo.params,marker = "dna")
-
-# When converting Arlequin file to genind, same issue as before: single locus
-DNAmarker_Demo_Arlequin <- arlequinRead("DNAmarker_Demo/DNAmarker_Demo_1_3.arp")
-DNAmarker_Demo_gtype <- arp2gtypes(DNAmarker_Demo_Arlequin)
 DNAmarker_Demo_genind <- gtypes2genind(DNAmarker_Demo_gtype)
-nLoc(DNAmarker_Demo_genind)
+DNAmarker_Demo_genind@tab
