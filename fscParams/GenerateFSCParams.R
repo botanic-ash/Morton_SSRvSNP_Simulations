@@ -12,7 +12,42 @@ library(strataG)
 library(adegenet)
 library(stringr)
 library(hierfstat)
-setwd("~/Documents/SSRvSNP/Simulations/Code/fscParams/")
+sim.wd <- "~/Documents/SSRvSNP/Simulations/Code/fscParams/"
+setwd(sim.wd)
+
+# ---- FUNCTIONS ----
+# Function converting Arlequin output to genind (through gtypes format)
+strataG_arp2gen <- function(params, repNumber, marker){
+  # Read in the Arlequin file, convert it to a gtype object, then to a genind object
+  arp <- fscReadArp(params, sim=c(1,repNumber), marker = marker)
+  gtype <- df2gtypes(arp, ploidy = 2)
+  genind <- gtypes2genind(gtype)
+  return(genind)
+}
+
+# Function for converting all of the Arlequin files in a directory to genind, generating a genind list
+convertAllArp <- function(arp.path, params){
+  # Retrieve original working directory, to reset to after conversion
+  original.WD <- getwd()
+  # Navigate to the folder containing simulation outputs
+  setwd(arp.path)
+  # Create an empty list object to receive list of genind.
+  # The length of this list is the number of replicates, which is specified as a numeric vector
+  genind.list <- vector("list",length=length(dir()[str_detect(dir(), pattern = ".arp")]))
+  fscReps <- seq(1, length(genind.list))
+  # Capture marker type, to pass onto the conversion command
+  fscMarker <- tolower(params$settings$genetics$fsc.type)
+  # Move up one directory, in order for the fscReadArp command (within strataG_arp2gen) to work
+  setwd("..")
+  # Convert all Arlequin files to adegenet, creating a list of genind objects
+  for(i in 1:length(genind.list)){
+    genind.obj <- strataG_arp2gen(params, rep=i, marker=fscMarker)
+    genind.list[[i]] <- genind.obj
+  }
+  # Reset to original working directory, and return a list of genind objects
+  setwd(original.WD)
+  return(genind.list)
+}
 
 # ---- VARIABLES ----
 num_reps <- 5
@@ -25,49 +60,36 @@ nInd <- 1200
 demeA <- fscDeme(deme.size = nInd, sample.size = nInd)
 demes1 <- fscSettingsDemes(demeA)
 # 4 Populations
-demeB_1 <- fscDeme(deme.size = nInd/4, sample.size = nInd/4)
-demeB_2 <- fscDeme(deme.size = nInd/4, sample.size = nInd/4)
-demeB_3 <- fscDeme(deme.size = nInd/4, sample.size = nInd/4)
-demeB_4 <- fscDeme(deme.size = nInd/4, sample.size = nInd/4)
-demes4 <- fscSettingsDemes(demeB_1, demeB_2, demeB_3, demeB_4)
+demeB <- fscDeme(deme.size = nInd/4, sample.size = nInd/4)
+demes4 <- fscSettingsDemes(demeB, demeB, demeB, demeB)
 # 16 Populations
-demeC_1 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_2 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_3 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_4 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_5 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_6 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_7 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_8 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_9 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_10 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_11 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_12 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_13 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_14 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_15 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demeC_16 <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
-demes16 <- fscSettingsDemes(demeC_1,demeC_2,demeC_3,demeC_4,demeC_5,demeC_6,demeC_7,demeC_8,demeC_9,demeC_10,demeC_11,demeC_12,
-                            demeC_13,demeC_14,demeC_15,demeC_16)
+demeC <- fscDeme(deme.size = nInd/16, sample.size = nInd/16)
+demes16 <- fscSettingsDemes(demeC,demeC,demeC,demeC,demeC,demeC,demeC,demeC,demeC,demeC,demeC,demeC,
+                            demeC,demeC,demeC,demeC)
 # MIGRATION
 low_mig <- 0.001
 high_mig <- 0.01
+# 4 Populations
 mig.mat.4.Low <- matrix(low_mig, nrow=4, ncol = 4); diag(mig.mat.4.Low) <- 0
 mig.mat.4.High <- matrix(high_mig, nrow=4, ncol = 4); diag(mig.mat.4.High) <- 0
 mig.mat.4.Final <- matrix(0, nrow=4, ncol = 4)
 mig4Low <- fscSettingsMigration(mig.mat.4.Low, mig.mat.4.Final)
 mig4High <- fscSettingsMigration(mig.mat.4.High, mig.mat.4.Final)
+# 16 Populations
 mig.mat.16.Low <- matrix(low_mig, nrow=16, ncol = 16); diag(mig.mat.16.Low) <- 0
 mig.mat.16.High <- matrix(high_mig, nrow=16, ncol = 16); diag(mig.mat.16.High) <- 0
 mig.mat.16.Final <- matrix(0, nrow=16, ncol = 16)
 mig16Low <- fscSettingsMigration(mig.mat.16.Low, mig.mat.16.Final)
 mig16High <- fscSettingsMigration(mig.mat.16.High, mig.mat.16.Final)
-# Historical events
+
+# HISTORICAL EVENTS
+# 4 Populations
 hist.event0 <- fscEvent(event.time = 50000, source = 0, sink = 0, prop.migrants = 0, migr.mat = 1)
 hist.event1 <- fscEvent(event.time = 50000, source = 1, sink = 0, prop.migrants = 1, migr.mat = 1)
 hist.event2 <- fscEvent(event.time = 50000, source = 2, sink = 0, prop.migrants = 1, migr.mat = 1)
 hist.event3 <- fscEvent(event.time = 50000, source = 3, sink = 0, prop.migrants = 1, migr.mat = 1)
 histEvent4 <- fscSettingsEvents(hist.event0, hist.event1, hist.event2, hist.event3)
+# 16 Populations
 hist.event4 <- fscEvent(event.time = 50000, source = 4, sink = 0, prop.migrants = 1, migr.mat = 1)
 hist.event5 <- fscEvent(event.time = 50000, source = 5, sink = 0, prop.migrants = 1, migr.mat = 1)
 hist.event6 <- fscEvent(event.time = 50000, source = 6, sink = 0, prop.migrants = 1, migr.mat = 1)
@@ -80,8 +102,9 @@ hist.event12 <- fscEvent(event.time = 50000, source = 12, sink = 0, prop.migrant
 hist.event13 <- fscEvent(event.time = 50000, source = 13, sink = 0, prop.migrants = 1, migr.mat = 1)
 hist.event14 <- fscEvent(event.time = 50000, source = 14, sink = 0, prop.migrants = 1, migr.mat = 1)
 hist.event15 <- fscEvent(event.time = 50000, source = 15, sink = 0, prop.migrants = 1, migr.mat = 1)
-histEvent16 <- fscSettingsEvents(hist.event0,hist.event1,hist.event2,hist.event3,hist.event4,hist.event5,hist.event6,hist.event7,
-                                 hist.event8,hist.event9,hist.event10,hist.event11,hist.event12,hist.event13,hist.event14,hist.event15)
+histEvent16 <- fscSettingsEvents(hist.event0,hist.event1,hist.event2,hist.event3,hist.event4,hist.event5,hist.event6,
+                                 hist.event7,hist.event8,hist.event9,hist.event10,hist.event11,hist.event12,
+                                 hist.event13,hist.event14,hist.event15)
 # MSAT Genetic parameters
 msats <- fscBlock_microsat(num.loci = 1, mut.rate = 5e-4, range.constraint = 10)
 MSATgenetics <- fscSettingsGenetics(msats, num.chrom = 20)
@@ -90,10 +113,12 @@ dna <- fscBlock_dna(sequence.length = 25, mut.rate = 1e-5)
 DNAgenetics <- fscSettingsGenetics(dna, dna, dna, dna, num.chrom = 5)
 
 # ---- MICROSATELLITE SIMULATIONS ----
-setwd("~/Documents/SSRvSNP/Simulations/Code/fscParams/MSAT_marker/")
+# Outputs are stored within a folder in the parent directory named "MSAT_marker"
+setwd(paste0(sim.wd,"MSAT_marker"))
 # 1 POPULATION ----
 # Write parameter files. We make a mighHigh .par file as well, even though it's identical to migLow (with one population)
-MSAT_01pop_migLow.params <- fscWrite(demes = demes1, genetics = MSATgenetics, label = "MSAT_01pop_migLow", use.wd=TRUE)
+MSAT_01pop_migLow.params <- fscWrite(demes = demes1, genetics = MSATgenetics, 
+                                     label = "MSAT_01pop_migLow", use.wd=TRUE)
 MSAT_01pop_migHigh.params <- fscWrite(demes = demes1, genetics = MSATgenetics, label = "MSAT_01pop_migHigh", use.wd=TRUE)
 # Run parameter files
 MSAT_01pop_migLow.params <- fscRun(MSAT_01pop_migLow.params, num.sims = num_reps, exec = fscVersion)
@@ -120,7 +145,8 @@ MSAT_16pop_migLow.params <- fscRun(MSAT_16pop_migLow.params, num.sims = num_reps
 MSAT_16pop_migHigh.params <- fscRun(MSAT_16pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
 
 # ---- DNA SIMULATIONS ----
-setwd("~/Documents/SSRvSNP/Simulations/Code/fscParams/DNA_marker/")
+# Outputs are stored within a folder in the parent directory named "DNA_marker"
+setwd(paste0(sim.wd,"DNA_marker"))
 # 1 POPULATION ----
 # Write parameter files. We make a mighHigh .par file as well, even though it's identical to migLow (with one population)
 DNA_01pop_migLow.params <- fscWrite(demes = demes1, genetics = DNAgenetics, label = "DNA_01pop_migLow", use.wd=TRUE)
@@ -150,152 +176,43 @@ DNA_16pop_migLow.params <- fscRun(DNA_16pop_migLow.params, num.sims = num_reps, 
 DNA_16pop_migHigh.params <- fscRun(DNA_16pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 
 # ---- CONVERT ARLEQUIN FILES TO GENIND ----
-# Function converting Arlequin output to genind (through gtypes format)
-strataG_arp2gen <- function(params, repNumber, marker){
-  # Read in the Arlequin file, convert it to a gtype object, then to a genind object
-  arp <- fscReadArp(params, sim=c(1,repNumber), marker = marker)
-  gtype <- df2gtypes(arp, ploidy = 2)
-  genind <- gtypes2genind(gtype)
-  return(genind)
-}
-
-# TO DO: reformat this convertAllArp function to pass a vector of repNumbers to arp2gen, to use with lapply
-# Function for converting ALL Arlequin files in a specified directory (using above arp2genind fxn)
-# Outputs a list of genind objects, where each list item is a replicate
-convertAllArp <- function(arp.path){
-  # Retrieve original working directory, to reset to after conversion
-  original.WD <- getwd()
-  # Navigate to the folder containing simulation outputs
-  setwd(arp.path)
-  # Create an empty list object to receive list of genind
-  genind.list <- list(length=length(dir()[str_detect(dir(), pattern = ".arp")]))
-  # Convert all Arlequin files to adegenet, creating a list of genind objects
-  for(i in 1:length(genind.list)){
-    genind.list[[i]] <- strataG_arp2gen()
-  }
-  genind.list <- lapply(dir()[str_detect(dir(), pattern = ".arp")], strataG_arp2gen)
-  # Reset to original working directory, and return a list of genind objects
-  setwd(original.WD)
-  return(genind.list)
-}
-
-# This is close, but the sim argument...we need to make a list, 
-# A list similar to lapply(seq(1:5), function(x) c(x,1)), except items in reverse order...
-sapply(MSAT_01pop_migLow.params, fscReadArp, sim=c(1,seq(1:5)))
-
-# Convert microsatellite Arlequin outputs ----
-setwd("~/Documents/SSRvSNP/Simulations/Code/fscParams/MSAT_marker/")
-
-MSAT_01pop_migLow_genind_1 <- arp2genind(MSAT_01pop_migLow.params, 1, marker = "microsat")
-MSAT_01pop_migLow_genind_2 <- arp2genind(MSAT_01pop_migLow.params, 2, marker = "microsat")
-MSAT_01pop_migLow_genind_3 <- arp2genind(MSAT_01pop_migLow.params, 3, marker = "microsat")
-MSAT_01pop_migLow_genind_4 <- arp2genind(MSAT_01pop_migLow.params, 4, marker = "microsat")
-MSAT_01pop_migLow_genind_5 <- arp2genind(MSAT_01pop_migLow.params, 5, marker = "microsat")
-MSAT_01pop_migLow_genind <- list(MSAT_01pop_migLow_genind_1,MSAT_01pop_migLow_genind_2,
-                                 MSAT_01pop_migLow_genind_3,MSAT_01pop_migLow_genind_4,
-                                 MSAT_01pop_migLow_genind_5)
-
-MSAT_01pop_migHigh_genind_1 <- arp2genind(MSAT_01pop_migHigh.params, 1, marker = "microsat")
-MSAT_01pop_migHigh_genind_2 <- arp2genind(MSAT_01pop_migHigh.params, 2, marker = "microsat")
-MSAT_01pop_migHigh_genind_3 <- arp2genind(MSAT_01pop_migHigh.params, 3, marker = "microsat")
-MSAT_01pop_migHigh_genind_4 <- arp2genind(MSAT_01pop_migHigh.params, 4, marker = "microsat")
-MSAT_01pop_migHigh_genind_5 <- arp2genind(MSAT_01pop_migHigh.params, 5, marker = "microsat")
-MSAT_01pop_migHigh_genind <- list(MSAT_01pop_migHigh_genind_1,MSAT_01pop_migHigh_genind_2,
-                                   MSAT_01pop_migHigh_genind_3,MSAT_01pop_migHigh_genind_4,
-                                   MSAT_01pop_migHigh_genind_5)
-
-MSAT_04pop_migLow_genind_1 <- arp2genind(MSAT_04pop_migLow.params, 1, marker = "microsat")
-MSAT_04pop_migLow_genind_2 <- arp2genind(MSAT_04pop_migLow.params, 2, marker = "microsat")
-MSAT_04pop_migLow_genind_3 <- arp2genind(MSAT_04pop_migLow.params, 3, marker = "microsat")
-MSAT_04pop_migLow_genind_4 <- arp2genind(MSAT_04pop_migLow.params, 4, marker = "microsat")
-MSAT_04pop_migLow_genind_5 <- arp2genind(MSAT_04pop_migLow.params, 5, marker = "microsat")
-MSAT_04pop_migLow_genind <- list(MSAT_04pop_migLow_genind_1,MSAT_04pop_migLow_genind_2,
-                                 MSAT_04pop_migLow_genind_3,MSAT_04pop_migLow_genind_4,
-                                 MSAT_04pop_migLow_genind_5)
-
-MSAT_04pop_migHigh_genind_1 <- arp2genind(MSAT_04pop_migHigh.params, 1, marker = "microsat")
-MSAT_04pop_migHigh_genind_2 <- arp2genind(MSAT_04pop_migHigh.params, 2, marker = "microsat")
-MSAT_04pop_migHigh_genind_3 <- arp2genind(MSAT_04pop_migHigh.params, 3, marker = "microsat")
-MSAT_04pop_migHigh_genind_4 <- arp2genind(MSAT_04pop_migHigh.params, 4, marker = "microsat")
-MSAT_04pop_migHigh_genind_5 <- arp2genind(MSAT_04pop_migHigh.params, 5, marker = "microsat")
-MSAT_04pop_migHigh_genind <- list(MSAT_04pop_migHigh_genind_1,MSAT_04pop_migHigh_genind_2,
-                                 MSAT_04pop_migHigh_genind_3,MSAT_04pop_migHigh_genind_4,
-                                 MSAT_04pop_migHigh_genind_5)
-
-MSAT_16pop_migLow_genind_1 <- arp2genind(MSAT_16pop_migLow.params, 1, marker = "microsat")
-MSAT_16pop_migLow_genind_2 <- arp2genind(MSAT_16pop_migLow.params, 2, marker = "microsat")
-MSAT_16pop_migLow_genind_3 <- arp2genind(MSAT_16pop_migLow.params, 3, marker = "microsat")
-MSAT_16pop_migLow_genind_4 <- arp2genind(MSAT_16pop_migLow.params, 4, marker = "microsat")
-MSAT_16pop_migLow_genind_5 <- arp2genind(MSAT_16pop_migLow.params, 5, marker = "microsat")
-MSAT_16pop_migLow_genind <- list(MSAT_16pop_migLow_genind_1,MSAT_16pop_migLow_genind_2,
-                                 MSAT_16pop_migLow_genind_3,MSAT_16pop_migLow_genind_4,
-                                 MSAT_16pop_migLow_genind_5)
-
-MSAT_16pop_migHigh_genind_1 <- arp2genind(MSAT_16pop_migHigh.params, 1, marker = "microsat")
-MSAT_16pop_migHigh_genind_2 <- arp2genind(MSAT_16pop_migHigh.params, 2, marker = "microsat")
-MSAT_16pop_migHigh_genind_3 <- arp2genind(MSAT_16pop_migHigh.params, 3, marker = "microsat")
-MSAT_16pop_migHigh_genind_4 <- arp2genind(MSAT_16pop_migHigh.params, 4, marker = "microsat")
-MSAT_16pop_migHigh_genind_5 <- arp2genind(MSAT_16pop_migHigh.params, 5, marker = "microsat")
-MSAT_16pop_migHigh_genind <- list(MSAT_16pop_migHigh_genind_1,MSAT_16pop_migHigh_genind_2,
-                                  MSAT_16pop_migHigh_genind_3,MSAT_16pop_migHigh_genind_4,
-                                  MSAT_16pop_migHigh_genind_5)
-
-# Convert DNA Arlequin outputs ----
-setwd("~/Documents/SSRvSNP/Simulations/Code/fscParams/DNA_marker/")
-
-DNA_01pop_migLow_genind_1 <- arp2genind(DNA_01pop_migLow.params, 1, marker = "DNA")
-DNA_01pop_migLow_genind_2 <- arp2genind(DNA_01pop_migLow.params, 2, marker = "DNA")
-DNA_01pop_migLow_genind_3 <- arp2genind(DNA_01pop_migLow.params, 3, marker = "DNA")
-DNA_01pop_migLow_genind_4 <- arp2genind(DNA_01pop_migLow.params, 4, marker = "DNA")
-DNA_01pop_migLow_genind_5 <- arp2genind(DNA_01pop_migLow.params, 5, marker = "DNA")
-DNA_01pop_migLow_genind <- list(DNA_01pop_migLow_genind_1, DNA_01pop_migLow_genind_2,
-                                DNA_01pop_migLow_genind_3, DNA_01pop_migLow_genind_4,
-                                DNA_01pop_migLow_genind_5)
-
-DNA_01pop_migHigh_genind_1 <- arp2genind(DNA_01pop_migHigh.params, 1, marker = "DNA")
-DNA_01pop_migHigh_genind_2 <- arp2genind(DNA_01pop_migHigh.params, 2, marker = "DNA")
-DNA_01pop_migHigh_genind_3 <- arp2genind(DNA_01pop_migHigh.params, 3, marker = "DNA")
-DNA_01pop_migHigh_genind_4 <- arp2genind(DNA_01pop_migHigh.params, 4, marker = "DNA")
-DNA_01pop_migHigh_genind_5 <- arp2genind(DNA_01pop_migHigh.params, 5, marker = "DNA")
-DNA_01pop_migHigh_genind <- list(DNA_01pop_migHigh_genind_1, DNA_01pop_migHigh_genind_2,
-                                DNA_01pop_migHigh_genind_3, DNA_01pop_migHigh_genind_4,
-                                DNA_01pop_migHigh_genind_5)
-
-DNA_04pop_migLow_genind_1 <- arp2genind(DNA_04pop_migLow.params, 1, marker = "DNA")
-DNA_04pop_migLow_genind_2 <- arp2genind(DNA_04pop_migLow.params, 2, marker = "DNA")
-DNA_04pop_migLow_genind_3 <- arp2genind(DNA_04pop_migLow.params, 3, marker = "DNA")
-DNA_04pop_migLow_genind_4 <- arp2genind(DNA_04pop_migLow.params, 4, marker = "DNA")
-DNA_04pop_migLow_genind_5 <- arp2genind(DNA_04pop_migLow.params, 5, marker = "DNA")
-DNA_04pop_migLow_genind <- list(DNA_04pop_migLow_genind_1, DNA_04pop_migLow_genind_2,
-                                DNA_04pop_migLow_genind_3, DNA_04pop_migLow_genind_4,
-                                DNA_04pop_migLow_genind_5)
-
-DNA_04pop_migHigh_genind_1 <- arp2genind(DNA_04pop_migHigh.params, 1, marker = "DNA")
-DNA_04pop_migHigh_genind_2 <- arp2genind(DNA_04pop_migHigh.params, 2, marker = "DNA")
-DNA_04pop_migHigh_genind_3 <- arp2genind(DNA_04pop_migHigh.params, 3, marker = "DNA")
-DNA_04pop_migHigh_genind_4 <- arp2genind(DNA_04pop_migHigh.params, 4, marker = "DNA")
-DNA_04pop_migHigh_genind_5 <- arp2genind(DNA_04pop_migHigh.params, 5, marker = "DNA")
-DNA_04pop_migHigh_genind <- list(DNA_04pop_migHigh_genind_1, DNA_04pop_migHigh_genind_2,
-                                 DNA_04pop_migHigh_genind_3, DNA_04pop_migHigh_genind_4,
-                                 DNA_04pop_migHigh_genind_5)
-
-DNA_16pop_migLow_genind_1 <- arp2genind(DNA_16pop_migLow.params, 1, marker = "DNA")
-DNA_16pop_migLow_genind_2 <- arp2genind(DNA_16pop_migLow.params, 2, marker = "DNA")
-DNA_16pop_migLow_genind_3 <- arp2genind(DNA_16pop_migLow.params, 3, marker = "DNA")
-DNA_16pop_migLow_genind_4 <- arp2genind(DNA_16pop_migLow.params, 4, marker = "DNA")
-DNA_16pop_migLow_genind_5 <- arp2genind(DNA_16pop_migLow.params, 5, marker = "DNA")
-DNA_16pop_migLow_genind <- list(DNA_16pop_migLow_genind_1, DNA_16pop_migLow_genind_2,
-                                DNA_16pop_migLow_genind_3, DNA_16pop_migLow_genind_4,
-                                DNA_16pop_migLow_genind_5)
-
-DNA_16pop_migHigh_genind_1 <- arp2genind(DNA_16pop_migHigh.params, 1, marker = "DNA")
-DNA_16pop_migHigh_genind_2 <- arp2genind(DNA_16pop_migHigh.params, 2, marker = "DNA")
-DNA_16pop_migHigh_genind_3 <- arp2genind(DNA_16pop_migHigh.params, 3, marker = "DNA")
-DNA_16pop_migHigh_genind_4 <- arp2genind(DNA_16pop_migHigh.params, 4, marker = "DNA")
-DNA_16pop_migHigh_genind_5 <- arp2genind(DNA_16pop_migHigh.params, 5, marker = "DNA")
-DNA_16pop_migHigh_genind <- list(DNA_16pop_migHigh_genind_1, DNA_16pop_migHigh_genind_2,
-                                 DNA_16pop_migHigh_genind_3, DNA_16pop_migHigh_genind_4,
-                                 DNA_16pop_migHigh_genind_5)
+# MSAT ----
+MSAT_01pop_migLow_arpPath <- paste0(sim.wd,"MSAT_marker/MSAT_01pop_migLow/")
+MSAT_01pop_migLow_genind <- convertAllArp(arp.path = MSAT_01pop_migLow_arpPath, 
+                                          params = MSAT_01pop_migLow.params)
+MSAT_01pop_migHigh_arpPath <- paste0(sim.wd,"MSAT_marker/MSAT_01pop_migHigh/")
+MSAT_01pop_migHigh_genind <- convertAllArp(arp.path = MSAT_01pop_migHigh_arpPath, 
+                                          params = MSAT_01pop_migHigh.params)
+MSAT_04pop_migLow_arpPath <- paste0(sim.wd,"MSAT_marker/MSAT_04pop_migLow/")
+MSAT_04pop_migLow_genind <- convertAllArp(arp.path = MSAT_04pop_migLow_arpPath, 
+                                          params = MSAT_04pop_migLow.params)
+MSAT_04pop_migHigh_arpPath <- paste0(sim.wd,"MSAT_marker/MSAT_04pop_migHigh/")
+MSAT_04pop_migHigh_genind <- convertAllArp(arp.path = MSAT_04pop_migHigh_arpPath, 
+                                           params = MSAT_04pop_migHigh.params)
+MSAT_16pop_migLow_arpPath <- paste0(sim.wd,"MSAT_marker/MSAT_16pop_migLow/")
+MSAT_16pop_migLow_genind <- convertAllArp(arp.path = MSAT_16pop_migLow_arpPath, 
+                                          params = MSAT_16pop_migLow.params)
+MSAT_16pop_migHigh_arpPath <- paste0(sim.wd,"MSAT_marker/MSAT_16pop_migHigh/")
+MSAT_16pop_migHigh_genind <- convertAllArp(arp.path = MSAT_16pop_migHigh_arpPath, 
+                                           params = MSAT_16pop_migHigh.params)
+# DNA ----
+DNA_01pop_migLow_arpPath <- paste0(sim.wd,"DNA_marker/DNA_01pop_migLow/")
+DNA_01pop_migLow_genind <- convertAllArp(arp.path = DNA_01pop_migLow_arpPath, 
+                                          params = DNA_01pop_migLow.params)
+DNA_01pop_migHigh_arpPath <- paste0(sim.wd,"DNA_marker/DNA_01pop_migHigh/")
+DNA_01pop_migHigh_genind <- convertAllArp(arp.path = DNA_01pop_migHigh_arpPath, 
+                                           params = DNA_01pop_migHigh.params)
+DNA_04pop_migLow_arpPath <- paste0(sim.wd,"DNA_marker/DNA_04pop_migLow/")
+DNA_04pop_migLow_genind <- convertAllArp(arp.path = DNA_04pop_migLow_arpPath, 
+                                          params = DNA_04pop_migLow.params)
+DNA_04pop_migHigh_arpPath <- pasteo(sim.wd,"DNA_marker/DNA_04pop_migHigh/")
+DNA_04pop_migHigh_genind <- convertAllArp(arp.path = DNA_04pop_migHigh_arpPath, 
+                                           params = DNA_04pop_migHigh.params)
+DNA_16pop_migLow_arpPath <- paste0(sim.wd,"DNA_marker/DNA_16pop_migLow/")
+DNA_16pop_migLow_genind <- convertAllArp(arp.path = DNA_16pop_migLow_arpPath, 
+                                          params = DNA_16pop_migLow.params)
+DNA_16pop_migHigh_arpPath <- paste0(sim.wd,"DNA_marker/DNA_16pop_migHigh/")
+DNA_16pop_migHigh_genind <- convertAllArp(arp.path = DNA_16pop_migHigh_arpPath,                                            params = DNA_16pop_migHigh.params)
 
 # ---- SENSE CHECK ----
 # 1. MORE ALLELES IN SCENARIOS WITH MORE POPULATIONS ----
@@ -317,7 +234,7 @@ mean(sapply(DNA_01pop_migHigh_genind, function(x) ncol(x@tab)))
 mean(sapply(DNA_04pop_migHigh_genind, function(x) ncol(x@tab)))
 mean(sapply(DNA_16pop_migHigh_genind, function(x) ncol(x@tab)))
 
-# 2. LOWER FST FOR SCENARIO WITH LOWER MIGRATION RATES ----
+# 2. HIGHER FST FOR SCENARIOS WITH LOWER MIGRATION RATES ----
 # MSAT ----
 sapply(MSAT_04pop_migLow_genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 sapply(MSAT_04pop_migHigh_genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
@@ -333,7 +250,7 @@ sapply(DNA_16pop_migLow_genind, function(x) mean(c(pairwise.neifst(genind2hierfs
 sapply(DNA_16pop_migHigh_genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 
 # 3. ALLELE FREQUENCY SPECTRA ----
-# QUESTION: when we calculate allele frequencies, do we divide my the number of individuals in the
+# QUESTION: when we calculate allele frequencies, do we divide by the number of individuals in the
 # population? Or, in the entire species? Currently, doing the entire species...
 # MSAT ----
 MSAT_01pop_migLow_Freqs <- lapply(MSAT_01pop_migLow_genind, function(x) colSums(x@tab, na.rm = TRUE)/(nInd*2)*100)
