@@ -1,0 +1,19 @@
+# Simulation folders ignored GitHub
+
+# fastSimcoal2 tests examiing impacts of mutation rates on number of DNA loci
+draft_fscParams_lowMutation
+draft_fscParams_highMutation
+
+# fastSimcoal2 tests attempting to correct the number of DNA loci simulated
+# (ultimately fixed by running simulations through strataG, rather than fastSimcoal2 termnial)
+TEST_ChrStr1_fscParams
+TEST_ChrStr2x2_fscParams
+TEST_ChrStr4_fscParams
+TEST_ChrStr4_SNPflag_fscParams
+
+# Outdated directories containing fastSimcoal2 outputs
+draft_fscParams
+fscParams
+
+# Old R scripts
+samplingOutputs.R
