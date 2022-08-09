@@ -12,7 +12,7 @@ Functions used repeatedly throughout the scripts are declared in [SSRvSNP_Sim_fu
 
 The script [GenerateFSCparams.R](https://github.com/akoontz11/Morton_SSRvSNP_Simulations/blob/main/RScripts/GenerateFSCparams.R) specifies the parameters used for
 MSAT and DNA fastSimcoal2 simulations, and runs those simulations, storing the results to .params R objects. Note that every time this script is 
-run or sourced, new fastSimcoal2 simulation output file will populate the specified [SimulationOutputs](https://github.com/akoontz11/Morton_SSRvSNP_Simulations/tree/main/SimulationOutputs) directory (see below).
+run or sourced, new fastSimcoal2 simulation output files will populate the specified [SimulationOutputs](https://github.com/akoontz11/Morton_SSRvSNP_Simulations/tree/main/SimulationOutputs) directory (see below).
 
 ### SimulationOutputs
 This folder contains 2 subfolders, one for simulation outputs using microsatellite markers ([MSAT_marker](https://github.com/akoontz11/Morton_SSRvSNP_Simulations/tree/main/SimulationOutputs/MSAT_marker)) 
