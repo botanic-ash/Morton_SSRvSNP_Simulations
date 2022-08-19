@@ -22,9 +22,26 @@ library(hierfstat)
 sim.wd <- "~/Documents/SSRvSNP/Simulations/Code/SimulationOutputs/"
 setwd(sim.wd)
 # Read in relevant functions
-source("../RScripts/SSRvSNP_Sim_functions.R")
+source("../RScripts/functions_SSRvSNP_Sim.R")
 # Run simulations
-source("../RScripts/GenerateFSCparams.R")
+source("RScripts/GenerateFSCparams.R")
+# Alternatively, source the params objects from previously run simulations
+# Microsatellites
+setwd(paste0(sim.wd,"SimulationOutputs/MSAT_marker"))
+MSAT_01pop_migLow.params <- readRDS(dir(pattern = "^params.MSAT_01pop_migLow"))
+MSAT_01pop_migHigh.params <- readRDS(dir(pattern = "^params.MSAT_01pop_migHigh"))
+MSAT_04pop_migLow.params <- readRDS(dir(pattern = "^params.MSAT_04pop_migLow"))
+MSAT_04pop_migHigh.params <- readRDS(dir(pattern = "^params.MSAT_04pop_migHigh"))
+MSAT_16pop_migHigh.params <- readRDS(dir(pattern = "^params.MSAT_16pop_migLow"))
+MSAT_16pop_migHigh.params <- readRDS(dir(pattern = "^params.MSAT_16pop_migHigh"))
+# DNA
+setwd(paste0(sim.wd,"SimulationOutputs/DNA_marker"))
+DNA_01pop_migLow.params <- readRDS(dir(pattern = "^params.DNA_01pop_migLow"))
+DNA_01pop_migHigh.params <- readRDS(dir(pattern = "^params.DNA_01pop_migHigh"))
+DNA_04pop_migLow.params <- readRDS(dir(pattern = "^params.DNA_04pop_migLow"))
+DNA_04pop_migHigh.params <- readRDS(dir(pattern = "^params.DNA_04pop_migHigh"))
+DNA_16pop_migHigh.params <- readRDS(dir(pattern = "^params.DNA_16pop_migLow"))
+DNA_16pop_migHigh.params <- readRDS(dir(pattern = "^params.DNA_16pop_migHigh"))
 
 # ---- CONVERT ARLEQUIN FILES TO GENIND ----
 # MSAT ----
