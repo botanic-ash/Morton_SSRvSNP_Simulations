@@ -90,8 +90,13 @@ MSAT_01pop_migLow.params <- fscWrite(demes = demes1, genetics = MSATgenetics,
                                      label = "MSAT_01pop_migLow", use.wd=TRUE)
 MSAT_01pop_migHigh.params <- fscWrite(demes = demes1, genetics = MSATgenetics, label = "MSAT_01pop_migHigh", use.wd=TRUE)
 # Run parameter files
+print("MICROSATELLITES: 1 population, low migration")
 MSAT_01pop_migLow.params <- fscRun(MSAT_01pop_migLow.params, num.sims = num_reps, exec = fscVersion)
+print("MICROSATELLITES: 1 population, high migration")
 MSAT_01pop_migHigh.params <- fscRun(MSAT_01pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
+# Save params objects to Rdata files, for long term storage
+saveRDS(MSAT_01pop_migLow.params, file = paste0("params.MSAT_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_01pop_migHigh.params, file = paste0("params.MSAT_01pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 4 POPULATIONS ----
 # Write parameter files
@@ -100,8 +105,13 @@ MSAT_04pop_migLow.params <- fscWrite(demes = demes4, migration = mig4Low, events
 MSAT_04pop_migHigh.params <- fscWrite(demes = demes4, migration = mig4High, events = histEvent4, 
                                      genetics = MSATgenetics, label = "MSAT_04pop_migHigh", use.wd=TRUE)
 # Run parameter files
+print("MICROSATELLITES: 4 populations, low migration")
 MSAT_04pop_migLow.params <- fscRun(MSAT_04pop_migLow.params, num.sims = num_reps, exec = fscVersion)
+print("MICROSATELLITES: 4 populations, high migration")
 MSAT_04pop_migHigh.params <- fscRun(MSAT_04pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
+# Save params objects to Rdata files, for long term storage
+saveRDS(MSAT_04pop_migLow.params, file = paste0("params.MSAT_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_04pop_migHigh.params, file = paste0("params.MSAT_04pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 16 POPULATIONS ----
 # Write parameter files
@@ -110,8 +120,13 @@ MSAT_16pop_migLow.params <- fscWrite(demes = demes16, migration = mig16Low, even
 MSAT_16pop_migHigh.params <- fscWrite(demes = demes16, migration = mig16High, events = histEvent16, 
                                       genetics = MSATgenetics, label = "MSAT_16pop_migHigh", use.wd=TRUE)
 # Run parameter files
+print("MICROSATELLITES: 16 populations, low migration")
 MSAT_16pop_migLow.params <- fscRun(MSAT_16pop_migLow.params, num.sims = num_reps, exec = fscVersion)
+print("MICROSATELLITES: 16 populations, high migration")
 MSAT_16pop_migHigh.params <- fscRun(MSAT_16pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
+# Save params objects to Rdata files, for long term storage
+saveRDS(MSAT_16pop_migLow.params, file = paste0("params.MSAT_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_16pop_migHigh.params, file = paste0("params.MSAT_16pop_migHigh.",Sys.Date(),".Rdata"))
 
 # ---- DNA SIMULATIONS ----
 # Outputs are stored within a folder in the parent directory named "DNA_marker"
@@ -121,8 +136,13 @@ setwd(paste0(sim.wd,"DNA_marker"))
 DNA_01pop_migLow.params <- fscWrite(demes = demes1, genetics = DNAgenetics, label = "DNA_01pop_migLow", use.wd=TRUE)
 DNA_01pop_migHigh.params <- fscWrite(demes = demes1, genetics = DNAgenetics, label = "DNA_01pop_migHigh", use.wd=TRUE)
 # Run parameter files
+print("DNA: 1 population, low migration")
 DNA_01pop_migLow.params <- fscRun(DNA_01pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+print("DNA: 1 population, high migration")
 DNA_01pop_migHigh.params <- fscRun(DNA_01pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+# Save params objects to Rdata files, for long term storage
+saveRDS(DNA_01pop_migLow.params, file = paste0("params.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_01pop_migHigh.params, file = paste0("params.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 4 POPULATIONS ----
 # Write parameter files
@@ -131,8 +151,13 @@ DNA_04pop_migLow.params <- fscWrite(demes = demes4, migration = mig4Low, events 
 DNA_04pop_migHigh.params <- fscWrite(demes = demes4, migration = mig4High, events = histEvent4, 
                                       genetics = DNAgenetics, label = "DNA_04pop_migHigh", use.wd=TRUE)
 # Run parameter files
+print("DNA: 4 populations, low migration")
 DNA_04pop_migLow.params <- fscRun(DNA_04pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+print("DNA: 4 populations, high migration")
 DNA_04pop_migHigh.params <- fscRun(DNA_04pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+# Save params objects to Rdata files, for long term storage
+saveRDS(DNA_04pop_migLow.params, file = paste0("params.DNA_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_04pop_migHigh.params, file = paste0("params.DNA_04pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 16 POPULATIONS ----
 # Write parameter files
@@ -141,5 +166,10 @@ DNA_16pop_migLow.params <- fscWrite(demes = demes16, migration = mig16Low, event
 DNA_16pop_migHigh.params <- fscWrite(demes = demes16, migration = mig16High, events = histEvent16, 
                                       genetics = DNAgenetics, label = "DNA_16pop_migHigh", use.wd=TRUE)
 # Run parameter files
+print("DNA: 16 populations, low migration")
 DNA_16pop_migLow.params <- fscRun(DNA_16pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+print("DNA: 16 populations, high migration")
 DNA_16pop_migHigh.params <- fscRun(DNA_16pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+# Save params objects to Rdata files, for long term storage
+saveRDS(DNA_16pop_migLow.params, file = paste0("params.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_16pop_migHigh.params, file = paste0("params.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
