@@ -47,7 +47,7 @@ convertAllArp <- function(arp.path, params){
   return(genind.list)
 }
 
-# Hard-coded function for reading in strataG MSAT params files, in the specified directory
+# Hard-coded function for reading in strataG MSAT params files, in specified directory
 readParams_MSAT <- function(params.wd){
   # Retrieve original working directory, to reset to after conversion
   original.wd <- getwd()
@@ -72,7 +72,7 @@ readParams_MSAT <- function(params.wd){
   setwd(original.wd)
 }
 
-# Hard-coded function for reading in strataG DNA params files, in the specified directory
+# Hard-coded function for reading in strataG DNA params files, in specified directory
 readParams_DNA <- function(params.wd){
   # Retrieve original working directory, to reset to after conversion
   original.wd <- getwd()
