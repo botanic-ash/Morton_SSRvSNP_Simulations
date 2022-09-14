@@ -33,18 +33,8 @@ MSAT_exSituRep_arr <- array(dim=c(5,5,4))
 # CAPTURE ex situ rates for each garden proportion. Report those
 # SUMMARIZE allele frequency proportions across all scenarios for each marker
 
-# MSAT ----
-
-# MSAT.scenarios <- c("MSAT_01pop_migLow", "MSAT_01pop_migHigh",
-#                     "MSAT_04pop_migLow", "MSAT_04pop_migHigh",
-#                     "MSAT_16pop_migLow", "MSAT_16pop_migHigh")
-# 
-# for(i in 1:length(MSAT.scenarios)){
-#   arpPath <- paste0(sim.wd,"SimulationOutputs/MSAT_marker/", MSAT.scenarios[i],"/")
-#   genindList <- convertAllArp(arp.path = arpPath, params = MSAT.scenarios[i])
-# }
-# 
-# c(MSAT.scenarios[1], ".params")
+MSAT_alleleProps_Mat <- matrix(nrow=6,ncol=3)
+DNA_alleleProps_Mat <- matrix(nrow=6,ncol=3)
 
 # 1 pop, mig Low ----
 # Generate genind files, from Arlequin outputs and strataG params objects
@@ -54,6 +44,7 @@ MSAT_01pop_migLow_genind <- convertAllArp(arp.path = MSAT_01pop_migLow_arpPath,
 # Allele frequency proportions
 MSAT_01pop_migLow_freqProportions <- sapply(MSAT_01pop_migLow_genind, getAlleleFreqProportions)
 MSAT_allFreqProp_mat <- apply(MSAT_01pop_migLow_freqProportions, 1, mean)
+MSAT_alleleProps_Mat[1,] <- MSAT_allFreqProp_mat
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
   browser()
@@ -85,12 +76,15 @@ exSituRep_mat
 apply(exSituRep_mat, 1, mean); apply(exSituRep_mat, 1, sd) 
 
 # 1 pop, mig High ----
-# Matrices to capture allele frequency proportions and ex situ representation rates
-exSituRep_mat <- matrix(nrow=5)
+
 # Generate genind files, from Arlequin outputs and strataG params objects
 MSAT_01pop_migHigh_arpPath <- paste0(sim.wd,"SimulationOutputs/MSAT_marker/MSAT_01pop_migHigh/")
 MSAT_01pop_migHigh_genind <- convertAllArp(arp.path = MSAT_01pop_migHigh_arpPath, 
                                           params = MSAT_01pop_migHigh.params)
+# Allele frequency proportions
+MSAT_01pop_migHigh_freqProportions <- sapply(MSAT_01pop_migHigh_genind, getAlleleFreqProportions)
+MSAT_allFreqProp_mat <- apply(MSAT_01pop_migHigh_freqProportions, 1, mean)
+MSAT_alleleProps_Mat[2,] <- MSAT_allFreqProp_mat
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
@@ -117,6 +111,10 @@ exSituRep_mat <- matrix(nrow=5)
 MSAT_04pop_migLow_arpPath <- paste0(sim.wd,"SimulationOutputs/MSAT_marker/MSAT_04pop_migLow/")
 MSAT_04pop_migLow_genind <- convertAllArp(arp.path = MSAT_04pop_migLow_arpPath, 
                                           params = MSAT_04pop_migLow.params)
+# Allele frequency proportions
+MSAT_04pop_migLow_freqProportions <- sapply(MSAT_04pop_migLow_genind, getAlleleFreqProportions)
+MSAT_allFreqProp_mat <- apply(MSAT_04pop_migLow_freqProportions, 1, mean)
+MSAT_alleleProps_Mat[3,] <- MSAT_allFreqProp_mat
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
@@ -143,6 +141,10 @@ exSituRep_mat <- matrix(nrow=5)
 MSAT_04pop_migHigh_arpPath <- paste0(sim.wd,"SimulationOutputs/MSAT_marker/MSAT_04pop_migHigh/")
 MSAT_04pop_migHigh_genind <- convertAllArp(arp.path = MSAT_04pop_migHigh_arpPath, 
                                            params = MSAT_04pop_migHigh.params)
+# Allele frequency proportions
+MSAT_04pop_migHigh_freqProportions <- sapply(MSAT_04pop_migHigh_genind, getAlleleFreqProportions)
+MSAT_allFreqProp_mat <- apply(MSAT_04pop_migHigh_freqProportions, 1, mean)
+MSAT_alleleProps_Mat[4,] <- MSAT_allFreqProp_mat
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
@@ -170,6 +172,10 @@ exSituRep_mat <- matrix(nrow=5)
 MSAT_16pop_migLow_arpPath <- paste0(sim.wd,"SimulationOutputs/MSAT_marker/MSAT_16pop_migLow/")
 MSAT_16pop_migLow_genind <- convertAllArp(arp.path = MSAT_16pop_migLow_arpPath, 
                                           params = MSAT_16pop_migLow.params)
+# Allele frequency proportions
+MSAT_16pop_migLow_freqProportions <- sapply(MSAT_16pop_migLow_genind, getAlleleFreqProportions)
+MSAT_allFreqProp_mat <- apply(MSAT_16pop_migLow_freqProportions, 1, mean)
+MSAT_alleleProps_Mat[5,] <- MSAT_allFreqProp_mat
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
@@ -196,6 +202,11 @@ exSituRep_mat <- matrix(nrow=5)
 MSAT_16pop_migHigh_arpPath <- paste0(sim.wd,"SimulationOutputs/MSAT_marker/MSAT_16pop_migHigh/")
 MSAT_16pop_migHigh_genind <- convertAllArp(arp.path = MSAT_16pop_migHigh_arpPath, 
                                            params = MSAT_16pop_migHigh.params)
+# Allele frequency proportions
+MSAT_16pop_migHigh_freqProportions <- sapply(MSAT_16pop_migHigh_genind, getAlleleFreqProportions)
+MSAT_allFreqProp_mat <- apply(MSAT_16pop_migHigh_freqProportions, 1, mean)
+MSAT_alleleProps_Mat[6,] <- MSAT_allFreqProp_mat
+
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
@@ -224,6 +235,10 @@ exSituRep_mat <- matrix(nrow=5)
 DNA_01pop_migLow_arpPath <- paste0(sim.wd,"SimulationOutputs/DNA_marker/DNA_01pop_migLow/")
 DNA_01pop_migLow_genind <- convertAllArp(arp.path = DNA_01pop_migLow_arpPath, 
                                           params = DNA_01pop_migLow.params)
+# Allele frequency proportions
+DNA_01pop_migLow_freqProportions <- sapply(DNA_01pop_migLow_genind, getAlleleFreqProportions)
+DNA_allFreqProp_mat <- apply(DNA_01pop_migLow_freqProportions, 1, mean)
+DNA_alleleProps_Mat[1,] <- DNA_allFreqProp_mat
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
@@ -251,6 +266,10 @@ exSituRep_mat <- matrix(nrow=5)
 DNA_01pop_migHigh_arpPath <- paste0(sim.wd,"SimulationOutputs/DNA_marker/DNA_01pop_migHigh/")
 DNA_01pop_migHigh_genind <- convertAllArp(arp.path = DNA_01pop_migHigh_arpPath, 
                                            params = DNA_01pop_migHigh.params)
+# Allele frequency proportions
+DNA_01pop_migHigh_freqProportions <- sapply(DNA_01pop_migHigh_genind, getAlleleFreqProportions)
+DNA_allFreqProp_mat <- apply(DNA_01pop_migHigh_freqProportions, 1, mean)
+DNA_alleleProps_Mat[2,] <- DNA_allFreqProp_mat
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
@@ -278,6 +297,10 @@ exSituRep_mat <- matrix(nrow=5)
 DNA_04pop_migLow_arpPath <- paste0(sim.wd,"SimulationOutputs/DNA_marker/DNA_04pop_migLow/")
 DNA_04pop_migLow_genind <- convertAllArp(arp.path = DNA_04pop_migLow_arpPath, 
                                           params = DNA_04pop_migLow.params)
+# Allele frequency proportions
+DNA_04pop_migLow_freqProportions <- sapply(DNA_04pop_migLow_genind, getAlleleFreqProportions)
+DNA_allFreqProp_mat <- apply(DNA_04pop_migLow_freqProportions, 1, mean)
+DNA_alleleProps_Mat[3,] <- DNA_allFreqProp_mat
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
@@ -305,6 +328,10 @@ exSituRep_mat <- matrix(nrow=5)
 DNA_04pop_migHigh_arpPath <- paste0(sim.wd,"SimulationOutputs/DNA_marker/DNA_04pop_migHigh/")
 DNA_04pop_migHigh_genind <- convertAllArp(arp.path = DNA_04pop_migHigh_arpPath, 
                                            params = DNA_04pop_migHigh.params)
+# Allele frequency proportions
+DNA_04pop_migHigh_freqProportions <- sapply(DNA_04pop_migHigh_genind, getAlleleFreqProportions)
+DNA_allFreqProp_mat <- apply(DNA_04pop_migHigh_freqProportions, 1, mean)
+DNA_alleleProps_Mat[4,] <- DNA_allFreqProp_mat
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
@@ -332,6 +359,10 @@ exSituRep_mat <- matrix(nrow=5)
 DNA_16pop_migLow_arpPath <- paste0(sim.wd,"SimulationOutputs/DNA_marker/DNA_16pop_migLow/")
 DNA_16pop_migLow_genind <- convertAllArp(arp.path = DNA_16pop_migLow_arpPath, 
                                           params = DNA_16pop_migLow.params)
+# Allele frequency proportions
+DNA_16pop_migLow_freqProportions <- sapply(DNA_16pop_migLow_genind, getAlleleFreqProportions)
+DNA_allFreqProp_mat <- apply(DNA_16pop_migLow_freqProportions, 1, mean)
+DNA_alleleProps_Mat[5,] <- DNA_allFreqProp_mat
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
@@ -359,6 +390,10 @@ exSituRep_mat <- matrix(nrow=5)
 DNA_16pop_migHigh_arpPath <- paste0(sim.wd,"SimulationOutputs/DNA_marker/DNA_16pop_migHigh/")
 DNA_16pop_migHigh_genind <- convertAllArp(arp.path = DNA_16pop_migHigh_arpPath, 
                                            params = DNA_16pop_migHigh.params)
+# Allele frequency proportions
+DNA_16pop_migHigh_freqProportions <- sapply(DNA_16pop_migHigh_genind, getAlleleFreqProportions)
+DNA_allFreqProp_mat <- apply(DNA_16pop_migHigh_freqProportions, 1, mean)
+DNA_alleleProps_Mat[6,] <- DNA_allFreqProp_mat
 
 # Loop through different garden proportions, appending results to matrices
 for(i in 1:length(gardenRates)){
