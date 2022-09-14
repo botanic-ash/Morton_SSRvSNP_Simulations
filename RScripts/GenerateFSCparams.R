@@ -3,11 +3,14 @@
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 # This script uses strataG to create the fastsimcoal2 (fsc) parameter files used for the SSR v. SNP comparison project
-# Then, those simulation parameter files are run
+# Then, those parameter files are used to run fsc simulations. Arlequin outputs are converted to genind,
+# and both the strataG params objects and the genind objects are saved to .Rdata files for long-term storage.
+
 # After declaring variables (used throughout the script), the code is broken into 
 # sections according to which marker type is used for simulations ("MSAT" or "DNA").
 
-# Note that every time this script is run/sourced, new fsc output files are generated
+# Note that every time this script is run/sourced, output files are generated:
+# fsc outputs (Arlequin files, etc.), strataG params objects, and genind objects
 
 library(strataG)
 library(adegenet)
@@ -83,7 +86,8 @@ DNAgenetics <- fscSettingsGenetics(dna, dna, dna, dna, num.chrom = 5)
 
 # ---- MICROSATELLITE SIMULATIONS ----
 # Outputs are stored within a folder in the parent directory named "MSAT_marker"
-setwd(paste0(sim.wd,"MSAT_marker"))
+msat.wd <- paste0(sim.wd,"MSAT_marker/")
+setwd(msat.wd)
 # 1 POPULATION ----
 # Write parameter files. Make a mighHigh .par file as well, even though it's identical to migLow (with 1 population)
 MSAT_01pop_migLow.params <- fscWrite(demes = demes1, genetics = MSATgenetics, 
@@ -94,9 +98,17 @@ print("MICROSATELLITES: 1 population, low migration")
 MSAT_01pop_migLow.params <- fscRun(MSAT_01pop_migLow.params, num.sims = num_reps, exec = fscVersion)
 print("MICROSATELLITES: 1 population, high migration")
 MSAT_01pop_migHigh.params <- fscRun(MSAT_01pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
-# Save params objects to Rdata files, for long term storage
-saveRDS(MSAT_01pop_migLow.params, file = paste0("params.MSAT_01pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_01pop_migHigh.params, file = paste0("params.MSAT_01pop_migHigh.",Sys.Date(),".Rdata"))
+# Convert Arlequin outputs to genind
+print("%%% Convert Arlequin outputs to genind")
+MSAT_01pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_01pop_migLow/"), 
+                                          params = MSAT_01pop_migLow.params)
+MSAT_01pop_migHigh.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_01pop_migHigh/"), 
+                                          params = MSAT_01pop_migHigh.params)
+# Save genind and params objects to Rdata files, for long term storage
+saveRDS(MSAT_01pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_01pop_migLow.params, file = paste0("data.MSAT/params.MSAT_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_01pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_01pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_01pop_migHigh.params, file = paste0("data.MSAT/params.MSAT_01pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 4 POPULATIONS ----
 # Write parameter files
@@ -109,9 +121,17 @@ print("MICROSATELLITES: 4 populations, low migration")
 MSAT_04pop_migLow.params <- fscRun(MSAT_04pop_migLow.params, num.sims = num_reps, exec = fscVersion)
 print("MICROSATELLITES: 4 populations, high migration")
 MSAT_04pop_migHigh.params <- fscRun(MSAT_04pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
-# Save params objects to Rdata files, for long term storage
-saveRDS(MSAT_04pop_migLow.params, file = paste0("params.MSAT_04pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_04pop_migHigh.params, file = paste0("params.MSAT_04pop_migHigh.",Sys.Date(),".Rdata"))
+# Convert Arlequin outputs to genind
+print("%%% Convert Arlequin outputs to genind")
+MSAT_04pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_04pop_migLow/"), 
+                                          params = MSAT_04pop_migLow.params)
+MSAT_04pop_migHigh.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_04pop_migHigh/"), 
+                                           params = MSAT_04pop_migHigh.params)
+# Save genind and params objects to Rdata files, for long term storage
+saveRDS(MSAT_04pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_04pop_migLow.params, file = paste0("data.MSAT/params.MSAT_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_04pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_04pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_04pop_migHigh.params, file = paste0("data.MSAT/params.MSAT_04pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 16 POPULATIONS ----
 # Write parameter files
@@ -124,13 +144,22 @@ print("MICROSATELLITES: 16 populations, low migration")
 MSAT_16pop_migLow.params <- fscRun(MSAT_16pop_migLow.params, num.sims = num_reps, exec = fscVersion)
 print("MICROSATELLITES: 16 populations, high migration")
 MSAT_16pop_migHigh.params <- fscRun(MSAT_16pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
-# Save params objects to Rdata files, for long term storage
-saveRDS(MSAT_16pop_migLow.params, file = paste0("params.MSAT_16pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_16pop_migHigh.params, file = paste0("params.MSAT_16pop_migHigh.",Sys.Date(),".Rdata"))
+# Convert Arlequin outputs to genind
+print("%%% Convert Arlequin outputs to genind")
+MSAT_16pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_16pop_migLow/"), 
+                                          params = MSAT_16pop_migLow.params)
+MSAT_16pop_migHigh.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_16pop_migHigh/"), 
+                                           params = MSAT_16pop_migHigh.params)
+# Save genind and params objects to Rdata files, for long term storage
+saveRDS(MSAT_16pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_16pop_migLow.params, file = paste0("data.MSAT/params.MSAT_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_16pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_16pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_16pop_migHigh.params, file = paste0("data.MSAT/params.MSAT_16pop_migHigh.",Sys.Date(),".Rdata"))
 
 # ---- DNA SIMULATIONS ----
 # Outputs are stored within a folder in the parent directory named "DNA_marker"
-setwd(paste0(sim.wd,"DNA_marker"))
+dna.wd <- paste0(sim.wd,"DNA_marker/")
+setwd(dna.wd)
 # 1 POPULATION ----
 # Write parameter files. Make a mighHigh .par file as well, even though it's identical to migLow (with 1 population)
 DNA_01pop_migLow.params <- fscWrite(demes = demes1, genetics = DNAgenetics, label = "DNA_01pop_migLow", use.wd=TRUE)
@@ -140,9 +169,17 @@ print("DNA: 1 population, low migration")
 DNA_01pop_migLow.params <- fscRun(DNA_01pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 print("DNA: 1 population, high migration")
 DNA_01pop_migHigh.params <- fscRun(DNA_01pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-# Save params objects to Rdata files, for long term storage
-saveRDS(DNA_01pop_migLow.params, file = paste0("params.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_01pop_migHigh.params, file = paste0("params.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
+# Convert Arlequin outputs to genind
+print("%%% Convert Arlequin outputs to genind")
+DNA_01pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_01pop_migLow/"), 
+                                          params = DNA_01pop_migLow.params)
+DNA_01pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_01pop_migHigh/"), 
+                                           params = DNA_01pop_migHigh.params)
+# Save genind and params objects to Rdata files, for long term storage
+saveRDS(DNA_01pop_migLow.genind, file = paste0("data.DNA/genind.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_01pop_migLow.params, file = paste0("data.DNA/params.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_01pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_01pop_migHigh.params, file = paste0("data.DNA/params.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 4 POPULATIONS ----
 # Write parameter files
@@ -155,9 +192,17 @@ print("DNA: 4 populations, low migration")
 DNA_04pop_migLow.params <- fscRun(DNA_04pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 print("DNA: 4 populations, high migration")
 DNA_04pop_migHigh.params <- fscRun(DNA_04pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-# Save params objects to Rdata files, for long term storage
-saveRDS(DNA_04pop_migLow.params, file = paste0("params.DNA_04pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_04pop_migHigh.params, file = paste0("params.DNA_04pop_migHigh.",Sys.Date(),".Rdata"))
+# Convert Arlequin outputs to genind
+print("%%% Convert Arlequin outputs to genind")
+DNA_04pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_04pop_migLow/"), 
+                                         params = DNA_04pop_migLow.params)
+DNA_04pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_04pop_migHigh/"), 
+                                          params = DNA_04pop_migHigh.params)
+# Save genind and params objects to Rdata files, for long term storage
+saveRDS(DNA_04pop_migLow.genind, file = paste0("data.DNA/genind.DNA_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_04pop_migLow.params, file = paste0("data.DNA/params.DNA_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_04pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_04pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_04pop_migHigh.params, file = paste0("data.DNA/params.DNA_04pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 16 POPULATIONS ----
 # Write parameter files
@@ -170,6 +215,14 @@ print("DNA: 16 populations, low migration")
 DNA_16pop_migLow.params <- fscRun(DNA_16pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 print("DNA: 16 populations, high migration")
 DNA_16pop_migHigh.params <- fscRun(DNA_16pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-# Save params objects to Rdata files, for long term storage
-saveRDS(DNA_16pop_migLow.params, file = paste0("params.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_16pop_migHigh.params, file = paste0("params.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
+# Convert Arlequin outputs to genind
+print("%%% Convert Arlequin outputs to genind")
+DNA_16pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_16pop_migLow/"), 
+                                         params = DNA_16pop_migLow.params)
+DNA_16pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_16pop_migHigh/"), 
+                                          params = DNA_16pop_migHigh.params)
+# Save genind and params objects to Rdata files, for long term storage
+saveRDS(DNA_16pop_migLow.genind, file = paste0("data.DNA/genind.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_16pop_migLow.params, file = paste0("data.DNA/params.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_16pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_16pop_migHigh.params, file = paste0("data.DNA/params.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
