@@ -15,5 +15,11 @@ TEST_ChrStr4_SNPflag_fscParams
 draft_fscParams
 fscParams
 
+# Simulated outputs of demo_dnaMarkerIssue folder
+SimulationOutputs/demo_dnaMarkerIssue/demo_dnaMarkerIssue.log
+SimulationOutputs/demo_dnaMarkerIssue/demo_dnaMarkerIssue.par
+SimulationOutputs/demo_dnaMarkerIssue/demo_dnaMarkerIssue/
+SimulationOutputs/demo_dnaMarkerIssue/seed.txt
+
 # Old R scripts
 samplingOutputs.R
