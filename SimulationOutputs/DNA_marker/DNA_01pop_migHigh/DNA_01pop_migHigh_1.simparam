@@ -29,22 +29,22 @@ With the same chromosomal structure
 Number of linkage blocks to simulate in structure 1: 4
 
    25 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000000100   0.33333
 
    25 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000000100   0.33333
 
    25 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000000100   0.33333
 
    25 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000100000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000000100   0.33333
 
 
 
-Random generator initialized with : 154374
+Random generator initialized with : 604010
 
 
 
-done in 0.721 secs
+done in 0.637 secs
 
