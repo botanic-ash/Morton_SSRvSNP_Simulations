@@ -78,7 +78,7 @@ histEvent16 <- fscSettingsEvents(hist.event0,hist.event1,hist.event2,hist.event3
 msats <- fscBlock_microsat(num.loci = 1, mut.rate = 5e-4, range.constraint = 10)
 MSATgenetics <- fscSettingsGenetics(msats, num.chrom = 20)
 # DNA Genetic parameters
-dna <- fscBlock_dna(sequence.length = 25, mut.rate = 1e-5)
+dna <- fscBlock_dna(sequence.length = 25, mut.rate = 1e-8)
 DNAgenetics <- fscSettingsGenetics(dna, dna, dna, dna, num.chrom = 5)
 
 # ---- MICROSATELLITE SIMULATIONS ----
