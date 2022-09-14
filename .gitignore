@@ -21,5 +21,9 @@ SimulationOutputs/demo_dnaMarkerIssue/demo_dnaMarkerIssue.par
 SimulationOutputs/demo_dnaMarkerIssue/demo_dnaMarkerIssue/
 SimulationOutputs/demo_dnaMarkerIssue/seed.txt
 
+# Folder of strataG params objects, which will be updated ecerytime the GenerateFSCparams.R script is run
+SimulationOutputs/MSAT_marker/params.MSAT
+SimulationOutputs/DNA_marker/params.DNA
+
 # Old R scripts
 samplingOutputs.R
