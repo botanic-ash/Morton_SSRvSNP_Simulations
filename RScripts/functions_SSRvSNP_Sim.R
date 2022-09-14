@@ -47,7 +47,7 @@ convertAllArp <- function(arp.path, params){
   return(genind.list)
 }
 
-# Hard-coded function for reading in strataG MSAT params files, in specified directory
+# Hard-coded function for reading in MSAT strataG params files, in specified directory
 readParams_MSAT <- function(params.wd){
   # Retrieve original working directory, to reset to after conversion
   original.wd <- getwd()
@@ -72,7 +72,32 @@ readParams_MSAT <- function(params.wd){
   setwd(original.wd)
 }
 
-# Hard-coded function for reading in strataG DNA params files, in specified directory
+# Hard-coded function for reading in MSAT genind files, in specified directory
+readGeninds_MSAT <- function(geninds.wd){
+  # Retrieve original working directory, to reset to after conversion
+  original.wd <- getwd()
+  # Navigate to the folder containing genind objects
+  setwd(geninds.wd)
+  # The ^ character allows any file with the given suffix to be read in, allowing for file name flexibility
+  # [length(dir(pattern))] means if multiple genind objects are present in the directory, read the most recent one
+  # <<- means pass the variable to the global environment (otherwise, variable will be kept local, and unseen)
+  MSAT_01pop_migLow.genind <<- readRDS(
+    dir(pattern = "^genind.MSAT_01pop_migLow")[length(dir(pattern = "^genind.MSAT_01pop_migLow"))])
+  MSAT_01pop_migHigh.genind <<- readRDS(
+    dir(pattern = "^genind.MSAT_01pop_migHigh")[length(dir(pattern = "^genind.MSAT_01pop_migHigh"))])
+  MSAT_04pop_migLow.genind <<- readRDS(
+    dir(pattern = "^genind.MSAT_04pop_migLow")[length(dir(pattern = "^^genind.MSAT_04pop_migLow"))])
+  MSAT_04pop_migHigh.genind <<- readRDS(
+    dir(pattern = "^genind.MSAT_04pop_migHigh")[length(dir(pattern = "^genind.MSAT_04pop_migHigh"))])
+  MSAT_16pop_migLow.genind <<- readRDS(
+    dir(pattern = "^genind.MSAT_16pop_migLow")[length(dir(pattern = "^genind.MSAT_16pop_migLow"))])
+  MSAT_16pop_migHigh.genind <<- readRDS(
+    dir(pattern = "^genind.MSAT_16pop_migHigh")[length(dir(pattern = "^genind.MSAT_16pop_migHigh"))])
+  # Reset to original working directory
+  setwd(original.wd)
+}
+
+# Hard-coded function for reading in DNA strataG params files, in specified directory
 readParams_DNA <- function(params.wd){
   # Retrieve original working directory, to reset to after conversion
   original.wd <- getwd()
@@ -93,6 +118,31 @@ readParams_DNA <- function(params.wd){
     dir(pattern = "^params.DNA_16pop_migLow")[length(dir(pattern = "^params.DNA_16pop_migLow"))])
   DNA_16pop_migHigh.params <<- readRDS(
     dir(pattern = "^params.DNA_16pop_migHigh")[length(dir(pattern = "^params.DNA_16pop_migHigh"))])
+  # Reset to original working directory
+  setwd(original.wd)
+}
+
+# Hard-coded function for reading in DNA genind files, in specified directory
+readGeninds_DNA <- function(geninds.wd){
+  # Retrieve original working directory, to reset to after conversion
+  original.wd <- getwd()
+  # Navigate to the folder containing genind objects
+  setwd(geninds.wd)
+  # The ^ character allows any file with the given suffix to be read in, allowing for file name flexibility
+  # [length(dir(pattern))] means if multiple genind objects are present in the directory, read the most recent one
+  # <<- means pass the variable to the global environment (otherwise, variable will be kept local, and unseen)
+  DNA_01pop_migLow.genind <<- readRDS(
+    dir(pattern = "^genind.DNA_01pop_migLow")[length(dir(pattern = "^genind.DNA_01pop_migLow"))])
+  DNA_01pop_migHigh.genind <<- readRDS(
+    dir(pattern = "^genind.DNA_01pop_migHigh")[length(dir(pattern = "^genind.DNA_01pop_migHigh"))])
+  DNA_04pop_migLow.genind <<- readRDS(
+    dir(pattern = "^genind.DNA_04pop_migLow")[length(dir(pattern = "^^genind.DNA_04pop_migLow"))])
+  DNA_04pop_migHigh.genind <<- readRDS(
+    dir(pattern = "^genind.DNA_04pop_migHigh")[length(dir(pattern = "^genind.DNA_04pop_migHigh"))])
+  DNA_16pop_migLow.genind <<- readRDS(
+    dir(pattern = "^genind.DNA_16pop_migLow")[length(dir(pattern = "^genind.DNA_16pop_migLow"))])
+  DNA_16pop_migHigh.genind <<- readRDS(
+    dir(pattern = "^genind.DNA_16pop_migHigh")[length(dir(pattern = "^genind.DNA_16pop_migHigh"))])
   # Reset to original working directory
   setwd(original.wd)
 }
@@ -140,6 +190,18 @@ getAlleleFreqProportions <- function(gen.obj){
   return(freqProportions)
 }
 
+# Function for summarizing allele frequency proportions across replicates
+summarize_alleleFreqProportions <- function(freqProportions){
+  # Calculate the mean allele frequency proportions across replicates using apply
+  # (Rows are allele frequency categories, columns are replicates. So margin value is 1)
+  means <- apply(freqProportions, 1, mean)
+  # Calculate standard deviations
+  stdevs <- apply(freqProportions, 1, sd)
+  # Combine statistics into a matrix, and return
+  freqPropStats <- cbind(means, stdevs)
+  return(freqPropStats)
+}
+
 # Function for reporting ex situ representation rates, using a single genind object
 exSituRepresentation <- function(gen.obj){
   # Generate numerical vectors corresponding to garden and wild rows
@@ -161,6 +223,18 @@ exSituRepresentation <- function(gen.obj){
   # Build list of rates
   repRates <- c(total,veryCommon,common,lowFrequency,rare)
   names(repRates) <- c("Total","Very common (>10%)","Common (>5%)","Low frequency (1% -- 10%)","Rare (<1%)")
-  # Print representation rates and return
+  # Return vector of rates
   return(repRates)
+}
+
+# Function for summarizing ex situ representation rates across replicates
+summarize_exSituRepresentation <- function(repRates){
+  # Calculate the mean ex situ representation rate across replicates using apply
+  # (Rows are rate categories, columns are replicates. So margin value is 1)
+  means <- apply(repRates, 1, mean)
+  # Calculate standard deviations
+  stdevs <- apply(repRates, 1, sd)
+  # Combine statistics into a matrix, and return
+  repStats <- cbind(means, stdevs)
+  return(repStats)
 }
