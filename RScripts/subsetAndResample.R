@@ -20,8 +20,10 @@ source("RScripts/functions_SSRvSNP_Sim.R")
 # Alternatively, source the genind objects from previously run simulations, using readGeninds functions
 # Microsatellites
 readGeninds_MSAT(paste0(sim.wd,"SimulationOutputs/MSAT_marker/data.MSAT/"))
-# DNA
+# DNA, low mutation
 readGeninds_DNA(paste0(sim.wd,"SimulationOutputs/DNA_marker/data.DNA/"))
+# DNA, high mutation
+readGeninds_DNA(paste0(sim.wd,"SimulationOutputs/DNA_highMut_marker/data.DNA/"))
 
 # ---- WORKING: EXAMPLES USING A GARDEN RATE OF 5% ----
 # 1. Summarize results for MSAT
@@ -30,20 +32,64 @@ readGeninds_DNA(paste0(sim.wd,"SimulationOutputs/DNA_marker/data.DNA/"))
 # 2. Summarize results for DNA, low mutation (1e-8)
 # 3. Summarize results for DNA, high mutation (1e-5)
 gardenRate <- 0.05
+# Make list of genind objects
+# (This could be a part of the readGeninds_MSAT/DNA functions...consider updating later)
 MSAT_geninds <- list(MSAT_01pop_migLow.genind, MSAT_01pop_migHigh.genind, MSAT_04pop_migLow.genind,
                      MSAT_04pop_migHigh.genind, MSAT_16pop_migLow.genind, MSAT_16pop_migHigh.genind)
-MSAT_repRateSummaries <- matrix(NA, nrow=length(MSAT_geninds), ncol=2)
 DNA_geninds <- list(DNA_01pop_migLow.genind, DNA_01pop_migHigh.genind, DNA_04pop_migLow.genind,
                     DNA_04pop_migHigh.genind, DNA_16pop_migLow.genind, DNA_16pop_migHigh.genind)
+DNA_highMut_geninds <- list(DNA_highMut_01pop_migLow.genind, DNA_highMut_01pop_migHigh.genind, DNA_highMut_04pop_migLow.genind,
+                    DNA_highMut_04pop_migHigh.genind, DNA_highMut_16pop_migLow.genind, DNA_highMut_16pop_migHigh.genind)
+# Make arrays for allele frequency proportions and ex situ representation rates (both markers)
+# MSATs
+MSAT_alleleFreqSummaries <- array(dim = c(3, 2, length(MSAT_geninds)))
+MSAT_repRateSummaries <- array(dim = c(5, 2, length(MSAT_geninds)))
+# DNA: low mutation (1e-8)
+DNA_alleleFreqSummaries <- array(dim = c(3, 2, length(DNA_geninds)))
+DNA_repRateSummaries <- array(dim = c(5, 2, length(DNA_geninds)))
+# DNA: high mutation (1e-8)
+DNA_highMut_alleleFreqSummaries <- array(dim = c(3, 2, length(DNA_highMut_geninds)))
+DNA_highMut_repRateSummaries <- array(dim = c(5, 2, length(DNA_highMut_geninds)))
+
 # %%% MSAT ----
+# Summarize allele frequency proportions and ex situ representation rates across scenarios
 for (i in 1:length(MSAT_geninds)){
-  browser
+  # Calculate and summarize allele frequency scenarios. Each array slot is a different scenario
+  alleleFrequencies <- sapply(MSAT_geninds[[i]], getAlleleFreqProportions)
+  MSAT_alleleFreqSummaries[,,i] <- summarize_alleleFreqProportions(alleleFrequencies)
   # Assign individuals to garden population
   MSAT_geninds[[i]] <- lapply(MSAT_geninds[[i]], assignGardenSamples, proportion=gardenRate)
-  # Calculate and summarize ex situ representation rates
+  # Calculate and summarize ex situ representation rates. Each array slot is a different scenario
   representationRates <- sapply(MSAT_geninds[[i]], exSituRepresentation)
-  MSAT_repRateSummaries[i,] <- summarize_exSituRepresentation(representationRates)
+  MSAT_repRateSummaries[,,i] <- summarize_exSituRepresentation(representationRates)
 }
+
+# %%% DNA, low mutation ----
+# Summarize allele frequency proportions and ex situ representation rates across scenarios
+for (i in 1:length(DNA_geninds)){
+  # Calculate and summarize allele frequency scenarios. Each array slot is a different scenario
+  alleleFrequencies <- sapply(DNA_geninds[[i]], getAlleleFreqProportions)
+  DNA_alleleFreqSummaries[,,i] <- summarize_alleleFreqProportions(alleleFrequencies)
+  # Assign individuals to garden population
+  DNA_geninds[[i]] <- lapply(DNA_geninds[[i]], assignGardenSamples, proportion=gardenRate)
+  # Calculate and summarize ex situ representation rates. Each array slot is a different scenario
+  representationRates <- sapply(DNA_geninds[[i]], exSituRepresentation)
+  DNA_repRateSummaries[,,i] <- summarize_exSituRepresentation(representationRates)
+}
+
+# %%% DNA, high mutation ----
+# Summarize allele frequency proportions and ex situ representation rates across scenarios
+for (i in 1:length(DNA_highMut_geninds)){
+  # Calculate and summarize allele frequency scenarios. Each array slot is a different scenario
+  alleleFrequencies <- sapply(DNA_highMut_geninds[[i]], getAlleleFreqProportions)
+  DNA_highMut_alleleFreqSummaries[,,i] <- summarize_alleleFreqProportions(alleleFrequencies)
+  # Assign individuals to garden population
+  DNA_highMut_geninds[[i]] <- lapply(DNA_highMut_geninds[[i]], assignGardenSamples, proportion=gardenRate)
+  # Calculate and summarize ex situ representation rates. Each array slot is a different scenario
+  representationRates <- sapply(DNA_highMut_geninds[[i]], exSituRepresentation)
+  DNA_highMut_repRateSummaries[,,i] <- summarize_exSituRepresentation(representationRates)
+}
+
 # 1 pop, mig Low ----
 # Assign individuals to garden population
 MSAT_01pop_migLow.genind <- lapply(MSAT_01pop_migLow.genind, assignGardenSamples, proportion=gardenRate)
