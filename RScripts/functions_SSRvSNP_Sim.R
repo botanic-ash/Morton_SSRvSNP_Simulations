@@ -12,6 +12,8 @@ library(adegenet)
 library(stringr)
 library(hierfstat)
 
+# TO DO: INCORPORATE PREFIX ARGUMENTS TO ALLOW FOR DIFFERENT PARAMS/GENIND OBJECTS TO BE READ IN
+
 # ---- FUNCTIONS ----
 # PROCESSING ARLEQUIN/STRATAG FILES ----
 # Function converting Arlequin output to a single genind object (through gtypes format)
@@ -48,7 +50,7 @@ convertAllArp <- function(arp.path, params){
 }
 
 # Hard-coded function for reading in MSAT strataG params files, in specified directory
-readParams_MSAT <- function(params.wd){
+readParams_MSAT <- function(params.wd, prefix){
   # Retrieve original working directory, to reset to after conversion
   original.wd <- getwd()
   # Navigate to the folder containing strataG params objects
@@ -61,7 +63,7 @@ readParams_MSAT <- function(params.wd){
   MSAT_01pop_migHigh.params <<- readRDS(
     dir(pattern = "^params.MSAT_01pop_migHigh")[length(dir(pattern = "^params.MSAT_01pop_migHigh"))])
   MSAT_04pop_migLow.params <<- readRDS(
-    dir(pattern = "^params.MSAT_04pop_migLow")[length(dir(pattern = "^^params.MSAT_04pop_migLow"))])
+    dir(pattern = "^params.MSAT_04pop_migLow")[length(dir(pattern = "^params.MSAT_04pop_migLow"))])
   MSAT_04pop_migHigh.params <<- readRDS(
     dir(pattern = "^params.MSAT_04pop_migHigh")[length(dir(pattern = "^params.MSAT_04pop_migHigh"))])
   MSAT_16pop_migLow.params <<- readRDS(
@@ -73,7 +75,7 @@ readParams_MSAT <- function(params.wd){
 }
 
 # Hard-coded function for reading in MSAT genind files, in specified directory
-readGeninds_MSAT <- function(geninds.wd){
+readGeninds_MSAT <- function(geninds.wd, prefix){
   # Retrieve original working directory, to reset to after conversion
   original.wd <- getwd()
   # Navigate to the folder containing genind objects
@@ -86,7 +88,7 @@ readGeninds_MSAT <- function(geninds.wd){
   MSAT_01pop_migHigh.genind <<- readRDS(
     dir(pattern = "^genind.MSAT_01pop_migHigh")[length(dir(pattern = "^genind.MSAT_01pop_migHigh"))])
   MSAT_04pop_migLow.genind <<- readRDS(
-    dir(pattern = "^genind.MSAT_04pop_migLow")[length(dir(pattern = "^^genind.MSAT_04pop_migLow"))])
+    dir(pattern = "^genind.MSAT_04pop_migLow")[length(dir(pattern = "^genind.MSAT_04pop_migLow"))])
   MSAT_04pop_migHigh.genind <<- readRDS(
     dir(pattern = "^genind.MSAT_04pop_migHigh")[length(dir(pattern = "^genind.MSAT_04pop_migHigh"))])
   MSAT_16pop_migLow.genind <<- readRDS(
@@ -98,7 +100,7 @@ readGeninds_MSAT <- function(geninds.wd){
 }
 
 # Hard-coded function for reading in DNA strataG params files, in specified directory
-readParams_DNA <- function(params.wd){
+readParams_DNA <- function(params.wd, prefix){
   # Retrieve original working directory, to reset to after conversion
   original.wd <- getwd()
   # Navigate to the folder containing strataG params objects
@@ -111,7 +113,7 @@ readParams_DNA <- function(params.wd){
   DNA_01pop_migHigh.params <<- readRDS(
     dir(pattern = "^params.DNA_01pop_migHigh")[length(dir(pattern = "^params.DNA_01pop_migHigh"))])
   DNA_04pop_migLow.params <<- readRDS(
-    dir(pattern = "^params.DNA_04pop_migLow")[length(dir(pattern = "^^params.DNA_04pop_migLow"))])
+    dir(pattern = "^params.DNA_04pop_migLow")[length(dir(pattern = "^params.DNA_04pop_migLow"))])
   DNA_04pop_migHigh.params <<- readRDS(
     dir(pattern = "^params.DNA_04pop_migHigh")[length(dir(pattern = "^params.DNA_04pop_migHigh"))])
   DNA_16pop_migLow.params <<- readRDS(
@@ -123,7 +125,7 @@ readParams_DNA <- function(params.wd){
 }
 
 # Hard-coded function for reading in DNA genind files, in specified directory
-readGeninds_DNA <- function(geninds.wd){
+readGeninds_DNA <- function(geninds.wd, prefix){
   # Retrieve original working directory, to reset to after conversion
   original.wd <- getwd()
   # Navigate to the folder containing genind objects
@@ -136,7 +138,7 @@ readGeninds_DNA <- function(geninds.wd){
   DNA_01pop_migHigh.genind <<- readRDS(
     dir(pattern = "^genind.DNA_01pop_migHigh")[length(dir(pattern = "^genind.DNA_01pop_migHigh"))])
   DNA_04pop_migLow.genind <<- readRDS(
-    dir(pattern = "^genind.DNA_04pop_migLow")[length(dir(pattern = "^^genind.DNA_04pop_migLow"))])
+    dir(pattern = "^genind.DNA_04pop_migLow")[length(dir(pattern = "^genind.DNA_04pop_migLow"))])
   DNA_04pop_migHigh.genind <<- readRDS(
     dir(pattern = "^genind.DNA_04pop_migHigh")[length(dir(pattern = "^genind.DNA_04pop_migHigh"))])
   DNA_16pop_migLow.genind <<- readRDS(
