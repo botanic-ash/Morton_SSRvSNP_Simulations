@@ -53,7 +53,7 @@ colnames(DNA_highMut_alleleFreqSummaries) <- colnames(DNA_highMut_repRateSummari
 # Summarize allele frequency proportions and ex situ representation rates across scenarios
 for (i in 1:length(MSAT_geninds)){
   # Calculate and summarize allele frequency scenarios. Each array slot is a different scenario
-  alleleFrequencies <- sapply(MSAT_geninds[[i]], getAlleleFreqProportions)
+  alleleFrequencies <- sapply(MSAT_geninds[[i]], getWildAlleleFreqProportions)
   MSAT_alleleFreqSummaries[,,i] <- summarize_alleleFreqProportions(alleleFrequencies)
   # Assign individuals to garden population
   MSAT_geninds[[i]] <- lapply(MSAT_geninds[[i]], assignGardenSamples, proportion=gardenRate)
@@ -67,7 +67,7 @@ round(MSAT_alleleFreqSummaries, 2) ; round(MSAT_repRateSummaries, 2)
 # Summarize allele frequency proportions and ex situ representation rates across scenarios
 for (i in 1:length(DNA_geninds)){
   # Calculate and summarize allele frequency scenarios. Each array slot is a different scenario
-  alleleFrequencies <- sapply(DNA_geninds[[i]], getAlleleFreqProportions)
+  alleleFrequencies <- sapply(DNA_geninds[[i]], getWildAlleleFreqProportions)
   DNA_alleleFreqSummaries[,,i] <- summarize_alleleFreqProportions(alleleFrequencies)
   # Assign individuals to garden population
   DNA_geninds[[i]] <- lapply(DNA_geninds[[i]], assignGardenSamples, proportion=gardenRate)
@@ -81,7 +81,7 @@ round(DNA_alleleFreqSummaries, 2) ; round(DNA_repRateSummaries, 2)
 # Summarize allele frequency proportions and ex situ representation rates across scenarios
 for (i in 1:length(DNA_highMut_geninds)){
   # Calculate and summarize allele frequency scenarios. Each array slot is a different scenario
-  alleleFrequencies <- sapply(DNA_highMut_geninds[[i]], getAlleleFreqProportions)
+  alleleFrequencies <- sapply(DNA_highMut_geninds[[i]], getWildAlleleFreqProportions)
   DNA_highMut_alleleFreqSummaries[,,i] <- summarize_alleleFreqProportions(alleleFrequencies)
   # Assign individuals to garden population
   DNA_highMut_geninds[[i]] <- lapply(DNA_highMut_geninds[[i]], assignGardenSamples, proportion=gardenRate)
