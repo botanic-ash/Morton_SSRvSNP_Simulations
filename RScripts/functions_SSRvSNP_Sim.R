@@ -170,7 +170,7 @@ assignGardenSamples <- function(genind.obj, proportion=0.2){
   return(genind.obj)
 }
 
-# Function for generating a vector of allele frequencies from a genind object
+# Function for generating a vector of wild allele frequencies from a genind object
 getWildFreqs <- function(gen.obj){
   # Build a vector of rows corresponding to wild individuals (those that do not have a population of "garden")
   wildRows <- which(pop(gen.obj)!="garden")
@@ -179,8 +179,15 @@ getWildFreqs <- function(gen.obj){
   return(wildFreqs)
 }
 
-# Exploratory function for reporting the proprtion of alleles of each category, from a frequency vector
-getAlleleFreqProportions <- function(gen.obj){
+# Function for generating a vector of total allele frequencies from a genind object
+getTotalFreqs <- function(gen.obj){
+  # Build allele frequency vector: colSums of alleles (removing NAs), divided by number of haplotypes (Ne*2)
+  totalFreqs <- colSums(gen.obj@tab, na.rm = TRUE)/(nInd(gen.obj)*2)*100
+  return(totalFreqs)
+}
+
+# Exploratory function for reporting the proprtion of alleles of each category, from a (wild) frequency vector
+getWildAlleleFreqProportions <- function(gen.obj){
   # Build the wild allele frequency vector, using the getWildFreqs function
   wildFreqs <- getWildFreqs(gen.obj)
   # Very common
@@ -192,6 +199,25 @@ getAlleleFreqProportions <- function(gen.obj){
   # Rare
   rareAlleles <- wildFreqs[which(wildFreqs < 1)]
   rare_prop <- (length(rareAlleles)/length(wildFreqs))*100
+  # Build list of proportions, and return
+  freqProportions <- c(veryCommon_prop, lowFrequency_prop, rare_prop)
+  names(freqProportions) <- c("Very common (>10%)","Low frequency (1% -- 10%)","Rare (<1%)")
+  return(freqProportions)
+}
+
+# Exploratory function for reporting the proprtion of alleles of each category, from a frequency vector (of ALL alleles--garden AND wild)
+getTotalAlleleFreqProportions <- function(gen.obj){
+  # Build the wild allele frequency vector, using the getWildFreqs function
+  totalFreqs <- getTotalFreqs(gen.obj)
+  # Very common
+  veryCommonAlleles <- totalFreqs[which(totalFreqs > 10)]
+  veryCommon_prop <- (length(veryCommonAlleles)/length(totalFreqs))*100
+  # Low frequency
+  lowFrequencyAlleles <- totalFreqs[which(totalFreqs < 10 & totalFreqs > 1)]
+  lowFrequency_prop <- (length(lowFrequencyAlleles)/length(totalFreqs))*100
+  # Rare
+  rareAlleles <- totalFreqs[which(totalFreqs < 1)]
+  rare_prop <- (length(rareAlleles)/length(totalFreqs))*100
   # Build list of proportions, and return
   freqProportions <- c(veryCommon_prop, lowFrequency_prop, rare_prop)
   names(freqProportions) <- c("Very common (>10%)","Low frequency (1% -- 10%)","Rare (<1%)")
