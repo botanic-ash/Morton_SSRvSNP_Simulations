@@ -12,8 +12,6 @@ library(adegenet)
 library(stringr)
 library(hierfstat)
 
-# TO DO: INCORPORATE PREFIX ARGUMENTS TO ALLOW FOR DIFFERENT PARAMS/GENIND OBJECTS TO BE READ IN
-
 # ---- FUNCTIONS ----
 # PROCESSING ARLEQUIN/STRATAG FILES ----
 # Function converting Arlequin output to a single genind object (through gtypes format)
