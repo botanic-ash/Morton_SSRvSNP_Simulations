@@ -61,7 +61,7 @@ for (i in 1:length(MSAT_geninds)){
   representationRates <- sapply(MSAT_geninds[[i]], exSituRepresentation)
   MSAT_repRateSummaries[,,i] <- summarize_exSituRepresentation(representationRates)
 }
-MSAT_alleleFreqSummaries; MSAT_repRateSummaries
+round(MSAT_alleleFreqSummaries, 2) ; round(MSAT_repRateSummaries, 2)
 
 # %%% DNA, low mutation ----
 # Summarize allele frequency proportions and ex situ representation rates across scenarios
@@ -75,7 +75,7 @@ for (i in 1:length(DNA_geninds)){
   representationRates <- sapply(DNA_geninds[[i]], exSituRepresentation)
   DNA_repRateSummaries[,,i] <- summarize_exSituRepresentation(representationRates)
 }
-DNA_alleleFreqSummaries; DNA_repRateSummaries
+round(DNA_alleleFreqSummaries, 2) ; round(DNA_repRateSummaries, 2)
 
 # %%% DNA, high mutation ----
 # Summarize allele frequency proportions and ex situ representation rates across scenarios
@@ -89,4 +89,4 @@ for (i in 1:length(DNA_highMut_geninds)){
   representationRates <- sapply(DNA_highMut_geninds[[i]], exSituRepresentation)
   DNA_highMut_repRateSummaries[,,i] <- summarize_exSituRepresentation(representationRates)
 }
-DNA_highMut_alleleFreqSummaries; DNA_highMut_repRateSummaries
+round(DNA_highMut_alleleFreqSummaries, 2) ; round(DNA_highMut_repRateSummaries, 2)
