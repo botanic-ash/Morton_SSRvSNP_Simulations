@@ -228,9 +228,9 @@ getTotalAlleleFreqProportions <- function(gen.obj){
 summarize_alleleFreqProportions <- function(freqProportions){
   # Calculate the mean allele frequency proportions across replicates using apply
   # (Rows are allele frequency categories, columns are replicates. So margin value is 1)
-  means <- apply(freqProportions, 1, mean)
+  means <- apply(freqProportions, 1, mean, na.rm=TRUE)
   # Calculate standard deviations
-  stdevs <- apply(freqProportions, 1, sd)
+  stdevs <- apply(freqProportions, 1, sd, na.rm=TRUE)
   # Combine statistics into a matrix, and return
   freqPropStats <- cbind(means, stdevs)
   return(freqPropStats)
@@ -265,10 +265,40 @@ exSituRepresentation <- function(gen.obj){
 summarize_exSituRepresentation <- function(repRates){
   # Calculate the mean ex situ representation rate across replicates using apply
   # (Rows are rate categories, columns are replicates. So margin value is 1)
-  means <- apply(repRates, 1, mean)
+  means <- apply(repRates, 1, mean, na.rm=TRUE)
   # Calculate standard deviations
-  stdevs <- apply(repRates, 1, sd)
+  stdevs <- apply(repRates, 1, sd, na.rm=TRUE)
   # Combine statistics into a matrix, and return
   repStats <- cbind(means, stdevs)
   return(repStats)
+}
+
+# Wrapper function, which generates both allele frequency proportions and ex situ representation rates,
+# for a list of genind objects
+summarize_simulations <- function(genind.list, gardenRate=0.05){
+  # Build array to capture allele frequency proportions
+  alleleFreqSummaries <- array(dim = c(3, 2, length(genind.list)))
+  rownames(alleleFreqSummaries) <- c("Very common (>10%)","Low frequency (1% -- 10%)","Rare (<1%)")
+  # Build array to capture ex situ representation rate
+  repRateSummaries <- array(dim = c(5, 2, length(MSAT_geninds)))
+  rownames(repRateSummaries) <- 
+    c("Total","Very common (>10%)","Common (>5%)","Low frequency (1% -- 10%)","Rare (<1%)")
+  colnames(alleleFreqSummaries) <- colnames(repRateSummaries) <-c("mean", "sd")
+  
+  # Loop through list of genind objects, calculating metrics for each item
+  for (i in 1:length(genind.list)){
+    # Calculate and summarize allele frequency scenarios. Each array slot is a different scenario
+    alleleFrequencies <- sapply(genind.list[[i]], getWildAlleleFreqProportions)
+    alleleFreqSummaries[,,i] <- summarize_alleleFreqProportions(alleleFrequencies)
+    # Assign individuals to garden population
+    genind.list[[i]] <- lapply(genind.list[[i]], assignGardenSamples, proportion=gardenRate)
+    # Calculate and summarize ex situ representation rates. Each array slot is a different scenario
+    representationRates <- sapply(genind.list[[i]], exSituRepresentation)
+    repRateSummaries[,,i] <- summarize_exSituRepresentation(representationRates)
+  }
+  # Round results to 2 digits
+  alleleFreqSummaries <- round(alleleFreqSummaries, 2)  
+  repRateSummaries <- round(repRateSummaries, 2)
+  # Generate a list of the two arrays, and return
+  return(list("alleleFrequencyProportions"=alleleFreqSummaries, "representationRates"=repRateSummaries))
 }
