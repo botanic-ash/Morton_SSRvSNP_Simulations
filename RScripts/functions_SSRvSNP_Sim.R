@@ -57,19 +57,19 @@ readParams_MSAT <- function(params.wd, prefix="MSAT"){
   # allows variable names to be specifiable, but all variables will end with the same string
   # The pos=1 argument allows the variable to be passed to the global environment (rather than being kept locally)
   # The ^ character in dir allows any file with the given suffix to be read in, allowing for file name flexibility
-  # [length(dir(pattern))] means if multiple genind objects are present in the directory, read the most recent one
-  assign(paste0(prefix, "_01pop_migLow.genind"), readRDS(
-    dir(pattern = "^genind.MSAT_01pop_migLow")[length(dir(pattern = "^genind.MSAT_01pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_01pop_migHigh.genind"), readRDS(
-    dir(pattern = "^genind.MSAT_01pop_migHigh")[length(dir(pattern = "^genind.MSAT_01pop_migHigh"))]), pos = 1)
-  assign(paste0(prefix, "_04pop_migLow.genind"), readRDS(
-    dir(pattern = "^genind.MSAT_04pop_migLow")[length(dir(pattern = "^genind.MSAT_04pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_04pop_migHigh.genind"), readRDS(
-    dir(pattern = "^genind.MSAT_04pop_migHigh")[length(dir(pattern = "^genind.MSAT_04pop_migHigh"))]), pos = 1)
-  assign(paste0(prefix, "_16pop_migLow.genind"), readRDS(
-    dir(pattern = "^genind.MSAT_16pop_migLow")[length(dir(pattern = "^genind.MSAT_16pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_16pop_migHigh.genind"), readRDS(
-    dir(pattern = "^genind.MSAT_16pop_migHigh")[length(dir(pattern = "^genind.MSAT_16pop_migHigh"))]), pos = 1)
+  # [length(dir(pattern))] means if multiple params objects are present in the directory, read the most recent one
+  assign(paste0(prefix, "_01pop_migLow.params"), readRDS(
+    dir(pattern = "^params.MSAT_01pop_migLow")[length(dir(pattern = "^params.MSAT_01pop_migLow"))]), pos = 1)
+  assign(paste0(prefix, "_01pop_migHigh.params"), readRDS(
+    dir(pattern = "^params.MSAT_01pop_migHigh")[length(dir(pattern = "^params.MSAT_01pop_migHigh"))]), pos = 1)
+  assign(paste0(prefix, "_04pop_migLow.params"), readRDS(
+    dir(pattern = "^params.MSAT_04pop_migLow")[length(dir(pattern = "^params.MSAT_04pop_migLow"))]), pos = 1)
+  assign(paste0(prefix, "_04pop_migHigh.params"), readRDS(
+    dir(pattern = "^params.MSAT_04pop_migHigh")[length(dir(pattern = "^params.MSAT_04pop_migHigh"))]), pos = 1)
+  assign(paste0(prefix, "_16pop_migLow.params"), readRDS(
+    dir(pattern = "^params.MSAT_16pop_migLow")[length(dir(pattern = "^params.MSAT_16pop_migLow"))]), pos = 1)
+  assign(paste0(prefix, "_16pop_migHigh.params"), readRDS(
+    dir(pattern = "^params.MSAT_16pop_migHigh")[length(dir(pattern = "^params.MSAT_16pop_migHigh"))]), pos = 1)
   # Reset to original working directory
   setwd(original.wd)
 }
@@ -111,19 +111,19 @@ readParams_DNA <- function(params.wd, prefix="DNA"){
   # allows variable names to be specifiable, but all variables will end with the same string
   # The pos=1 argument allows the variable to be passed to the global environment (rather than being kept locally)
   # The ^ character in dir allows any file with the given suffix to be read in, allowing for file name flexibility
-  # [length(dir(pattern))] means if multiple genind objects are present in the directory, read the most recent one
-  assign(paste0(prefix, "_01pop_migLow.genind"), readRDS(
-    dir(pattern = "^genind.DNA_01pop_migLow")[length(dir(pattern = "^genind.DNA_01pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_01pop_migHigh.genind"), readRDS(
-    dir(pattern = "^genind.DNA_01pop_migHigh")[length(dir(pattern = "^genind.DNA_01pop_migHigh"))]), pos = 1)
-  assign(paste0(prefix, "_04pop_migLow.genind"), readRDS(
-    dir(pattern = "^genind.DNA_04pop_migLow")[length(dir(pattern = "^genind.DNA_04pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_04pop_migHigh.genind"), readRDS(
-    dir(pattern = "^genind.DNA_04pop_migHigh")[length(dir(pattern = "^genind.DNA_04pop_migHigh"))]), pos = 1)
-  assign(paste0(prefix, "_16pop_migLow.genind"), readRDS(
-    dir(pattern = "^genind.DNA_16pop_migLow")[length(dir(pattern = "^genind.DNA_16pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_16pop_migHigh.genind"), readRDS(
-    dir(pattern = "^genind.DNA_16pop_migHigh")[length(dir(pattern = "^genind.DNA_16pop_migHigh"))]), pos = 1)
+  # [length(dir(pattern))] means if multiple params objects are present in the directory, read the most recent one
+  assign(paste0(prefix, "_01pop_migLow.params"), readRDS(
+    dir(pattern = "^params.DNA_01pop_migLow")[length(dir(pattern = "^params.DNA_01pop_migLow"))]), pos = 1)
+  assign(paste0(prefix, "_01pop_migHigh.params"), readRDS(
+    dir(pattern = "^params.DNA_01pop_migHigh")[length(dir(pattern = "^params.DNA_01pop_migHigh"))]), pos = 1)
+  assign(paste0(prefix, "_04pop_migLow.params"), readRDS(
+    dir(pattern = "^params.DNA_04pop_migLow")[length(dir(pattern = "^params.DNA_04pop_migLow"))]), pos = 1)
+  assign(paste0(prefix, "_04pop_migHigh.params"), readRDS(
+    dir(pattern = "^params.DNA_04pop_migHigh")[length(dir(pattern = "^params.DNA_04pop_migHigh"))]), pos = 1)
+  assign(paste0(prefix, "_16pop_migLow.params"), readRDS(
+    dir(pattern = "^params.DNA_16pop_migLow")[length(dir(pattern = "^params.DNA_16pop_migLow"))]), pos = 1)
+  assign(paste0(prefix, "_16pop_migHigh.params"), readRDS(
+    dir(pattern = "^params.DNA_16pop_migHigh")[length(dir(pattern = "^params.DNA_16pop_migHigh"))]), pos = 1)
   # Reset to original working directory
   setwd(original.wd)
 }
