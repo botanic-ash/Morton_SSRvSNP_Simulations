@@ -17,3 +17,6 @@ SimulationOutputs/DNA_lowMut_marker/data.DNA
 
 # Any .Rhistory files
 *.Rhistory
+
+# Any seed.txt files
+*seed.txt
