@@ -20,7 +20,7 @@ library(adegenet)
 # Navigate to simulation directory dedicated to demonstrating this issue
 # The demo_dnaMarkerIssue_fsc.sh BASH script must be present within this folder
 sim.wd <- 
-  "~/Documents/SSRvSNP/Simulations/Code/SimulationOutputs/demo_dnaMarkerIssue/"
+  "/RAID1/Simulations/Code/SimulationOutputs/demo_dnaMarkerIssue/"
 setwd(sim.wd)
 
 # ----VARIABLES----

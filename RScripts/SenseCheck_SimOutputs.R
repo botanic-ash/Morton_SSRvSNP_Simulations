@@ -19,7 +19,7 @@ library(adegenet)
 library(stringr)
 library(hierfstat)
 
-sim.wd <- "~/Documents/SSRvSNP/Simulations/Code/"
+sim.wd <- "/RAID1/Simulations/Code/"
 setwd(sim.wd)
 # Read in relevant functions
 source("RScripts/functions_SSRvSNP_Sim.R")
