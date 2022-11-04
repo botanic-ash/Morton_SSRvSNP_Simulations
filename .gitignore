@@ -15,3 +15,5 @@ SimulationOutputs/DNA_lowMut_marker/data.DNA
 *.arp
 *.arb
 
+# Any .Rhistory files
+*.Rhistory
