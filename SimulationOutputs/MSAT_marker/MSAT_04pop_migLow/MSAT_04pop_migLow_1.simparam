@@ -95,13 +95,13 @@ With the same chromosomal structure
 Number of linkage blocks to simulate in structure 1: 1
 
    1 partially linked MICROSAT loci:
-      recombination, mutation rates, geometric parameter, and range constraint : 0.0000000000   0.0005000000   0.00000   15
+      recombination, mutation rates, geometric parameter, and range constraint : 0.0000000000   0.0010000000   0.00000   15
 
 
 
-Random generator initialized with : 422333
+Random generator initialized with : 417706
 
 
 
-done in 0.787 secs
+done in 0.809 secs
 
