@@ -29,40 +29,40 @@ With the same chromosomal structure
 Number of linkage blocks to simulate in structure 1: 10
 
    500 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000050000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000001000   0.33333
 
    500 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000050000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000001000   0.33333
 
    500 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000050000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000001000   0.33333
 
    500 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000050000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000001000   0.33333
 
    500 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000050000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000001000   0.33333
 
    500 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000050000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000001000   0.33333
 
    500 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000050000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000001000   0.33333
 
    500 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000050000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000001000   0.33333
 
    500 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000050000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000001000   0.33333
 
    500 partially linked DNA loci:
-      recombination, mutation rates and transition rates :0.0000000000   0.0000050000   0.33333
+      recombination, mutation rates and transition rates :0.0000000000   0.0000001000   0.33333
 
 
 
-Random generator initialized with : 981757
+Random generator initialized with : 237832
 
 
 
-done in 274.377 secs
+done in 193.226 secs
 
