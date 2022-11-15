@@ -5,7 +5,7 @@ Simulations using different marker types (microsatellites, or "MSAT", and SNP ma
 are performed using the [fastSimcoal2 software](http://cmpg.unibe.ch/software/fastsimcoal27/) and the [strataG](https://github.com/EricArcher/strataG) R package.
 
 ### RScripts
-This folder contains the R scripts use to specify simulation parameters, run simulations, convert Arlequin outputs to genind objects,
+This folder contains the R scripts used to specify simulation parameters, run simulations, convert Arlequin outputs to genind objects,
 and process those genind objects.
 
 Functions used repeatedly throughout the scripts are declared in [SSRvSNP_Sim_functions.R](https://github.com/akoontz11/Morton_SSRvSNP_Simulations/blob/main/RScripts/SSRvSNP_Sim_functions.R).
