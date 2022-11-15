@@ -15,6 +15,7 @@ library(strataG)
 library(adegenet)
 library(stringr)
 library(hierfstat)
+library(parallel)
 
 # ---- FUNCTIONS ----
 # PROCESSING ARLEQUIN/STRATAG FILES ----
@@ -268,31 +269,6 @@ getAlleleCategories <- function(freqVector, sampleMat){
   return(exSituRepRates)
 }
 
-# # Function for reporting ex situ representation rates, using a single genind object
-# exSituRepresentation_OLD <- function(gen.obj){
-#   # Generate numerical vectors corresponding to garden and wild rows
-#   gardenRows <- which(pop(gen.obj)=="garden")
-#   wildRows <- which(pop(gen.obj)!="garden")
-#   # Build the wild allele frequency vector, using the getWildFreqs function
-#   wildFreqs <- getWildFreqs(gen.obj)
-#   # Calculate representation rates
-#   # Total
-#   total <- length(which(names(which(wildFreqs > 0)) %in% names(which(colSums(gen.obj@tab[gardenRows,], na.rm = TRUE) > 0))))/length(which(wildFreqs > 0))*100
-#   # Very common
-#   veryCommon <- length(which(names(which(wildFreqs > 10)) %in% names(which(colSums(gen.obj@tab[gardenRows,], na.rm = TRUE) > 0))))/length(which(wildFreqs > 10))*100
-#   # Common
-#   common <- length(which(names(which(wildFreqs > 5)) %in% names(which(colSums(gen.obj@tab[gardenRows,], na.rm = TRUE) > 0))))/length(which(wildFreqs > 5))*100
-#   # Low frequency
-#   lowFrequency <- length(which(names(which(wildFreqs < 10 & wildFreqs > 1)) %in% names(which(colSums(gen.obj@tab[gardenRows,], na.rm = TRUE) > 0))))/length(which(wildFreqs < 10 & wildFreqs > 1))*100
-#   # Rare
-#   rare <- length(which(names(which(wildFreqs < 1 & wildFreqs > 0)) %in% names(which(colSums(gen.obj@tab[gardenRows,], na.rm = TRUE) > 0))))/length(which(wildFreqs < 1 & wildFreqs > 0))*100
-#   # Build list of rates
-#   repRates <- c(total,veryCommon,common,lowFrequency,rare)
-#   names(repRates) <- c("Total","Very common (>10%)","Common (>5%)","Low frequency (1% -- 10%)","Rare (<1%)")
-#   # Return vector of rates
-#   return(repRates)
-# }
-
 # Wrapper function for reporting ex situ representation rates from genind object
 exSituRepresentation <- function(gen.obj){
   # Build the wild allele frequency vector, using the getWildFreqs function
@@ -377,9 +353,11 @@ makeAlleleFreqHist <- function(gen.obj, title="Allele frequency histogram"){
 # RESAMPLING FUNCTIONS ----
 # Ex situ sample function, which finds the level of ex situ representation of a sample of individuals
 # (using the getAlleleCategories function above)
-exSitu_Sample <- function(wildMat, numSamples){
+exSitu_Sample <- function(gen.obj, numSamples){
   # Build the wild allele frequency vector, using the getWildFreqs function
   freqVector <- getWildFreqs(gen.obj)
+  # Create a matrix of wild individuals (those with population "wild") from genind object
+  wildMat <- gen.obj@tab[which(pop(gen.obj) == "wild"),]
   # From a matrix of individuals, select a set of random individuals (rows)
   samp <- wildMat[sample(nrow(wildMat), size=numSamples, replace = FALSE),]
   # Calculate how many alleles (of each category) that sample captures, and return
@@ -387,22 +365,24 @@ exSitu_Sample <- function(wildMat, numSamples){
   return(repRates)
 }
 
-# Wrapper for the exSitu_Sample function, iterating that function over the entire sample matrix
+# Wrapper for the exSitu_Sample function, iterating that function over all wild samples in a genind object
 exSitu_Resample <- function(gen.obj){
-  # Create a matrix of wild individuals (those with population "wild") from genind object
-  wildMat <- gen.obj@tab[which(pop(gen.obj) == "wild"),]
-  # Apply the exSituSample function to all rows of the sample matrix
-  # (except row 1, because we need at least 2 individuals to sample)
+  # Apply the exSituSample function number of times equal to number of wild samples,
+  # excluding 1 (because we need at least 2 individuals to sample)
   # Resulting matrix needs to be transposed in order to keep columns as different allele categories
-  representationMatrix <- t(sapply(2:nrow(wildMat), function(x) exSitu_Sample(wildMat, x)))
+  representationMatrix <- t(sapply(2:length(which(pop(gen.obj)=="wild")), 
+                                   function(x) exSitu_Sample(gen.obj, x)))
   # Name columns according to categories of allelic representation, and return matrix
   colnames(representationMatrix) <- c("Total","Very common","Common","Low frequency","Rare")
   return(representationMatrix)
 }
 
-# !!! WORKING !!!
-# Wrapper for exSitu_Resample, which iterates the function for a list of genind objects
-Resample_Test <- function(gen.list){
-  sapply( )
-  lapply(gen.list, exSitu_Resample)
+# Parallel wrapper for exSitu_Resample, which will generate an array of values from a single genind object
+parResample_genind <- function(gen.obj, gRate=0.2, reps=5, cluster){
+  # Assign garden samples to the genind object
+  gen.obj <- assignGardenSamples(gen.obj, proportion = gRate)
+  # Run resampling for all replicates, using sapply and lambda function
+  resamplingArray <- parSapply(cl=cluster, 1:reps, 
+                               function(x) exSitu_Resample(gen.obj = gen.obj), simplify = "array")
+  return(resamplingArray)
 }
