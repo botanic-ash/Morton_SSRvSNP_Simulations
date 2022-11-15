@@ -359,13 +359,15 @@ makeAlleleFreqHist <- function(gen.obj, title="Allele frequency histogram"){
     if(min(wildAlleleFreqs == 0)){
       b.vector <- seq(0, 1.0, 0.01)
     } else{
-      b.vector <- seq(0.01, 1.0, 0.01)
+      # b.vector <- seq(0.01, 1.0, 0.01)
+      b.vector <- seq(0, 1.0, 0.01)
     }
   } else{
     if(min(wildAlleleFreqs == 0)){
       b.vector <- seq(0, 1.0, 0.01)
     } else{
-      b.vector <- seq(0.01, 1.0, 0.01)
+      # b.vector <- seq(0.01, 1.0, 0.01)
+      b.vector <- seq(0, 1.0, 0.01)
     }
   }
   # Generate histogram
