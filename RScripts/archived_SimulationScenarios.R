@@ -555,6 +555,84 @@ saveRDS(DNA_16pop_migLow.params, file = paste0("data.DNA/params.DNA_16pop_migLow
 saveRDS(DNA_16pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
 saveRDS(DNA_16pop_migHigh.params, file = paste0("data.DNA/params.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
 
+# %%% MEDIUM MUTATION RATE (1E-6) ----
+# Outputs are stored within a folder in the parent directory named "DNA_highMut_marker"
+dna_medMut.wd <- paste0(sim.wd,"SimulationOutputs/ArchivedScenarios/DNA_medMut_marker/")
+setwd(dna_medMut.wd)
+# DNA Genetic parameters
+# Variable for DNA mutation rate
+dna_mutRate <- 1e-6
+dna <- fscBlock_dna(sequence.length = 25, mut.rate = dna_mutRate)
+DNAgenetics <- fscSettingsGenetics(dna, dna, dna, dna, num.chrom = 5)
+
+# 1 POPULATION
+# Write parameter files. Make a mighHigh .par file as well, even though it's identical to migLow (with 1 population)
+DNA_medMut_01pop_migLow.params <- fscWrite(demes = demes1, genetics = DNAgenetics, label = "DNA_medMut_01pop_migLow", use.wd=TRUE)
+DNA_medMut_01pop_migHigh.params <- fscWrite(demes = demes1, genetics = DNAgenetics, label = "DNA_medMut_01pop_migHigh", use.wd=TRUE)
+# Run parameter files
+print("DNA: 1 population, low migration")
+DNA_medMut_01pop_migLow.params <- fscRun(DNA_medMut_01pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+print("DNA: 1 population, high migration")
+DNA_medMut_01pop_migHigh.params <- fscRun(DNA_medMut_01pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+# Convert Arlequin outputs to genind
+print("%%% Convert Arlequin outputs to genind")
+DNA_medMut_01pop_migLow.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_01pop_migLow/"),
+                                                params = DNA_medMut_01pop_migLow.params)
+DNA_medMut_01pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_01pop_migHigh/"),
+                                                 params = DNA_medMut_01pop_migHigh.params)
+# Save genind and params objects to Rdata files, for long term storage
+saveRDS(DNA_medMut_01pop_migLow.genind, file = paste0("data.DNA/genind.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_medMut_01pop_migLow.params, file = paste0("data.DNA/params.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_medMut_01pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_medMut_01pop_migHigh.params, file = paste0("data.DNA/params.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
+
+# 4 POPULATIONS
+# Write parameter files
+DNA_medMut_04pop_migLow.params <- fscWrite(demes = demes4, migration = mig4Low, events = histEvent4,
+                                           genetics = DNAgenetics, label = "DNA_medMut_04pop_migLow", use.wd=TRUE)
+DNA_medMut_04pop_migHigh.params <- fscWrite(demes = demes4, migration = mig4High, events = histEvent4,
+                                            genetics = DNAgenetics, label = "DNA_medMut_04pop_migHigh", use.wd=TRUE)
+# Run parameter files
+print("DNA: 4 populations, low migration")
+DNA_medMut_04pop_migLow.params <- fscRun(DNA_medMut_04pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+print("DNA: 4 populations, high migration")
+DNA_medMut_04pop_migHigh.params <- fscRun(DNA_medMut_04pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+# Convert Arlequin outputs to genind
+print("%%% Convert Arlequin outputs to genind")
+DNA_medMut_04pop_migLow.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_04pop_migLow/"),
+                                                params = DNA_medMut_04pop_migLow.params)
+DNA_medMut_04pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_04pop_migHigh/"),
+                                                 params = DNA_medMut_04pop_migHigh.params)
+# Save genind and params objects to Rdata files, for long term storage
+saveRDS(DNA_medMut_04pop_migLow.genind, file = paste0("data.DNA/genind.DNA_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_medMut_04pop_migLow.params, file = paste0("data.DNA/params.DNA_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_medMut_04pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_04pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_medMut_04pop_migHigh.params, file = paste0("data.DNA/params.DNA_04pop_migHigh.",Sys.Date(),".Rdata"))
+
+# 16 POPULATIONS
+# Write parameter files
+DNA_medMut_16pop_migLow.params <- fscWrite(demes = demes16, migration = mig16Low, events = histEvent16,
+                                           genetics = DNAgenetics, label = "DNA_medMut_16pop_migLow", use.wd=TRUE)
+DNA_medMut_16pop_migHigh.params <- fscWrite(demes = demes16, migration = mig16High, events = histEvent16,
+                                            genetics = DNAgenetics, label = "DNA_medMut_16pop_migHigh", use.wd=TRUE)
+# Run parameter files
+print("DNA: 16 populations, low migration")
+DNA_medMut_16pop_migLow.params <- fscRun(DNA_medMut_16pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+print("DNA: 16 populations, high migration")
+DNA_medMut_16pop_migHigh.params <- fscRun(DNA_medMut_16pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+# Convert Arlequin outputs to genind
+print("%%% Convert Arlequin outputs to genind")
+DNA_medMut_16pop_migLow.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_16pop_migLow/"),
+                                                params = DNA_medMut_16pop_migLow.params)
+DNA_medMut_16pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_16pop_migHigh/"),
+                                                 params = DNA_medMut_16pop_migHigh.params)
+# Save genind and params objects to Rdata files, for long term storage
+saveRDS(DNA_medMut_16pop_migLow.genind, file = paste0("data.DNA/genind.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_medMut_16pop_migLow.params, file = paste0("data.DNA/params.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_medMut_16pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_medMut_16pop_migHigh.params, file = paste0("data.DNA/params.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
+
+
 # %%% HIGH MUTATION RATE (1E-5) ----
 # Outputs are stored within a folder in the parent directory named "DNA_highMut_marker"
 dna_highMut.wd <- paste0(sim.wd,"SimulationOutputs/ArchivedScenarios/DNA_highMut_marker/")
@@ -632,79 +710,3 @@ saveRDS(DNA_highMut_16pop_migLow.params, file = paste0("data.DNA/params.DNA_16po
 saveRDS(DNA_highMut_16pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
 saveRDS(DNA_highMut_16pop_migHigh.params, file = paste0("data.DNA/params.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
 
-# %%% MEDIUM MUTATION RATE (1E-6) ----
-# Outputs are stored within a folder in the parent directory named "DNA_highMut_marker"
-dna_medMut.wd <- paste0(sim.wd,"SimulationOutputs/ArchivedScenarios/DNA_medMut_marker/")
-setwd(dna_medMut.wd)
-# DNA Genetic parameters
-# Variable for DNA mutation rate
-dna_mutRate <- 1e-6
-dna <- fscBlock_dna(sequence.length = 25, mut.rate = dna_mutRate)
-DNAgenetics <- fscSettingsGenetics(dna, dna, dna, dna, num.chrom = 5)
-
-# 1 POPULATION
-# Write parameter files. Make a mighHigh .par file as well, even though it's identical to migLow (with 1 population)
-DNA_medMut_01pop_migLow.params <- fscWrite(demes = demes1, genetics = DNAgenetics, label = "DNA_medMut_01pop_migLow", use.wd=TRUE)
-DNA_medMut_01pop_migHigh.params <- fscWrite(demes = demes1, genetics = DNAgenetics, label = "DNA_medMut_01pop_migHigh", use.wd=TRUE)
-# Run parameter files
-print("DNA: 1 population, low migration")
-DNA_medMut_01pop_migLow.params <- fscRun(DNA_medMut_01pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-print("DNA: 1 population, high migration")
-DNA_medMut_01pop_migHigh.params <- fscRun(DNA_medMut_01pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-# Convert Arlequin outputs to genind
-print("%%% Convert Arlequin outputs to genind")
-DNA_medMut_01pop_migLow.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_01pop_migLow/"),
-                                                params = DNA_medMut_01pop_migLow.params)
-DNA_medMut_01pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_01pop_migHigh/"),
-                                                 params = DNA_medMut_01pop_migHigh.params)
-# Save genind and params objects to Rdata files, for long term storage
-saveRDS(DNA_medMut_01pop_migLow.genind, file = paste0("data.DNA/genind.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_medMut_01pop_migLow.params, file = paste0("data.DNA/params.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_medMut_01pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
-saveRDS(DNA_medMut_01pop_migHigh.params, file = paste0("data.DNA/params.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
-
-# 4 POPULATIONS
-# Write parameter files
-DNA_medMut_04pop_migLow.params <- fscWrite(demes = demes4, migration = mig4Low, events = histEvent4,
-                                           genetics = DNAgenetics, label = "DNA_medMut_04pop_migLow", use.wd=TRUE)
-DNA_medMut_04pop_migHigh.params <- fscWrite(demes = demes4, migration = mig4High, events = histEvent4,
-                                            genetics = DNAgenetics, label = "DNA_medMut_04pop_migHigh", use.wd=TRUE)
-# Run parameter files
-print("DNA: 4 populations, low migration")
-DNA_medMut_04pop_migLow.params <- fscRun(DNA_medMut_04pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-print("DNA: 4 populations, high migration")
-DNA_medMut_04pop_migHigh.params <- fscRun(DNA_medMut_04pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-# Convert Arlequin outputs to genind
-print("%%% Convert Arlequin outputs to genind")
-DNA_medMut_04pop_migLow.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_04pop_migLow/"),
-                                                params = DNA_medMut_04pop_migLow.params)
-DNA_medMut_04pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_04pop_migHigh/"),
-                                                 params = DNA_medMut_04pop_migHigh.params)
-# Save genind and params objects to Rdata files, for long term storage
-saveRDS(DNA_medMut_04pop_migLow.genind, file = paste0("data.DNA/genind.DNA_04pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_medMut_04pop_migLow.params, file = paste0("data.DNA/params.DNA_04pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_medMut_04pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_04pop_migHigh.",Sys.Date(),".Rdata"))
-saveRDS(DNA_medMut_04pop_migHigh.params, file = paste0("data.DNA/params.DNA_04pop_migHigh.",Sys.Date(),".Rdata"))
-
-# 16 POPULATIONS
-# Write parameter files
-DNA_medMut_16pop_migLow.params <- fscWrite(demes = demes16, migration = mig16Low, events = histEvent16,
-                                           genetics = DNAgenetics, label = "DNA_medMut_16pop_migLow", use.wd=TRUE)
-DNA_medMut_16pop_migHigh.params <- fscWrite(demes = demes16, migration = mig16High, events = histEvent16,
-                                            genetics = DNAgenetics, label = "DNA_medMut_16pop_migHigh", use.wd=TRUE)
-# Run parameter files
-print("DNA: 16 populations, low migration")
-DNA_medMut_16pop_migLow.params <- fscRun(DNA_medMut_16pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-print("DNA: 16 populations, high migration")
-DNA_medMut_16pop_migHigh.params <- fscRun(DNA_medMut_16pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
-# Convert Arlequin outputs to genind
-print("%%% Convert Arlequin outputs to genind")
-DNA_medMut_16pop_migLow.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_16pop_migLow/"),
-                                                params = DNA_medMut_16pop_migLow.params)
-DNA_medMut_16pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna_medMut.wd, "DNA_medMut_16pop_migHigh/"),
-                                                 params = DNA_medMut_16pop_migHigh.params)
-# Save genind and params objects to Rdata files, for long term storage
-saveRDS(DNA_medMut_16pop_migLow.genind, file = paste0("data.DNA/genind.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_medMut_16pop_migLow.params, file = paste0("data.DNA/params.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_medMut_16pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
-saveRDS(DNA_medMut_16pop_migHigh.params, file = paste0("data.DNA/params.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
