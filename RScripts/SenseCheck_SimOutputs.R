@@ -13,13 +13,16 @@
 # 3. Analysis of the allele frequency spectra. 
 
 # These checks are made for simulations using both microsatellite ("MSAT") and SNP ("DNA") marker types
+# Be careful running this script with actual DNA outputs, as the commands will take a very long time to run
 
 library(strataG)
 library(adegenet)
 library(stringr)
 library(hierfstat)
 
-sim.wd <- "/RAID1/Simulations/Code/"
+# Set working directory to the GitHub repo (containing scripts and fastSimcoal outputs;
+# this is a file located on the RAID1 drive, for space reasons, and linked in the home directory)
+sim.wd <- "~/Shared/SSRvSNP_Sim/Code/"
 setwd(sim.wd)
 # Read in relevant functions
 source("RScripts/functions_SSRvSNP_Sim.R")
