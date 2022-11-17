@@ -295,7 +295,7 @@ summarize_exSituRepresentation <- function(repRates){
 
 # Wrapper function, which generates both allele frequency proportions and ex situ representation rates,
 # for a list of genind objects
-summarize_simulations <- function(genind.list, gardenRate=0.05){
+summarize_simulations <- function(genind.list){
   # Build array to capture allele frequency proportions
   alleleFreqSummaries <- array(dim = c(3, 2, length(genind.list)))
   rownames(alleleFreqSummaries) <- c("Very common (>10%)","Low frequency (1% -- 10%)","Rare (<1%)")
@@ -310,8 +310,6 @@ summarize_simulations <- function(genind.list, gardenRate=0.05){
     # Calculate and summarize allele frequency scenarios. Each array slot is a different scenario
     alleleFrequencies <- sapply(genind.list[[i]], getWildAlleleFreqProportions)
     alleleFreqSummaries[,,i] <- summarize_alleleFreqProportions(alleleFrequencies)
-    # Assign individuals to garden population
-    genind.list[[i]] <- lapply(genind.list[[i]], assignGardenSamples, proportion=gardenRate)
     # Calculate and summarize ex situ representation rates. Each array slot is a different scenario
     representationRates <- sapply(genind.list[[i]], exSituRepresentation)
     repRateSummaries[,,i] <- summarize_exSituRepresentation(representationRates)
@@ -377,12 +375,60 @@ exSitu_Resample <- function(gen.obj){
   return(representationMatrix)
 }
 
-# Parallel wrapper for exSitu_Resample, which will generate an array of values from a single genind object
-parResample_genind <- function(gen.obj, gRate=0.2, reps=5, cluster){
-  # Assign garden samples to the genind object
-  gen.obj <- assignGardenSamples(gen.obj, proportion = gRate)
+# Wrapper for exSitu_Resample, which will generate an array of values from a single genind object
+Resample_genind <- function(gen.obj, reps=5){
   # Run resampling for all replicates, using sapply and lambda function
+  resamplingArray <- sapply(1:reps, function(x) exSitu_Resample(gen.obj = gen.obj), simplify = "array")
+  return(resamplingArray)
+}
+
+# Parallel wrapper for exSitu_Resample, which will generate an array of values from a single genind object
+parResample_genind <- function(gen.obj, reps=5, cluster){
+  # Run resampling for all replicates, using parSapply and lambda function
   resamplingArray <- parSapply(cl=cluster, 1:reps, 
                                function(x) exSitu_Resample(gen.obj = gen.obj), simplify = "array")
   return(resamplingArray)
+}
+
+# From array, calculate the mean minimum sample size to represent 95% of the total wild diversity
+resample_min95_mean <- function(resamplingArray){
+  # resampling array[,1,]: returns the Total column values for each replicate (3rd array dimension)
+  # apply(resamplingArray[,1,],1,mean): calculates the average across replicates for each row
+  # which(apply(resamplingArray[,1,],1,mean) > 95): returns the rows with averages greater than 95
+  # min(which(apply(resamplingArray[,1,],1,mean) > 95)): the lowest row with an average greater than 95
+  meanValue <- min(which(apply(resamplingArray[,1,],1,mean) > 95))
+  return(meanValue)
+}
+
+# From array, calculate the standard deviation, at the mean 95% value
+resample_min95_sd <- function(resamplingArray){
+  # Determine the mean value for representing 95% of allelic diversity
+  meanValue <- resample_min95_mean(resamplingArray)
+  # Calculate the standard deviation, at that mean value, and return
+  sdValue <- apply(resamplingArray[,1,],1,sd)[meanValue]
+  return(sdValue)
+}
+
+# Summary plotting function, from array
+resample_Plot <- function(resamplingArray, colors, title){
+  # Create two vectors for colors. This is to show points on the graph and in the legend clearly
+  fullColors <- colors
+  fadedColors <- c(colors[1], alpha(colors[2:5], 0.2))
+  # Generate the average values (across replicates) for each allele frequency category (don't print)
+  averageValueMat <- invisible(resample_meanValues(resamplingArray))
+  # Generate the minimum sample size to represent 95% of allelic diversity (across replicates; don't print)
+  min95_Value <- invisible(resample_min95_mean(resamplingArray))
+  # Use the matplot function to plot the matrix of average values, with specified settings
+  matplot(averageValueMat, ylim=c(0,110), col=fadedColors, pch=16,
+          xlab="Number of Individuals", ylab="Percent Diversity Capture",
+          main=title)
+  # Mark the 95% threshold line, as well as the 95% minimum sampling size
+  abline(h=95, col="black", lty=3); abline(v=min95_Value, col="black")
+  # Add text for the minimum sampling size line
+  mtext(text=paste0("Minimum sampling size (95%) = ", min95_Value),
+        side=1, line=-1.5, at=min95_Value+200)
+  # Add legend
+  legend(x=950, y=85, inset = 0.05, 
+         legend = c("Total","Very common","Common","Low frequency", "Rare"),
+         col=fullColors, pch = c(20,20,20), cex=1, pt.cex = 2, bty="n", y.intersp = 0.75)
 }
