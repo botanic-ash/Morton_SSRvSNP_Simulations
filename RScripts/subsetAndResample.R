@@ -55,9 +55,9 @@ DNA_geninds <- rapply(DNA_geninds, assignGardenSamples, proportion=gardenRate, h
 
 # %%% SUMMARIZE SIMULATIONS %%% ----
 # MSAT
-summarize_simulations(MSAT_geninds, gardenRate = gardenRate)
+summarize_simulations(MSAT_geninds)
 # DNA
-summarize_simulations(DNA_geninds, gardenRate = gardenRate)
+summarize_simulations(DNA_geninds)
 makeAlleleFreqHist(DNA_geninds[[4]][[3]], title="Simulated DNA: 1,000 loci, mutation.rate=5e-6 (4 pops, high migration)")
 
 # %%% RESAMPLING %%% ----
@@ -69,11 +69,20 @@ clusterExport(cl, varlist = c("getWildFreqs", "getAlleleCategories", "exSitu_Sam
                               "MSAT_geninds", "DNA_geninds"))
 
 # MSAT 
-MSAT_resamplingArrays <- rapply(MSAT_geninds, parResample_genind, cluster=cl, how = "list")
+MSAT_resamplingArrays <- rapply(MSAT_geninds, parResample_genind, reps=num_reps, cluster=cl, how = "list")
+
+# DAWG <- c(rep("MSAT_01pop_migLow",6),rep("MSAT_01pop_migHigh",6),
+#           rep("MSAT_04pop_migLow",6),rep("MSAT_04pop_migHigh",6),
+#           rep("MSAT_16pop_migLow",6),rep("MSAT_16pop_migHigh",6))
+# 
+#   lapply(example_list, function(x) {
+#   names(x)[grep("id", names(x))] <- "id"
+#   x})
+
 names(MSAT_resamplingArrays) <- c("MSAT_01pop_migLow","MSAT_01pop_migHigh","MSAT_04pop_migLow",
                                   "MSAT_04pop_migHigh","MSAT_16pop_migLow","MSAT_16pop_migHigh")
 # DNA
-DNA_resamplingArrays <- rapply(DNA_geninds, parResample_genind, cluster=cl, how = "list")
+DNA_resamplingArrays <- rapply(DNA_geninds, parResample_genind, reps=num_reps, cluster=cl, how = "list")
 names(DNA_resamplingArrays) <- c("DNA_01pop_migLow","DNA_01pop_migHigh","DNA_04pop_migLow",
                                  "DNA_04pop_migHigh","DNA_16pop_migLow","DNA_16pop_migHigh")
 # Close cores
@@ -93,6 +102,6 @@ DNA_meanValues <- rapply(DNA_resamplingArrays, resample_meanValues, how = "list"
 plotColors <- c("red","red4","darkorange3","coral","purple")
 
 # MSAT
-rapply(MSAT_resamplingArrays, resample_Plot, colors=plotColors, title="")
+rapply(MSAT_resamplingArrays, resample_Plot, colors=plotColors, title="MSAT Scenario")
 # DNA
-rapply(DNA_resamplingArrays, resample_Plot, colors=plotColors, title="")
+rapply(DNA_resamplingArrays, resample_Plot, colors=plotColors, title="DNA (SNP) Scenario")
