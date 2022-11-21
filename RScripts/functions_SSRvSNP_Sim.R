@@ -409,6 +409,21 @@ resample_min95_sd <- function(resamplingArray){
   return(sdValue)
 }
 
+# From array, calculate the mean values (across replicates) for each allele frequency category
+resample_meanValues <- function(resamplingArray){
+  # Declare a matrix to receive average values
+  meanValue_mat <- matrix(nrow=nrow(resamplingArray), ncol=ncol(resamplingArray))
+  # For each column in the array, average results across replicates (3rd array dimension)
+  meanValue_mat[,1] <- apply(resamplingArray[,1,], 1, mean)
+  meanValue_mat[,2] <- apply(resamplingArray[,2,], 1, mean)
+  meanValue_mat[,3] <- apply(resamplingArray[,3,], 1, mean)
+  meanValue_mat[,4] <- apply(resamplingArray[,4,], 1, mean)
+  meanValue_mat[,5] <- apply(resamplingArray[,5,], 1, mean)
+  # Give names to meanValue_mat columns, and return
+  colnames(meanValue_mat) <- c("Total","Very common","Common","Low frequency","Rare")
+  return(meanValue_mat)
+}
+
 # Summary plotting function, from array
 resample_Plot <- function(resamplingArray, colors, title){
   # Create two vectors for colors. This is to show points on the graph and in the legend clearly
