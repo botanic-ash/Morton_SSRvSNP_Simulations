@@ -443,7 +443,7 @@ resample_Plot <- function(resamplingArray, colors){
   min95_Value <- resample_min95_mean(resamplingArray)
   # Use the matplot function to plot the matrix of average values, with specified settings
   matplot(averageValueMat, ylim=c(0,110), col=fadedColors, pch=16,
-          xlab="Number of Individuals", ylab="Percent Diversity Capture",
+          xlab="Number of Individuals", ylab="Percent Diversity Representation",
           main=unique(dimnames(resamplingArray)[[3]]))
   # Mark the 95% threshold line, as well as the 95% minimum sampling size
   abline(h=95, col="black", lty=3); abline(v=min95_Value, col="black")
