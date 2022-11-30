@@ -1,7 +1,7 @@
 fastsimcoal was invoked with the following command line arguments:
 fsc2709 --ifile DNA_04pop_migHigh.par --numsims 5 --allsites --quiet 
 
-Random generator seed : 894771
+Random generator seed : 345759
 
 No population growth detected in input file
 
@@ -10,8 +10,8 @@ fastsimcoal3 is building 500 genealogies ...
 Simulating 100 independent chromosomes using 12 batches and 1 threads.
 
 
-Iteration 1/1 done in 194.144 secs
+Iteration 1/1 done in 191.731 secs
 
 
-Program total execution time: 194.148 seconds
+Program total execution time: 191.736 seconds
 
