@@ -3,12 +3,13 @@
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 # This script reads in genind files generated from previously run fastSimcoal simulations,
-# then subsets each file to specify a group of "ex situ" (garden) individuals.
-# It then resamples this subset iteratively, and compares the samples to the total genetic
-# diversity of the population, and calculates representation metrics. Resampling arrays are 
-# created, and then plotted.
+# then subsets each file to specify a group of "ex situ" (garden) individuals. The ex situ
+# representation (i.e. how well do these garden individuals represent total allelic diversity) is calculated.
 
-# In order to function iteratively over large objects (i.e. lists of genind objects), the functions
+# Then, the remaining individuals ("wild") are resampled iteratively, and the allelic diversity
+# of sample subsets (in comparison to the whole of wild allelic diversity) is calculated, then plotted
+
+# In order to function iteratively over large objects (i.e. lists of genind objects), the steps
 # in this script use many apply family functions
 
 library(strataG)
@@ -34,16 +35,14 @@ clusterEvalQ(cl, library("parallel"))
 # Run the simulations
 # source("RScripts/GenerateFSCparams.R")
 # Alternatively, source the genind objects from previously run simulations, using readGeninds functions
-# Microsatellites
 readGeninds_MSAT(paste0(sim.wd,"SimulationOutputs/MSAT_marker/data.MSAT/"))
-# readGeninds_DNA(paste0(sim.wd,"SimulationOutputs/DNA_medMut_marker/data.DNA/"), prefix="DNA_medMut")
 readGeninds_DNA(paste0(sim.wd,"SimulationOutputs/DNA_marker/data.DNA/"))
 
 # Combine all scenarios for each marker into a list of genind lists
-MSAT_geninds <- list(MSAT_01pop_migLow.genind, MSAT_01pop_migHigh.genind, MSAT_04pop_migLow.genind,
-                     MSAT_04pop_migHigh.genind, MSAT_16pop_migLow.genind, MSAT_16pop_migHigh.genind)
-DNA_geninds <- list(DNA_01pop_migLow.genind, DNA_01pop_migHigh.genind, DNA_04pop_migLow.genind,
-                           DNA_04pop_migHigh.genind, DNA_16pop_migLow.genind, DNA_16pop_migHigh.genind)
+MSAT_geninds <- list(MSAT_01pop_migLow.genList, MSAT_01pop_migHigh.genList, MSAT_04pop_migLow.genList,
+                     MSAT_04pop_migHigh.genList, MSAT_16pop_migLow.genList, MSAT_16pop_migHigh.genList)
+DNA_geninds <- list(DNA_01pop_migLow.genList, DNA_01pop_migHigh.genList, DNA_04pop_migLow.genList,
+                    DNA_04pop_migHigh.genList, DNA_16pop_migLow.genList, DNA_16pop_migHigh.genList)
 
 # %%% ASSIGN GARDEN SAMPLES %%% ----
 # Specify the proportion of total individuals assigned to gardens
@@ -58,33 +57,23 @@ DNA_geninds <- rapply(DNA_geninds, assignGardenSamples, proportion=gardenRate, h
 summarize_simulations(MSAT_geninds)
 # DNA
 summarize_simulations(DNA_geninds)
-makeAlleleFreqHist(DNA_geninds[[4]][[3]], title="Simulated DNA: 1,000 loci, mutation.rate=5e-6 (4 pops, high migration)")
+# Plot a histogram of allele frequencies for one of the DNA smiulations
+makeAlleleFreqHist(DNA_geninds[[4]][[3]], 
+                   title="Simulated DNA: 1,000 loci, mutation.rate=5e-6 (4 pops, high migration)")
 
 # %%% RESAMPLING %%% ----
-# Specify number of replicates, to use for both marker types
+# Specify number of resampling replicates, to use for both marker types
 num_reps <- 5
-# Export relevant functions and variables
+# Export relevant functions and variables to the cluster
 clusterExport(cl, varlist = c("getWildFreqs", "getAlleleCategories", "exSitu_Sample", 
                               "exSitu_Resample", "parResample_genind", "num_reps",
                               "MSAT_geninds", "DNA_geninds"))
 
 # MSAT 
 MSAT_resamplingArrays <- rapply(MSAT_geninds, parResample_genind, reps=num_reps, cluster=cl, how = "list")
-
-# DAWG <- c(rep("MSAT_01pop_migLow",6),rep("MSAT_01pop_migHigh",6),
-#           rep("MSAT_04pop_migLow",6),rep("MSAT_04pop_migHigh",6),
-#           rep("MSAT_16pop_migLow",6),rep("MSAT_16pop_migHigh",6))
-# 
-#   lapply(example_list, function(x) {
-#   names(x)[grep("id", names(x))] <- "id"
-#   x})
-
-names(MSAT_resamplingArrays) <- c("MSAT_01pop_migLow","MSAT_01pop_migHigh","MSAT_04pop_migLow",
-                                  "MSAT_04pop_migHigh","MSAT_16pop_migLow","MSAT_16pop_migHigh")
 # DNA
 DNA_resamplingArrays <- rapply(DNA_geninds, parResample_genind, reps=num_reps, cluster=cl, how = "list")
-names(DNA_resamplingArrays) <- c("DNA_01pop_migLow","DNA_01pop_migHigh","DNA_04pop_migLow",
-                                 "DNA_04pop_migHigh","DNA_16pop_migLow","DNA_16pop_migHigh")
+
 # Close cores
 stopCluster(cl)
 
@@ -101,7 +90,8 @@ DNA_meanValues <- rapply(DNA_resamplingArrays, resample_meanValues, how = "list"
 # Pick plot colors (for all plots!), with transparency for values other than Total
 plotColors <- c("red","red4","darkorange3","coral","purple")
 
+# Plotting commands nested in invisible function, to prevent text from being printed
 # MSAT
-rapply(MSAT_resamplingArrays, resample_Plot, colors=plotColors, title="MSAT Scenario")
+invisible(rapply(MSAT_resamplingArrays, resample_Plot, colors=plotColors))
 # DNA
-rapply(DNA_resamplingArrays, resample_Plot, colors=plotColors, title="DNA (SNP) Scenario")
+invisible(rapply(DNA_resamplingArrays, resample_Plot, colors=plotColors))
