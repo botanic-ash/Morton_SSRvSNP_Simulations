@@ -37,37 +37,37 @@ readGeninds_DNA(paste0(sim.wd,"SimulationOutputs/DNA_marker/data.DNA/"))
 # ---- SENSE CHECK ----
 # 1. MORE ALLELES IN SCENARIOS WITH MORE POPULATIONS ----
 # MSAT ----
-mean(sapply(MSAT_01pop_migLow.genind, function(x) ncol(x@tab)))
-mean(sapply(MSAT_04pop_migLow.genind, function(x) ncol(x@tab)))
-mean(sapply(MSAT_16pop_migLow.genind, function(x) ncol(x@tab)))
+mean(sapply(MSAT_01pop_migLow.genList, function(x) ncol(x@tab)))
+mean(sapply(MSAT_04pop_migLow.genList, function(x) ncol(x@tab)))
+mean(sapply(MSAT_16pop_migLow.genList, function(x) ncol(x@tab)))
 
-mean(sapply(MSAT_01pop_migHigh.genind, function(x) ncol(x@tab)))
-mean(sapply(MSAT_04pop_migHigh.genind, function(x) ncol(x@tab)))
-mean(sapply(MSAT_16pop_migHigh.genind, function(x) ncol(x@tab)))
+mean(sapply(MSAT_01pop_migHigh.genList, function(x) ncol(x@tab)))
+mean(sapply(MSAT_04pop_migHigh.genList, function(x) ncol(x@tab)))
+mean(sapply(MSAT_16pop_migHigh.genList, function(x) ncol(x@tab)))
 
 # DNA ----
-mean(sapply(DNA_01pop_migLow.genind, function(x) ncol(x@tab)))
-mean(sapply(DNA_04pop_migLow.genind, function(x) ncol(x@tab)))
-mean(sapply(DNA_16pop_migLow.genind, function(x) ncol(x@tab)))
+mean(sapply(DNA_01pop_migLow.genList, function(x) ncol(x@tab)))
+mean(sapply(DNA_04pop_migLow.genList, function(x) ncol(x@tab)))
+mean(sapply(DNA_16pop_migLow.genList, function(x) ncol(x@tab)))
 
-mean(sapply(DNA_01pop_migHigh.genind, function(x) ncol(x@tab)))
-mean(sapply(DNA_04pop_migHigh.genind, function(x) ncol(x@tab)))
-mean(sapply(DNA_16pop_migHigh.genind, function(x) ncol(x@tab)))
+mean(sapply(DNA_01pop_migHigh.genList, function(x) ncol(x@tab)))
+mean(sapply(DNA_04pop_migHigh.genList, function(x) ncol(x@tab)))
+mean(sapply(DNA_16pop_migHigh.genList, function(x) ncol(x@tab)))
 
 # 2. HIGHER FST FOR SCENARIOS WITH LOWER MIGRATION RATES ----
 # MSAT ----
-sapply(MSAT_04pop_migLow.genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
-sapply(MSAT_04pop_migHigh.genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(MSAT_04pop_migLow.genList, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(MSAT_04pop_migHigh.genList, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 
-sapply(MSAT_16pop_migLow.genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
-sapply(MSAT_16pop_migHigh.genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(MSAT_16pop_migLow.genList, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(MSAT_16pop_migHigh.genList, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 
 # DNA ----
-sapply(DNA_04pop_migLow.genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
-sapply(DNA_04pop_migHigh.genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(DNA_04pop_migLow.genList, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(DNA_04pop_migHigh.genList, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 
-sapply(DNA_16pop_migLow.genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE)) 
-sapply(DNA_16pop_migHigh.genind, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
+sapply(DNA_16pop_migLow.genList, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE)) 
+sapply(DNA_16pop_migHigh.genList, function(x) mean(c(pairwise.neifst(genind2hierfstat(x))), na.rm=TRUE))
 
 # 3. ALLELE FREQUENCY SPECTRA ----
 # QUESTION: when we calculate allele frequencies, do we divide by the number of individuals in the
