@@ -27,6 +27,8 @@ strataG_arp2gen <- function(params, repNumber){
   arp <- fscReadArp(params, sim=c(1,repNumber), marker = marker)
   gtype <- df2gtypes(arp, ploidy = 2)
   genind <- gtypes2genind(gtype)
+  # In the "other" slot of the genind object, pass the name of the simulation scenario, and return
+  genind@other <- list(params$label)
   return(genind)
 }
 
@@ -47,6 +49,8 @@ convertAllArp <- function(arp.path, params){
     genind.obj <- strataG_arp2gen(params, rep=i)
     genind.list[[i]] <- genind.obj
   }
+  # Rename genind.list, according to params$label value
+  # names(genind.list) <- rep(params$label, length(genind.list))
   # Reset to original working directory, and return a list of genind objects
   setwd(original.wd)
   return(genind.list)
@@ -90,17 +94,17 @@ readGeninds_MSAT <- function(geninds.wd, prefix="MSAT"){
   # The pos=1 argument allows the variable to be passed to the global environment (rather than being kept locally)
   # The ^ character in dir allows any file with the given suffix to be read in, allowing for file name flexibility
   # [length(dir(pattern))] means if multiple genind objects are present in the directory, read the most recent one
-  assign(paste0(prefix, "_01pop_migLow.genind"), readRDS(
+  assign(paste0(prefix, "_01pop_migLow.genList"), readRDS(
     dir(pattern = "^genind.MSAT_01pop_migLow")[length(dir(pattern = "^genind.MSAT_01pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_01pop_migHigh.genind"), readRDS(
+  assign(paste0(prefix, "_01pop_migHigh.genList"), readRDS(
     dir(pattern = "^genind.MSAT_01pop_migHigh")[length(dir(pattern = "^genind.MSAT_01pop_migHigh"))]), pos = 1)
-  assign(paste0(prefix, "_04pop_migLow.genind"), readRDS(
+  assign(paste0(prefix, "_04pop_migLow.genList"), readRDS(
     dir(pattern = "^genind.MSAT_04pop_migLow")[length(dir(pattern = "^genind.MSAT_04pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_04pop_migHigh.genind"), readRDS(
+  assign(paste0(prefix, "_04pop_migHigh.genList"), readRDS(
     dir(pattern = "^genind.MSAT_04pop_migHigh")[length(dir(pattern = "^genind.MSAT_04pop_migHigh"))]), pos = 1)
-  assign(paste0(prefix, "_16pop_migLow.genind"), readRDS(
+  assign(paste0(prefix, "_16pop_migLow.genList"), readRDS(
     dir(pattern = "^genind.MSAT_16pop_migLow")[length(dir(pattern = "^genind.MSAT_16pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_16pop_migHigh.genind"), readRDS(
+  assign(paste0(prefix, "_16pop_migHigh.genList"), readRDS(
     dir(pattern = "^genind.MSAT_16pop_migHigh")[length(dir(pattern = "^genind.MSAT_16pop_migHigh"))]), pos = 1)
   # Reset to original working directory
   setwd(original.wd)
@@ -144,17 +148,17 @@ readGeninds_DNA <- function(geninds.wd, prefix="DNA"){
   # The pos=1 argument allows the variable to be passed to the global environment (rather than being kept locally)
   # The ^ character in dir allows any file with the given suffix to be read in, allowing for file name flexibility
   # [length(dir(pattern))] means if multiple genind objects are present in the directory, read the most recent one
-  assign(paste0(prefix, "_01pop_migLow.genind"), readRDS(
+  assign(paste0(prefix, "_01pop_migLow.genList"), readRDS(
     dir(pattern = "^genind.DNA_01pop_migLow")[length(dir(pattern = "^genind.DNA_01pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_01pop_migHigh.genind"), readRDS(
+  assign(paste0(prefix, "_01pop_migHigh.genList"), readRDS(
     dir(pattern = "^genind.DNA_01pop_migHigh")[length(dir(pattern = "^genind.DNA_01pop_migHigh"))]), pos = 1)
-  assign(paste0(prefix, "_04pop_migLow.genind"), readRDS(
+  assign(paste0(prefix, "_04pop_migLow.genList"), readRDS(
     dir(pattern = "^genind.DNA_04pop_migLow")[length(dir(pattern = "^genind.DNA_04pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_04pop_migHigh.genind"), readRDS(
+  assign(paste0(prefix, "_04pop_migHigh.genList"), readRDS(
     dir(pattern = "^genind.DNA_04pop_migHigh")[length(dir(pattern = "^genind.DNA_04pop_migHigh"))]), pos = 1)
-  assign(paste0(prefix, "_16pop_migLow.genind"), readRDS(
+  assign(paste0(prefix, "_16pop_migLow.genList"), readRDS(
     dir(pattern = "^genind.DNA_16pop_migLow")[length(dir(pattern = "^genind.DNA_16pop_migLow"))]), pos = 1)
-  assign(paste0(prefix, "_16pop_migHigh.genind"), readRDS(
+  assign(paste0(prefix, "_16pop_migHigh.genList"), readRDS(
     dir(pattern = "^genind.DNA_16pop_migHigh")[length(dir(pattern = "^genind.DNA_16pop_migHigh"))]), pos = 1)
   # Reset to original working directory
   setwd(original.wd)
@@ -379,14 +383,18 @@ exSitu_Resample <- function(gen.obj){
 Resample_genind <- function(gen.obj, reps=5){
   # Run resampling for all replicates, using sapply and lambda function
   resamplingArray <- sapply(1:reps, function(x) exSitu_Resample(gen.obj = gen.obj), simplify = "array")
+  # Rename third array dimension to describe simulation scenario (captured in the genind object), and return
+  dimnames(resamplingArray)[[3]] <- rep(unlist(gen.obj@other), dim(resamplingArray)[[3]])
   return(resamplingArray)
 }
 
 # Parallel wrapper for exSitu_Resample, which will generate an array of values from a single genind object
 parResample_genind <- function(gen.obj, reps=5, cluster){
-  # Run resampling for all replicates, using parSapply and lambda function
+  # Run resampling for all replicates, using parSapply and lambda function, and return array
   resamplingArray <- parSapply(cl=cluster, 1:reps, 
                                function(x) exSitu_Resample(gen.obj = gen.obj), simplify = "array")
+  # Rename third array dimension to describe simulation scenario (captured in the genind object), and return
+  dimnames(resamplingArray)[[3]] <- rep(unlist(gen.obj@other), dim(resamplingArray)[[3]])
   return(resamplingArray)
 }
 
@@ -396,7 +404,7 @@ resample_min95_mean <- function(resamplingArray){
   # apply(resamplingArray[,1,],1,mean): calculates the average across replicates for each row
   # which(apply(resamplingArray[,1,],1,mean) > 95): returns the rows with averages greater than 95
   # min(which(apply(resamplingArray[,1,],1,mean) > 95)): the lowest row with an average greater than 95
-  meanValue <- min(which(apply(resamplingArray[,1,],1,mean) > 95))
+  meanValue <- min(which(apply(resamplingArray[,1,],1, mean, na.rm=TRUE) > 95))
   return(meanValue)
 }
 
@@ -414,36 +422,36 @@ resample_meanValues <- function(resamplingArray){
   # Declare a matrix to receive average values
   meanValue_mat <- matrix(nrow=nrow(resamplingArray), ncol=ncol(resamplingArray))
   # For each column in the array, average results across replicates (3rd array dimension)
-  meanValue_mat[,1] <- apply(resamplingArray[,1,], 1, mean)
-  meanValue_mat[,2] <- apply(resamplingArray[,2,], 1, mean)
-  meanValue_mat[,3] <- apply(resamplingArray[,3,], 1, mean)
-  meanValue_mat[,4] <- apply(resamplingArray[,4,], 1, mean)
-  meanValue_mat[,5] <- apply(resamplingArray[,5,], 1, mean)
+  meanValue_mat[,1] <- apply(resamplingArray[,1,], 1, mean, na.rm=TRUE)
+  meanValue_mat[,2] <- apply(resamplingArray[,2,], 1, mean, na.rm=TRUE)
+  meanValue_mat[,3] <- apply(resamplingArray[,3,], 1, mean, na.rm=TRUE)
+  meanValue_mat[,4] <- apply(resamplingArray[,4,], 1, mean, na.rm=TRUE)
+  meanValue_mat[,5] <- apply(resamplingArray[,5,], 1, mean, na.rm=TRUE)
   # Give names to meanValue_mat columns, and return
   colnames(meanValue_mat) <- c("Total","Very common","Common","Low frequency","Rare")
   return(meanValue_mat)
 }
 
 # Summary plotting function, from array
-resample_Plot <- function(resamplingArray, colors, title){
+resample_Plot <- function(resamplingArray, colors){
   # Create two vectors for colors. This is to show points on the graph and in the legend clearly
   fullColors <- colors
   fadedColors <- c(colors[1], alpha(colors[2:5], 0.2))
-  # Generate the average values (across replicates) for each allele frequency category (don't print)
-  averageValueMat <- invisible(resample_meanValues(resamplingArray))
-  # Generate the minimum sample size to represent 95% of allelic diversity (across replicates; don't print)
-  min95_Value <- invisible(resample_min95_mean(resamplingArray))
+  # Generate the average values (across replicates) for each allele frequency category 
+  averageValueMat <- resample_meanValues(resamplingArray)
+  # Generate the minimum sample size to represent 95% of allelic diversity (across replicates)
+  min95_Value <- resample_min95_mean(resamplingArray)
   # Use the matplot function to plot the matrix of average values, with specified settings
   matplot(averageValueMat, ylim=c(0,110), col=fadedColors, pch=16,
           xlab="Number of Individuals", ylab="Percent Diversity Capture",
-          main=title)
+          main=unique(dimnames(resamplingArray)[[3]]))
   # Mark the 95% threshold line, as well as the 95% minimum sampling size
   abline(h=95, col="black", lty=3); abline(v=min95_Value, col="black")
   # Add text for the minimum sampling size line
   mtext(text=paste0("Minimum sampling size (95%) = ", min95_Value),
         side=1, line=-1.5, at=min95_Value+200)
   # Add legend
-  legend(x=950, y=85, inset = 0.05, 
+  legend(x=950, y=87, inset = 0.05,
          legend = c("Total","Very common","Common","Low frequency", "Rare"),
-         col=fullColors, pch = c(20,20,20), cex=1, pt.cex = 2, bty="n", y.intersp = 0.75)
+         col=fullColors, pch = c(20,20,20), cex=1, pt.cex = 2, bty="n", y.intersp = 0.50)
 }
