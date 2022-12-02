@@ -49,8 +49,6 @@ convertAllArp <- function(arp.path, params){
     genind.obj <- strataG_arp2gen(params, rep=i)
     genind.list[[i]] <- genind.obj
   }
-  # Rename genind.list, according to params$label value
-  # names(genind.list) <- rep(params$label, length(genind.list))
   # Reset to original working directory, and return a list of genind objects
   setwd(original.wd)
   return(genind.list)
