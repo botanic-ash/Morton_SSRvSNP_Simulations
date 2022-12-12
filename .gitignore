@@ -10,8 +10,12 @@ SimulationOutputs/demo_dnaMarkerIssue/seed.txt
 SimulationOutputs/ArchivedScenarios
 
 # Folder of strataG params and genind objects, which will be updated everytime the GenerateFSCparams.R script is run
+# "Original" simulations (nInd = 1200)
 SimulationOutputs/MSAT_marker/data.MSAT
 SimulationOutputs/DNA_marker/data.DNA
+# Increased population size simulations (nInda=4800)
+SimulationOutputs/MSAT_N4800_marker/data.MSAT
+SimulationOutputs/DNA_N4800_marker/data.DNA
 
 # All Arlequin and .arb files. For SNP simulations with at least 1,000 loci, these files will outsize the GitHub file limit size
 *.arp
