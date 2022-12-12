@@ -183,9 +183,9 @@ print("DNA: 1 population, high migration")
 DNA_01pop_migHigh.params <- fscRun(DNA_01pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 # Convert Arlequin outputs to genind
 print("%%% Convert Arlequin outputs to genind")
-DNA_01pop_migLow.genind <- convertAllArp(arp.path = paste0(dna_TEST.wd, "DNA_01pop_migLow/"), 
+DNA_01pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_01pop_migLow/"), 
                                          params = DNA_01pop_migLow.params)
-DNA_01pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna_TEST.wd, "DNA_01pop_migHigh/"), 
+DNA_01pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_01pop_migHigh/"), 
                                           params = DNA_01pop_migHigh.params)
 # Save genind and params objects to Rdata files, for long term storage
 saveRDS(DNA_01pop_migLow.genind, file = paste0("data.DNA/genind.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
@@ -206,9 +206,9 @@ print("DNA: 4 populations, high migration")
 DNA_04pop_migHigh.params <- fscRun(DNA_04pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 # Convert Arlequin outputs to genind
 print("%%% Convert Arlequin outputs to genind")
-DNA_04pop_migLow.genind <- convertAllArp(arp.path = paste0(dna_TEST.wd, "DNA_04pop_migLow/"),
+DNA_04pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_04pop_migLow/"),
                                               params = DNA_04pop_migLow.params)
-DNA_04pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna_TEST.wd, "DNA_04pop_migHigh/"),
+DNA_04pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_04pop_migHigh/"),
                                                params = DNA_04pop_migHigh.params)
 
 # Save genind and params objects to Rdata files, for long term storage
@@ -230,9 +230,9 @@ print("DNA: 16 populations, high migration")
 DNA_16pop_migHigh.params <- fscRun(DNA_16pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
 # Convert Arlequin outputs to genind
 print("%%% Convert Arlequin outputs to genind")
-DNA_16pop_migLow.genind <- convertAllArp(arp.path = paste0(dna_TEST.wd, "DNA_16pop_migLow/"), 
+DNA_16pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_16pop_migLow/"), 
                                          params = DNA_16pop_migLow.params)
-DNA_16pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna_TEST.wd, "DNA_16pop_migHigh/"), 
+DNA_16pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_16pop_migHigh/"), 
                                           params = DNA_16pop_migHigh.params)
 # Save genind and params objects to Rdata files, for long term storage
 saveRDS(DNA_16pop_migLow.genind, file = paste0("data.DNA/genind.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
