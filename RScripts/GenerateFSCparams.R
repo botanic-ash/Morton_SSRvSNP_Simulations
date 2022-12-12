@@ -2,9 +2,10 @@
 # %%% GENERATE FSC PARAMETERS USING STRATAG %%%
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-# This script uses strataG to create the fastsimcoal2 (fsc) parameter files used for the SSR v. SNP comparison project
-# Then, those parameter files are used to run fsc simulations. Arlequin outputs are converted to genind,
-# and both the strataG params objects and the genind objects are saved to .Rdata files for long-term storage.
+# This script uses strataG to create the fastsimcoal2 (fsc) parameter files used for the simulation component
+# of the SSR v. SNP comparison project. Then, those parameter files are used to run fsc simulations. 
+# Arlequin outputs are converted to genind, and both the strataG params objects and the 
+# genind objects are saved to .Rdata files for long-term storage.
 
 # After declaring variables (used throughout the script), the code is broken into 
 # sections according to which marker type is used for simulations ("MSAT" or "DNA").
@@ -168,8 +169,8 @@ saveRDS(MSAT_16pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_16pop_mi
 saveRDS(MSAT_16pop_migHigh.params, file = paste0("data.MSAT/params.MSAT_16pop_migHigh.",Sys.Date(),".Rdata"))
 
 # ---- DNA ----
-dna_TEST.wd <- paste0(sim.wd,"SimulationOutputs/DNA_marker/")
-setwd(dna_TEST.wd)
+dna.wd <- paste0(sim.wd,"SimulationOutputs/DNA_marker/")
+setwd(dna.wd)
 
 # 1 POPULATION
 # Write parameter files. Make a mighHigh .par file as well, even though it's identical to migLow (with 1 population)
