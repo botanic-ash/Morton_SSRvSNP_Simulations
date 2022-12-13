@@ -101,15 +101,24 @@ msat.wd <- paste0(sim.wd,"SimulationOutputs/MSAT_marker/")
 setwd(msat.wd)
 
 # 1 POPULATION
-# Write parameter files. Make a mighHigh .par file as well, even though it's identical to migLow (with 1 population)
+# Write parameter files. 
+# Make a mighHigh .par file as well, even though it's identical to migLow (with 1 population)
 MSAT_01pop_migLow.params <- fscWrite(demes = demes1, genetics = MSATgenetics,
                                      label = "MSAT_01pop_migLow", use.wd=TRUE)
-MSAT_01pop_migHigh.params <- fscWrite(demes = demes1, genetics = MSATgenetics, label = "MSAT_01pop_migHigh", use.wd=TRUE)
+MSAT_01pop_migHigh.params <- fscWrite(demes = demes1, genetics = MSATgenetics, 
+                                      label = "MSAT_01pop_migHigh", use.wd=TRUE)
 # Run parameter files
 print("MICROSATELLITES: 1 population, low migration")
 MSAT_01pop_migLow.params <- fscRun(MSAT_01pop_migLow.params, num.sims = num_reps, exec = fscVersion)
 print("MICROSATELLITES: 1 population, high migration")
 MSAT_01pop_migHigh.params <- fscRun(MSAT_01pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
+# Move .log and .par files into respective simulation folders
+file.copy(from=paste0(msat.wd,"MSAT_01pop_migLow.log"), to=paste0(msat.wd,"MSAT_01pop_migLow/"))
+file.copy(from=paste0(msat.wd,"MSAT_01pop_migLow.par"), to=paste0(msat.wd,"MSAT_01pop_migLow/"))
+file.copy(from=paste0(msat.wd,"MSAT_01pop_migHigh.log"), to=paste0(msat.wd,"MSAT_01pop_migHigh/"))
+file.copy(from=paste0(msat.wd,"MSAT_01pop_migHigh.par"), to=paste0(msat.wd,"MSAT_01pop_migHigh/"))
+file.remove(list.files(pattern = ".log"))
+file.remove(list.files(pattern = ".par"))
 # Convert Arlequin outputs to genind
 print("%%% Convert Arlequin outputs to genind")
 MSAT_01pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_01pop_migLow/"),
@@ -133,6 +142,13 @@ print("MICROSATELLITES: 4 populations, low migration")
 MSAT_04pop_migLow.params <- fscRun(MSAT_04pop_migLow.params, num.sims = num_reps, exec = fscVersion)
 print("MICROSATELLITES: 4 populations, high migration")
 MSAT_04pop_migHigh.params <- fscRun(MSAT_04pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
+# Move .log and .par files into respective simulation folders
+file.copy(from=paste0(msat.wd,"MSAT_04pop_migLow.log"), to=paste0(msat.wd,"MSAT_04pop_migLow/"))
+file.copy(from=paste0(msat.wd,"MSAT_04pop_migLow.par"), to=paste0(msat.wd,"MSAT_04pop_migLow/"))
+file.copy(from=paste0(msat.wd,"MSAT_04pop_migHigh.log"), to=paste0(msat.wd,"MSAT_04pop_migHigh/"))
+file.copy(from=paste0(msat.wd,"MSAT_04pop_migHigh.par"), to=paste0(msat.wd,"MSAT_04pop_migHigh/"))
+file.remove(list.files(pattern = ".log"))
+file.remove(list.files(pattern = ".par"))
 # Convert Arlequin outputs to genind
 print("%%% Convert Arlequin outputs to genind")
 MSAT_04pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_04pop_migLow/"),
@@ -156,6 +172,13 @@ print("MICROSATELLITES: 16 populations, low migration")
 MSAT_16pop_migLow.params <- fscRun(MSAT_16pop_migLow.params, num.sims = num_reps, exec = fscVersion)
 print("MICROSATELLITES: 16 populations, high migration")
 MSAT_16pop_migHigh.params <- fscRun(MSAT_16pop_migHigh.params, num.sims = num_reps, exec = fscVersion)
+# Move .log and .par files into respective simulation folders
+file.copy(from=paste0(msat.wd,"MSAT_16pop_migLow.log"), to=paste0(msat.wd,"MSAT_16pop_migLow/"))
+file.copy(from=paste0(msat.wd,"MSAT_16pop_migLow.par"), to=paste0(msat.wd,"MSAT_16pop_migLow/"))
+file.copy(from=paste0(msat.wd,"MSAT_16pop_migHigh.log"), to=paste0(msat.wd,"MSAT_16pop_migHigh/"))
+file.copy(from=paste0(msat.wd,"MSAT_16pop_migHigh.par"), to=paste0(msat.wd,"MSAT_16pop_migHigh/"))
+file.remove(list.files(pattern = ".log"))
+file.remove(list.files(pattern = ".par"))
 # Convert Arlequin outputs to genind
 print("%%% Convert Arlequin outputs to genind")
 MSAT_16pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_16pop_migLow/"),
@@ -174,13 +197,25 @@ setwd(dna.wd)
 
 # 1 POPULATION
 # Write parameter files. Make a mighHigh .par file as well, even though it's identical to migLow (with 1 population)
-DNA_01pop_migLow.params <- fscWrite(demes = demes1, genetics = DNAgenetics, label = "DNA_01pop_migLow", use.wd=TRUE)
-DNA_01pop_migHigh.params <- fscWrite(demes = demes1, genetics = DNAgenetics, label = "DNA_01pop_migHigh", use.wd=TRUE)
-# Run parameter files
+DNA_01pop_migLow.params <- fscWrite(demes = demes1, genetics = DNAgenetics, 
+                                    label = "DNA_01pop_migLow", use.wd=TRUE)
+DNA_01pop_migHigh.params <- fscWrite(demes = demes1, genetics = DNAgenetics, 
+                                     label = "DNA_01pop_migHigh", use.wd=TRUE)
+# Run parameter files. 
+# For DNA simulations, set all.sites=TRUE (in order to print monomorphic as well as polymorphic sequence sites)
 print("DNA: 1 population, low migration")
-DNA_01pop_migLow.params <- fscRun(DNA_01pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNA_01pop_migLow.params <- fscRun(DNA_01pop_migLow.params, num.sims = num_reps, 
+                                  all.sites = TRUE, exec = fscVersion)
 print("DNA: 1 population, high migration")
-DNA_01pop_migHigh.params <- fscRun(DNA_01pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNA_01pop_migHigh.params <- fscRun(DNA_01pop_migHigh.params, num.sims = num_reps, 
+                                   all.sites = TRUE, exec = fscVersion)
+# Move .log and .par files into respective simulation folders
+file.copy(from=paste0(dna.wd,"DNA_01pop_migLow.log"), to=paste0(dna.wd,"DNA_01pop_migLow/"))
+file.copy(from=paste0(dna.wd,"DNA_01pop_migLow.par"), to=paste0(dna.wd,"DNA_01pop_migLow/"))
+file.copy(from=paste0(dna.wd,"DNA_01pop_migHigh.log"), to=paste0(dna.wd,"DNA_01pop_migHigh/"))
+file.copy(from=paste0(dna.wd,"DNA_01pop_migHigh.par"), to=paste0(dna.wd,"DNA_01pop_migHigh/"))
+file.remove(list.files(pattern = ".log"))
+file.remove(list.files(pattern = ".par"))
 # Convert Arlequin outputs to genind
 print("%%% Convert Arlequin outputs to genind")
 DNA_01pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_01pop_migLow/"), 
@@ -199,11 +234,21 @@ DNA_04pop_migLow.params <- fscWrite(demes = demes4, migration = mig4Low, events 
                                     genetics = DNAgenetics, label = "DNA_04pop_migLow", use.wd=TRUE)
 DNA_04pop_migHigh.params <- fscWrite(demes = demes4, migration = mig4High, events = histEvent4,
                                      genetics = DNAgenetics, label = "DNA_04pop_migHigh", use.wd=TRUE)
-# Run parameter files
+# Run parameter files. 
+# For DNA simulations, set all.sites=TRUE (in order to print monomorphic as well as polymorphic sequence sites)
 print("DNA: 4 populations, low migration")
-DNA_04pop_migLow.params <- fscRun(DNA_04pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNA_04pop_migLow.params <- fscRun(DNA_04pop_migLow.params, num.sims = num_reps, 
+                                  all.sites = TRUE, exec = fscVersion)
 print("DNA: 4 populations, high migration")
-DNA_04pop_migHigh.params <- fscRun(DNA_04pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNA_04pop_migHigh.params <- fscRun(DNA_04pop_migHigh.params, num.sims = num_reps, 
+                                   all.sites = TRUE, exec = fscVersion)
+# Move .log and .par files into respective simulation folders
+file.copy(from=paste0(dna.wd,"DNA_04pop_migLow.log"), to=paste0(dna.wd,"DNA_04pop_migLow/"))
+file.copy(from=paste0(dna.wd,"DNA_04pop_migLow.par"), to=paste0(dna.wd,"DNA_04pop_migLow/"))
+file.copy(from=paste0(dna.wd,"DNA_04pop_migHigh.log"), to=paste0(dna.wd,"DNA_04pop_migHigh/"))
+file.copy(from=paste0(dna.wd,"DNA_04pop_migHigh.par"), to=paste0(dna.wd,"DNA_04pop_migHigh/"))
+file.remove(list.files(pattern = ".log"))
+file.remove(list.files(pattern = ".par"))
 # Convert Arlequin outputs to genind
 print("%%% Convert Arlequin outputs to genind")
 DNA_04pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_04pop_migLow/"),
@@ -223,11 +268,21 @@ DNA_16pop_migLow.params <- fscWrite(demes = demes16, migration = mig16Low, event
                                     genetics = DNAgenetics, label = "DNA_16pop_migLow", use.wd=TRUE)
 DNA_16pop_migHigh.params <- fscWrite(demes = demes16, migration = mig16High, events = histEvent16, 
                                      genetics = DNAgenetics, label = "DNA_16pop_migHigh", use.wd=TRUE)
-# Run parameter files
+# Run parameter files. 
+# For DNA simulations, set all.sites=TRUE (in order to print monomorphic as well as polymorphic sequence sites)
 print("DNA: 16 populations, low migration")
-DNA_16pop_migLow.params <- fscRun(DNA_16pop_migLow.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNA_16pop_migLow.params <- fscRun(DNA_16pop_migLow.params, num.sims = num_reps, 
+                                  all.sites = TRUE, exec = fscVersion)
 print("DNA: 16 populations, high migration")
-DNA_16pop_migHigh.params <- fscRun(DNA_16pop_migHigh.params, num.sims = num_reps, all.sites = TRUE, exec = fscVersion)
+DNA_16pop_migHigh.params <- fscRun(DNA_16pop_migHigh.params, num.sims = num_reps, 
+                                   all.sites = TRUE, exec = fscVersion)
+# Move .log and .par files into respective simulation folders
+file.copy(from=paste0(dna.wd,"DNA_16pop_migLow.log"), to=paste0(dna.wd,"DNA_16pop_migLow/"))
+file.copy(from=paste0(dna.wd,"DNA_16pop_migLow.par"), to=paste0(dna.wd,"DNA_16pop_migLow/"))
+file.copy(from=paste0(dna.wd,"DNA_16pop_migHigh.log"), to=paste0(dna.wd,"DNA_16pop_migHigh/"))
+file.copy(from=paste0(dna.wd,"DNA_16pop_migHigh.par"), to=paste0(dna.wd,"DNA_16pop_migHigh/"))
+file.remove(list.files(pattern = ".log"))
+file.remove(list.files(pattern = ".par"))
 # Convert Arlequin outputs to genind
 print("%%% Convert Arlequin outputs to genind")
 DNA_16pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_16pop_migLow/"), 
