@@ -17,9 +17,10 @@ SimulationOutputs/DNA_marker/data.DNA
 SimulationOutputs/MSAT_N4800_marker/data.MSAT
 SimulationOutputs/DNA_N4800_marker/data.DNA
 
-# All Arlequin and .arb files. For SNP simulations with at least 1,000 loci, these files will outsize the GitHub file limit size
-*.arp
-*.arb
+# All Arlequin, .arb files, and .simparam. For SNP simulations with at least 1,000 loci, these files will outsize the GitHub file limit size
+**/*.arp
+**/*.arb
+**/*.simparam
 
 # Any .Rhistory files
 *.Rhistory
