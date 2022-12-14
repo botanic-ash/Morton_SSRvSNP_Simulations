@@ -129,7 +129,8 @@ MSAT_N4800_01pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT
                                           params = MSAT_N4800_01pop_migLow.params)
 MSAT_N4800_01pop_migHigh.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_N4800_01pop_migHigh/"),
                                            params = MSAT_N4800_01pop_migHigh.params)
-# Save genind and params objects to Rdata files, for long term storage
+# Save genind and params objects to Rdata files, for long term storage. Note that genind objects 
+# need to have a file name of genind.scenarioName in order to be processed by the readGendinds_* functions
 saveRDS(MSAT_N4800_01pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_01pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(MSAT_N4800_01pop_migLow.params, file = paste0("data.MSAT/params.MSAT_01pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(MSAT_N4800_01pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_01pop_migHigh.",Sys.Date(),".Rdata"))
@@ -159,7 +160,8 @@ MSAT_N4800_04pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT
                                           params = MSAT_N4800_04pop_migLow.params)
 MSAT_N4800_04pop_migHigh.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_N4800_04pop_migHigh/"),
                                            params = MSAT_N4800_04pop_migHigh.params)
-# Save genind and params objects to Rdata files, for long term storage
+# Save genind and params objects to Rdata files, for long term storage. Note that genind objects 
+# need to have a file name of genind.scenarioName in order to be processed by the readGendinds_* functions
 saveRDS(MSAT_N4800_04pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_04pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(MSAT_N4800_04pop_migLow.params, file = paste0("data.MSAT/params.MSAT_04pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(MSAT_N4800_04pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_04pop_migHigh.",Sys.Date(),".Rdata"))
@@ -189,7 +191,8 @@ MSAT_N4800_16pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT
                                           params = MSAT_N4800_16pop_migLow.params)
 MSAT_N4800_16pop_migHigh.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_N4800_16pop_migHigh/"),
                                            params = MSAT_N4800_16pop_migHigh.params)
-# Save genind and params objects to Rdata files, for long term storage
+# Save genind and params objects to Rdata files, for long term storage. Note that genind objects 
+# need to have a file name of genind.scenarioName in order to be processed by the readGendinds_* functions
 saveRDS(MSAT_N4800_16pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_16pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(MSAT_N4800_16pop_migLow.params, file = paste0("data.MSAT/params.MSAT_16pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(MSAT_N4800_16pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_16pop_migHigh.",Sys.Date(),".Rdata"))
@@ -226,7 +229,8 @@ DNA_N4800_01pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N4
                                          params = DNA_N4800_01pop_migLow.params)
 DNA_N4800_01pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N4800_01pop_migHigh/"), 
                                           params = DNA_N4800_01pop_migHigh.params)
-# Save genind and params objects to Rdata files, for long term storage
+# Save genind and params objects to Rdata files, for long term storage. Note that genind objects 
+# need to have a file name of genind.scenarioName in order to be processed by the readGendinds_* functions
 saveRDS(DNA_N4800_01pop_migLow.genind, file = paste0("data.DNA/genind.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(DNA_N4800_01pop_migLow.params, file = paste0("data.DNA/params.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(DNA_N4800_01pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
@@ -260,7 +264,8 @@ DNA_N4800_04pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N4
 DNA_N4800_04pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N4800_04pop_migHigh/"),
                                                params = DNA_N4800_04pop_migHigh.params)
 
-# Save genind and params objects to Rdata files, for long term storage
+# Save genind and params objects to Rdata files, for long term storage. Note that genind objects 
+# need to have a file name of genind.scenarioName in order to be processed by the readGendinds_* functions
 saveRDS(DNA_N4800_04pop_migLow.genind, file = paste0("data.DNA/genind.DNA_04pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(DNA_N4800_04pop_migLow.params, file = paste0("data.DNA/params.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(DNA_N4800_04pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_04pop_migHigh.",Sys.Date(),".Rdata"))
@@ -293,7 +298,8 @@ DNA_N4800_16pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N4
                                          params = DNA_N4800_16pop_migLow.params)
 DNA_N4800_16pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N4800_16pop_migHigh/"), 
                                           params = DNA_N4800_16pop_migHigh.params)
-# Save genind and params objects to Rdata files, for long term storage
+# Save genind and params objects to Rdata files, for long term storage. Note that genind objects 
+# need to have a file name of genind.scenarioName in order to be processed by the readGendinds_* functions
 saveRDS(DNA_N4800_16pop_migLow.genind, file = paste0("data.DNA/genind.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(DNA_N4800_16pop_migLow.params, file = paste0("data.DNA/params.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
 saveRDS(DNA_N4800_16pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
