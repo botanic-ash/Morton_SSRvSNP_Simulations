@@ -130,10 +130,10 @@ MSAT_N4800_01pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT
 MSAT_N4800_01pop_migHigh.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_N4800_01pop_migHigh/"),
                                            params = MSAT_N4800_01pop_migHigh.params)
 # Save genind and params objects to Rdata files, for long term storage
-saveRDS(MSAT_N4800_01pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_N4800_01pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_N4800_01pop_migLow.params, file = paste0("data.MSAT/params.MSAT_N4800_01pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_N4800_01pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_N4800_01pop_migHigh.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_N4800_01pop_migHigh.params, file = paste0("data.MSAT/params.MSAT_N4800_01pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_01pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_01pop_migLow.params, file = paste0("data.MSAT/params.MSAT_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_01pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_01pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_01pop_migHigh.params, file = paste0("data.MSAT/params.MSAT_01pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 4 POPULATIONS
 # Write parameter files
@@ -160,10 +160,10 @@ MSAT_N4800_04pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT
 MSAT_N4800_04pop_migHigh.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_N4800_04pop_migHigh/"),
                                            params = MSAT_N4800_04pop_migHigh.params)
 # Save genind and params objects to Rdata files, for long term storage
-saveRDS(MSAT_N4800_04pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_N4800_04pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_N4800_04pop_migLow.params, file = paste0("data.MSAT/params.MSAT_N4800_04pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_N4800_04pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_N4800_04pop_migHigh.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_N4800_04pop_migHigh.params, file = paste0("data.MSAT/params.MSAT_N4800_04pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_04pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_04pop_migLow.params, file = paste0("data.MSAT/params.MSAT_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_04pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_04pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_04pop_migHigh.params, file = paste0("data.MSAT/params.MSAT_04pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 16 POPULATIONS
 # Write parameter files
@@ -190,10 +190,10 @@ MSAT_N4800_16pop_migLow.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT
 MSAT_N4800_16pop_migHigh.genind <- convertAllArp(arp.path = paste0(msat.wd, "MSAT_N4800_16pop_migHigh/"),
                                            params = MSAT_N4800_16pop_migHigh.params)
 # Save genind and params objects to Rdata files, for long term storage
-saveRDS(MSAT_N4800_16pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_N4800_16pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_N4800_16pop_migLow.params, file = paste0("data.MSAT/params.MSAT_N4800_16pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_N4800_16pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_N4800_16pop_migHigh.",Sys.Date(),".Rdata"))
-saveRDS(MSAT_N4800_16pop_migHigh.params, file = paste0("data.MSAT/params.MSAT_N4800_16pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_16pop_migLow.genind, file = paste0("data.MSAT/genind.MSAT_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_16pop_migLow.params, file = paste0("data.MSAT/params.MSAT_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_16pop_migHigh.genind, file = paste0("data.MSAT/genind.MSAT_16pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(MSAT_N4800_16pop_migHigh.params, file = paste0("data.MSAT/params.MSAT_16pop_migHigh.",Sys.Date(),".Rdata"))
 
 # ---- DNA ----
 dna.wd <- paste0(sim.wd,"SimulationOutputs/DNA_N4800_marker/")
@@ -227,10 +227,10 @@ DNA_N4800_01pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N4
 DNA_N4800_01pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N4800_01pop_migHigh/"), 
                                           params = DNA_N4800_01pop_migHigh.params)
 # Save genind and params objects to Rdata files, for long term storage
-saveRDS(DNA_N4800_01pop_migLow.genind, file = paste0("data.DNA/genind.DNA_N4800_01pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_N4800_01pop_migLow.params, file = paste0("data.DNA/params.DNA_N4800_01pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_N4800_01pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_N4800_01pop_migHigh.",Sys.Date(),".Rdata"))
-saveRDS(DNA_N4800_01pop_migHigh.params, file = paste0("data.DNA/params.DNA_N4800_01pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_01pop_migLow.genind, file = paste0("data.DNA/genind.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_01pop_migLow.params, file = paste0("data.DNA/params.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_01pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_01pop_migHigh.params, file = paste0("data.DNA/params.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 4 POPULATIONS
 # Write parameter files
@@ -261,10 +261,10 @@ DNA_N4800_04pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N
                                                params = DNA_N4800_04pop_migHigh.params)
 
 # Save genind and params objects to Rdata files, for long term storage
-saveRDS(DNA_N4800_04pop_migLow.genind, file = paste0("data.DNA/genind.DNA_N4800_04pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_N4800_04pop_migLow.params, file = paste0("data.DNA/params.DNA_N4800_01pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_N4800_04pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_N4800_04pop_migHigh.",Sys.Date(),".Rdata"))
-saveRDS(DNA_N4800_04pop_migHigh.params, file = paste0("data.DNA/params.DNA_N4800_01pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_04pop_migLow.genind, file = paste0("data.DNA/genind.DNA_04pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_04pop_migLow.params, file = paste0("data.DNA/params.DNA_01pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_04pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_04pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_04pop_migHigh.params, file = paste0("data.DNA/params.DNA_01pop_migHigh.",Sys.Date(),".Rdata"))
 
 # 16 POPULATIONS
 # Write parameter files
@@ -294,7 +294,7 @@ DNA_N4800_16pop_migLow.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N4
 DNA_N4800_16pop_migHigh.genind <- convertAllArp(arp.path = paste0(dna.wd, "DNA_N4800_16pop_migHigh/"), 
                                           params = DNA_N4800_16pop_migHigh.params)
 # Save genind and params objects to Rdata files, for long term storage
-saveRDS(DNA_N4800_16pop_migLow.genind, file = paste0("data.DNA/genind.DNA_N4800_16pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_N4800_16pop_migLow.params, file = paste0("data.DNA/params.DNA_N4800_16pop_migLow.",Sys.Date(),".Rdata"))
-saveRDS(DNA_N4800_16pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_N4800_16pop_migHigh.",Sys.Date(),".Rdata"))
-saveRDS(DNA_N4800_16pop_migHigh.params, file = paste0("data.DNA/params.DNA_N4800_16pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_16pop_migLow.genind, file = paste0("data.DNA/genind.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_16pop_migLow.params, file = paste0("data.DNA/params.DNA_16pop_migLow.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_16pop_migHigh.genind, file = paste0("data.DNA/genind.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
+saveRDS(DNA_N4800_16pop_migHigh.params, file = paste0("data.DNA/params.DNA_16pop_migHigh.",Sys.Date(),".Rdata"))
