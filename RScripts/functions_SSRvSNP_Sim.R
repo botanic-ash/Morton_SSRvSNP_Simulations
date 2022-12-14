@@ -7,9 +7,12 @@
 #   1. Functions used for procesing Arlequin/strataG files. These include functions
 #      for converting Arlequin outputs to genind, and for reading in existing strataG
 #      params objects and genind objects (so simulations don't need to be run multiple times)
-#   2. Commands for measuring ex situ respresentation in the simulated genind files
-#   3. Commands for running the resampling analyses, in the simulated genind files
-
+#   2. Commands for measuring ex situ representation in the simulated genind files. These are
+#      analogous to the ex situ representation functions used in the Empirical analysis, and 
+#      remove missing data from objects (even though simulations generate no missing data).
+#   3. Commands for running the resampling analyses, in the simulated genind files. These are
+#      analogous to the ex situ representation functions used in the Empirical analysis, and 
+#      remove missing data from objects (even though simulations generate no missing data).
 
 library(strataG)
 library(adegenet)
@@ -181,8 +184,9 @@ assignGardenSamples <- function(genind.obj, proportion=0.2){
 getWildFreqs <- function(gen.obj, wholeValues=TRUE){
   # Build a vector of rows corresponding to wild individuals (those that do not have a population of "garden")
   wildRows <- which(pop(gen.obj)!="garden")
-  # Build the wild allele frequency vector: colSums of alleles (removing NAs), divided by number of haplotypes (Ne*2)
-  # wholeValues argument determines whether to return whole percentages or fractions
+  # Build the wild allele frequency vector: colSums of alleles (removing NAs), 
+  # divided by number of haplotypes (Ne*2). wholeValues argument determines whether 
+  # to return whole percentages or fractions
   if(wholeValues==TRUE){
     wildFreqs <- colSums(gen.obj@tab[wildRows,], na.rm = TRUE)/(length(wildRows)*2)*100
   } else{
@@ -218,7 +222,8 @@ getWildAlleleFreqProportions <- function(gen.obj){
   return(freqProportions)
 }
 
-# Exploratory function for reporting the proprtion of alleles of each category, from a frequency vector (of ALL alleles--garden AND wild)
+# Exploratory function for reporting the proprtion of alleles of each category, 
+# from a frequency vector (of ALL alleles--garden AND wild)
 getTotalAlleleFreqProportions <- function(gen.obj){
   # Build the total allele frequency vector, using the getTotalFreqs function
   totalFreqs <- getTotalFreqs(gen.obj)
@@ -249,38 +254,66 @@ summarize_alleleFreqProportions <- function(freqProportions){
   return(freqPropStats)
 }
 
-# Function for reporting representation rates, using a sample matrix and a vector of allele frequencies
+# Function for reporting representation rates, using a vector of allele frequencies and a sample matrix.
 # This function assumes that the freqVector represents the absolute allele frequencies
-# for the entire population of interest. Allele names between the frequency vector and the sample matrix
-# must correspond in order for values to be comparable.
+# for the population of interest (typically, the entire wild population). Allele names 
+# between the frequency vector and the sample matrix must correspond in order for values to be comparable. 
 getAlleleCategories <- function(freqVector, sampleMat){
-  # Determine how many total alleles in the sample (i.e. greater than 0) are found in the frequency vector 
-  total <- length(which(names(which(freqVector > 0)) %in% names(which(colSums(sampleMat, na.rm = TRUE) > 0))))/length(which(freqVector > 0))*100
+  # Determine how many total alleles in the sample matrix are found in the frequency vector 
+  garden.total_Alleles <- length(which(names(freqVector) %in% colnames(sampleMat)))
+  wild.total_Alleles <- length(freqVector)
+  total_Percentage <- (garden.total_Alleles/wild.total_Alleles)*100
   # Very common alleles (greater than 10%)
-  v_com <- length(which(names(which(freqVector > 10)) %in% names(which(colSums(sampleMat, na.rm = TRUE) > 0))))/length(which(freqVector > 10))*100
+  garden.vCom_Alleles <- length(which(names(which(freqVector > 10)) %in% colnames(sampleMat)))
+  wild.vCom_Alleles <- length(which(freqVector > 10))
+  vCom_Percentage <- (garden.vCom_Alleles/wild.vCom_Alleles)*100
   # Common alleles (greater than 5%)
-  com <- length(which(names(which(freqVector > 5)) %in% names(which(colSums(sampleMat, na.rm = TRUE) > 0))))/length(which(freqVector > 5))*100
+  garden.com_Alleles <- length(which(names(which(freqVector > 5)) %in% colnames(sampleMat)))
+  wild.com_Alleles <- length(which(freqVector > 5))
+  com_Percentage <- (garden.com_Alleles/wild.com_Alleles)*100
   # Low frequency alleles (between 1% and 10%)
-  low_freq <- length(which(names(which(freqVector < 10 & freqVector > 1)) %in% names(which(colSums(sampleMat, na.rm = TRUE) > 0))))/length(which(freqVector < 10 & freqVector > 1))*100
+  garden.lowFr_Alleles <- length(which(names(which(freqVector < 10 & freqVector > 1)) %in% colnames(sampleMat)))
+  wild.lowFr_Alleles <- length(which(freqVector < 10 & freqVector > 1))
+  lowFr_Percentage <- (garden.lowFr_Alleles/wild.lowFr_Alleles)*100
   # Rare alleles (less than 1%)
-  rare <- length(which(names(which(freqVector < 1 & freqVector > 0)) %in% names(which(colSums(sampleMat, na.rm = TRUE) > 0))))/length(which(freqVector < 1 & freqVector > 0))*100
-  # Concatenate values to a vector, name that vector, and return
-  exSituRepRates <- c(total, v_com, com, low_freq, rare) 
-  names(exSituRepRates) <- c("Total","Very common (>10%)","Common (>5%)",
-                             "Low frequency (1% -- 10%","Rare (<1%)")
-  return(exSituRepRates)
+  garden.rare_Alleles <- length(which(names(which(freqVector < 1)) %in% colnames(sampleMat)))
+  wild.rare_Alleles <- length(which(freqVector < 1))
+  rare_Percentage <- (garden.rare_Alleles/wild.rare_Alleles)*100
+  # Concatenate values to vectors
+  gardenAlleles <- c(garden.total_Alleles, garden.vCom_Alleles, garden.com_Alleles, garden.lowFr_Alleles, garden.rare_Alleles)
+  wildAlleles <- c(wild.total_Alleles, wild.vCom_Alleles, wild.com_Alleles, wild.lowFr_Alleles, wild.rare_Alleles)
+  repRates <- c(total_Percentage,vCom_Percentage,com_Percentage,lowFr_Percentage,rare_Percentage) 
+  # Bind vectors to a matrix, name dimensions, and return
+  exSituValues <- cbind(gardenAlleles, wildAlleles, repRates)
+  rownames(exSituValues) <- c("Total","Very common (>10%)","Common (>5%)",
+                              "Low frequency (1% -- 10%)","Rare (<1%)")
+  colnames(exSituValues) <- c("Garden", "Wild", "Rate (%)")
+  return(exSituValues)
 }
 
-# Wrapper function for reporting ex situ representation rates from genind object
-exSituRepresentation <- function(gen.obj){
-  # Build the wild allele frequency vector, using the getWildFreqs function
-  wildFreqs <- getWildFreqs(gen.obj)
-  # Build the matrix of garden samples
-  gardenMat <- gen.obj@tab[which(pop(gen.obj)=="garden"),]
-  # Calculate representation rates, using getAlleleCategories function
-  repRates <- getAlleleCategories(freqVector = wildFreqs, sampleMat = gardenMat)
-  # Return vector of rates
-  return(repRates)
+# This function is a wrapper of getAlleleCategories, and takes as an argument a single genind object
+# (containing both garden and wild samples to analyze). It processes that genind object to extract the
+# objects it needs to calculate ex situ representation: a vector of wild allele frequencies, and a 
+# sample matrix of garden samples. Although simulations don't generate missing data, absent alleles
+# (those with frequencies or colSums of 0) are removed from the the frequency vector and sample matrix
+exSitu_Rep <- function(gen.obj){
+  # Generate numerical vectors corresponding to garden and wild rows
+  garden.Rows <- which(gen.obj@pop == "garden")
+  wild.Rows <- which(gen.obj@pop == "wild")
+  # Build the wild allele frequency vector: sum the allele counts, and divide by the number of wild samples
+  # (which is equal to the number of wild rows in the genind matrix) times 2 (assuming diploid individuals)
+  wildFreqs <- colSums(gen.obj@tab[wild.Rows,], na.rm = TRUE)/(length(wild.Rows)*2)*100
+  # Remove any missing alleles (those with frequencies of 0) from the wild allele frequency vector
+  wildFreqs <- wildFreqs[which(wildFreqs != 0)]
+  # Generate the sample matrix to analyze (i.e. matrix of garden samples).
+  gardenMat <- gen.obj@tab[garden.Rows,]
+  # Remove any missing alleles (those with colSums of 0) from the matrix of garden samples
+  gardenMat <- gardenMat[,which(colSums(gardenMat, na.rm = TRUE) != 0)]
+  # Calculate how many alleles (of each category) the garden samples represent
+  repValues <- getAlleleCategories(freqVector=wildFreqs, sampleMat = gardenMat)
+  # Subset matrix returned by getAlleleCategories to just ex situ representation proportions, and return
+  repValues <- repValues[,3]
+  return(repValues)
 }
 
 # Function for summarizing ex situ representation rates across replicates
@@ -313,7 +346,7 @@ summarize_simulations <- function(genind.list){
     alleleFrequencies <- sapply(genind.list[[i]], getWildAlleleFreqProportions)
     alleleFreqSummaries[,,i] <- summarize_alleleFreqProportions(alleleFrequencies)
     # Calculate and summarize ex situ representation rates. Each array slot is a different scenario
-    representationRates <- sapply(genind.list[[i]], exSituRepresentation)
+    representationRates <- sapply(genind.list[[i]], exSitu_Rep)
     repRateSummaries[,,i] <- summarize_exSituRepresentation(representationRates)
   }
   # Round results to 2 digits
@@ -362,6 +395,32 @@ exSitu_Sample <- function(gen.obj, numSamples){
   samp <- wildMat[sample(nrow(wildMat), size=numSamples, replace = FALSE),]
   # Calculate how many alleles (of each category) that sample captures, and return
   repRates <- getAlleleCategories(freqVector, samp)
+  return(repRates)
+}
+
+# Ex situ sample function, which finds the level of ex situ representation of a sample of individuals.
+# It takes a genind object (containing garden and wild samples) and an integer specifying the number of 
+# rows (individuals) to draw from the matrix of wild samples. Using the sample and getAlleleCategories 
+# functions, it calculates the allelic representation of randomly sampled rows from the  specified matrix. 
+# Prior to passing the required frequency vector and sample matrix to getAlleleCategories, 
+# missing loci are removed, even though simulations by default do not generate any missing data.
+# Just the 3rd column of the matrix generated by getAlleleCategories (i.e. the representation rates) 
+# is retained for resampling, since we don't use the absolute allele count values.
+exSitu_Sample <- function(gen.obj, numSamples){
+  # Build the wild allele frequency vector, using the getWildFreqs function
+  freqVector <- getWildFreqs(gen.obj)
+  # Remove any missing alleles (those with frequencies of 0) from the frequency vector
+  freqVector <- freqVector[which(freqVector != 0)]
+  # Create a matrix of wild individuals (those with population "wild") from genind object
+  wildMat <- gen.obj@tab[which(pop(gen.obj) == "wild"),]
+  # From a matrix of individuals, select a set of random individuals (rows)
+  samp <- wildMat[sample(nrow(wildMat), size=numSamples, replace = FALSE),]
+  # Remove any missing alleles (those with colSums of 0) from the sample matrix
+  samp <- samp[,which(colSums(samp, na.rm = TRUE) != 0)]
+  # Calculate how many alleles (of each category) that sample captures, and return
+  repRates <- getAlleleCategories(freqVector, samp)
+  # Subset matrix returned by getAlleleCategories to just 3rd column (representation rates), and return
+  repRates <- repRates[,3]
   return(repRates)
 }
 
