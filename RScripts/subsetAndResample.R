@@ -26,7 +26,8 @@ setwd(sim.wd)
 # Read in relevant functions
 source("RScripts/functions_SSRvSNP_Sim.R")
 # Parallelism: set up relevant cores; load adegenet and parallel libraries onto the cluster
-num_cores <- detectCores() - 1 ; cl <- makeCluster(num_cores)
+# Adding type = "FORK" argument to makeCluster call, to address memory issues with N4800 dataset
+num_cores <- detectCores() - 16 ; cl <- makeCluster(num_cores, type = "FORK")
 clusterEvalQ(cl, library("adegenet"))
 clusterEvalQ(cl, library("parallel"))
 
@@ -89,16 +90,17 @@ DNA_meanValues <- rapply(DNA_resamplingArrays, resample_meanValues, how = "list"
 # %%% Plotting ---- 
 # Pick plot colors (for all plots!)
 plotColors <- c("red","red4","darkorange3","coral","purple")
-# Specify the directory to save plots to
-N1200_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221214/N1200/"
+# Specify the directories to save plots to
+N1200_MSAT_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N1200/MSAT/"
+N1200_DNA_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N1200/DNA/"
 
 # Plotting commands nested in invisible function, to prevent text from being printed
 # MSAT
 # invisible(rapply(MSAT_resamplingArrays, resample_Plot, colors=plotColors))
-invisible(rapply(MSAT_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N1200_plotDir))
+invisible(rapply(MSAT_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N1200_MSAT_plotDir))
 # DNA
 # invisible(rapply(DNA_resamplingArrays, resample_Plot, colors=plotColors))
-invisible(rapply(DNA_resamplingArrays, resample_Plot, colors=plotColors, data.dir=N1200_plotDir))
+invisible(rapply(DNA_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N1200_DNA_plotDir))
 
 # %%% INCREASED SIMULATIONS: NIND 4800 %%% ----
 # %%% Read in simulations and process results ----
@@ -129,9 +131,6 @@ DNA_N4800_geninds <- rapply(DNA_N4800_geninds, assignGardenSamples, proportion=g
 summarize_simulations(MSAT_N4800_geninds)
 # DNA
 summarize_simulations(DNA_N4800_geninds)
-# Plot a histogram of allele frequencies for one of the DNA smiulations
-# makeAlleleFreqHist(DNA_N4800_geninds[[4]], 
-#                    title="Simulated DNA (N4800) : 1,000 loci, mutation.rate=5e-6 (4 pops, high migration)")
 
 # %%% Resampling ----
 # Specify number of resampling replicates, to use for both marker types
@@ -163,13 +162,14 @@ DNA_N4800_meanValues <- rapply(DNA_N4800_resamplingArrays, resample_meanValues, 
 # %%% Plotting ---- 
 # Pick plot colors (for all plots!)
 plotColors <- c("red","red4","darkorange3","coral","purple")
-# Specify the directory to save plots to
-N4800_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221214/N4800/"
+# Specify the directories to save plots to
+N4800_MSAT_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N4800/MSAT/"
+N4800_DNA_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N4800/DNA/"
 
 # Plotting commands nested in invisible function, to prevent text from being printed
 # MSAT
 # invisible(rapply(MSAT_N4800_resamplingArrays, resample_Plot, colors=plotColors))
-invisible(rapply(MSAT_N4800_resamplingArrays, resample_Plot, colors=plotColors, data.dir=N4800_plotDir))
+invisible(rapply(MSAT_N4800_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N4800_MSAT_plotDir))
 # DNA
 # invisible(rapply(DNA_N4800_resamplingArrays, resample_Plot, colors=plotColors))
-invisible(rapply(DNA_N4800_resamplingArrays, resample_Plot, colors=plotColors, data.dir=N4800_plotDir))
+invisible(rapply(DNA_N4800_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N4800_DNA_plotDir))
