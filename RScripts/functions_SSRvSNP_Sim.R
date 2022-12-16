@@ -457,7 +457,7 @@ parResample_genind <- function(gen.obj, reps=5, cluster){
   return(resamplingArray)
 }
 
-# From array, calculate the mean minimum sample size to represent 95% of the total wild diversity
+# From resampling arrayy, calculate the mean minimum sample size to represent 95% of the total wild diversity
 resample_min95_mean <- function(resamplingArray){
   # resampling array[,1,]: returns the Total column values for each replicate (3rd array dimension)
   # apply(resamplingArray[,1,],1,mean): calculates the average across replicates for each row
@@ -467,7 +467,7 @@ resample_min95_mean <- function(resamplingArray){
   return(meanValue)
 }
 
-# From array, calculate the standard deviation, at the mean 95% value
+# From resampling array, calculate the standard deviation, at the mean 95% value
 resample_min95_sd <- function(resamplingArray){
   # Determine the mean value for representing 95% of allelic diversity
   meanValue <- resample_min95_mean(resamplingArray)
@@ -476,7 +476,7 @@ resample_min95_sd <- function(resamplingArray){
   return(sdValue)
 }
 
-# From array, calculate the mean values (across replicates) for each allele frequency category
+# From resampling array, calculate the mean values (across replicates) for each allele frequency category
 resample_meanValues <- function(resamplingArray){
   # Declare a matrix to receive average values
   meanValue_mat <- matrix(nrow=nrow(resamplingArray), ncol=ncol(resamplingArray))
