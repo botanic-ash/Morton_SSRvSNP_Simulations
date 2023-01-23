@@ -10,6 +10,7 @@ SimulationOutputs/demo_dnaMarkerIssue/seed.txt
 SimulationOutputs/ArchivedScenarios
 
 # Folder of strataG params and genind objects, which will be updated everytime the GenerateFSCparams.R script is run
+# Also contained in this folder are the Rdata objects storing resampling arrays
 # "Original" simulations (nInd = 1200)
 SimulationOutputs/MSAT_marker/data.MSAT
 SimulationOutputs/DNA_marker/data.DNA
