@@ -37,6 +37,7 @@ nInd_4800_Flag <- 1
 # %%% ORIGINAL SIMULATIONS: NIND 1200 %%% ----
 # Based on flag value, analyze NIND 1200 dataset
 if(nInd_1200_Flag==1){
+  print("%%% ANALYZING NIND=1200 DATASET %%%")
   # %%% Read in simulations and process results ----
   # Run the simulations
   # source("RScripts/GenerateFSCparams.R")
@@ -83,6 +84,12 @@ if(nInd_1200_Flag==1){
   # Close cores
   # stopCluster(cl)
   
+  # Save resampling arrays to hard disk, for analysis later
+  saveRDS(MSAT_resamplingArrays, 
+          file=paste0(sim.wd, "SimulationOutputs/MSAT_marker/data.MSAT/MSAT_N1200_resampArr.Rdata"))
+  saveRDS(DNA_resamplingArrays, 
+          file=paste0(sim.wd, "SimulationOutputs/DNA_marker/data.DNA/DNA_N1200_resampArr.Rdata"))
+  
   # %%% Summarize resampling results ----
   # Calculate 95% minimum sampling size, and the mean values of each category, for all scenarios
   # MSAT
@@ -106,11 +113,17 @@ if(nInd_1200_Flag==1){
   # DNA
   # invisible(rapply(DNA_resamplingArrays, resample_Plot, colors=plotColors))
   invisible(rapply(DNA_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N1200_DNA_plotDir))
+  
+  # %%% Build and run linear models ----
+  # Capture all explanatory variables into a single data.frame
+  params <- data.frame(expand.grid(n.pop=c(1,4,16), mig.Rate=c(0.001,0.01), marker=c("MSAT", "DNA")))
+  
 }
 
 # %%% INCREASED SIMULATIONS: NIND 4800 %%% ----
-# Based on flag value, analyze NIND 1200 dataset
+# Based on flag value, analyze NIND 4800 dataset
 if(nInd_4800_Flag==1){
+  print("%%% ANALYZING NIND=4800 DATASET %%%")
   # %%% Read in simulations and process results ----
   # Run the simulations
   # source("RScripts/GenerateFSCparams_N4800.R")
@@ -159,6 +172,12 @@ if(nInd_4800_Flag==1){
   
   # Close cores
   stopCluster(cl)
+  
+  # Save resampling arrays to hard disk, for analysis later
+  saveRDS(MSAT_resamplingArrays, 
+          file=paste0(sim.wd, "SimulationOutputs/MSAT_N4800_marker/data.MSAT/MSAT_N4800_resampArr.Rdata"))
+  saveRDS(DNA_resamplingArrays, 
+          file=paste0(sim.wd, "SimulationOutputs/DNA_N4800_marker/data.DNA/DNA_N4800_resampArr.Rdata"))
   
   # %%% Summarize resampling results ----
   # Calculate 95% minimum sampling size, and the mean values of each category, for all scenarios
