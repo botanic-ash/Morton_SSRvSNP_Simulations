@@ -447,6 +447,13 @@ Resample_genind <- function(gen.obj, reps=5){
   return(resamplingArray)
 }
 
+# Wrapper for Resample_genind, which will generate an array of values from a list of genind objects
+Resample_genList <- function(gen.List, reps=5){
+  # Run resampling for all replicates, using lapply and lambda function, and return array
+  resamplingArray <- lapply(gen.List, function(x) Resample_genind(gen.obj = x, reps=reps))
+  return(resamplingArray)
+}
+
 # Parallel wrapper for exSitu_Resample, which will generate an array of values from a single genind object
 parResample_genind <- function(gen.obj, reps=5, cluster){
   # Run resampling for all replicates, using parSapply and lambda function, and return array
