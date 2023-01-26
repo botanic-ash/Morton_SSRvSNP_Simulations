@@ -386,20 +386,6 @@ makeAlleleFreqHist <- function(gen.obj, title="Allele frequency histogram"){
 }
 
 # RESAMPLING FUNCTIONS ----
-# Ex situ sample function, which finds the level of ex situ representation of a sample of individuals
-# (using the getAlleleCategories function above)
-exSitu_Sample <- function(gen.obj, numSamples){
-  # Build the wild allele frequency vector, using the getWildFreqs function
-  freqVector <- getWildFreqs(gen.obj)
-  # Create a matrix of wild individuals (those with population "wild") from genind object
-  wildMat <- gen.obj@tab[which(pop(gen.obj) == "wild"),]
-  # From a matrix of individuals, select a set of random individuals (rows)
-  samp <- wildMat[sample(nrow(wildMat), size=numSamples, replace = FALSE),]
-  # Calculate how many alleles (of each category) that sample captures, and return
-  repRates <- getAlleleCategories(freqVector, samp)
-  return(repRates)
-}
-
 # Ex situ sample function, which finds the level of ex situ representation of a sample of individuals.
 # It takes a genind object (containing garden and wild samples) and an integer specifying the number of 
 # rows (individuals) to draw from the matrix of wild samples. Using the sample and getAlleleCategories 
@@ -455,6 +441,8 @@ Resample_genList <- function(gen.List, reps=5){
 }
 
 # Parallel wrapper for exSitu_Resample, which will generate an array of values from a single genind object
+# This function has been made obsolete by Resample_genlist (an alternative), but is still declared here,
+# because this parallelized resampling approach can still work for N1200 datasets.
 parResample_genind <- function(gen.obj, reps=5, cluster){
   # Run resampling for all replicates, using parSapply and lambda function, and return array
   resamplingArray <- parSapply(cl=cluster, 1:reps, 
@@ -471,6 +459,8 @@ resample_min95_mean <- function(resamplingArray){
   # which(apply(resamplingArray[,1,],1,mean) > 95): returns the rows with averages greater than 95
   # min(which(apply(resamplingArray[,1,],1,mean) > 95)): the lowest row with an average greater than 95
   meanValue <- min(which(apply(resamplingArray[,1,],1, mean, na.rm=TRUE) > 95))
+  # Get simulation scenario name from resamplingArray. This is to keep track of values later on
+  names(meanValue) <- unique(dimnames(resamplingArray)[[3]])
   return(meanValue)
 }
 
@@ -478,8 +468,10 @@ resample_min95_mean <- function(resamplingArray){
 resample_min95_sd <- function(resamplingArray){
   # Determine the mean value for representing 95% of allelic diversity
   meanValue <- resample_min95_mean(resamplingArray)
-  # Calculate the standard deviation, at that mean value, and return
+  # Calculate the standard deviation, at that mean value
   sdValue <- apply(resamplingArray[,1,],1,sd)[meanValue]
+  # Get simulation scenario name from resamplingArray, and return
+  names(sdValue) <- unique(dimnames(resamplingArray)[[3]])
   return(sdValue)
 }
 
@@ -499,7 +491,7 @@ resample_meanValues <- function(resamplingArray){
 }
 
 # Summary plotting function, from array
-resample_Plot <- function(resamplingArray, colors){
+resample_Plot <- function(resamplingArray, colors, largePopFlag=FALSE){
   # Create two vectors for colors. This is to show points on the graph and in the legend clearly
   fullColors <- colors
   fadedColors <- c(colors[1], alpha(colors[2:5], 0.2))
@@ -513,17 +505,29 @@ resample_Plot <- function(resamplingArray, colors){
           main=unique(dimnames(resamplingArray)[[3]]))
   # Mark the 95% threshold line, as well as the 95% minimum sampling size
   abline(h=95, col="black", lty=3); abline(v=min95_Value, col="black")
+  # Depending on total population size, plot text and legends in different areas of the graph
+  if(largePopFlag==FALSE){
+    # nInd = 1200 graphs
+    min95_Line <- min95_Value+200
+    xLeg <- 950
+    yLeg <- 87
+  } else{
+    # nInd = 4800 graphs
+    min95_Line <- min95_Value+700
+    xLeg <- 3500
+    yLeg <- 60
+  }
   # Add text for the minimum sampling size line
   mtext(text=paste0("Minimum sampling size (95%) = ", min95_Value),
-        side=1, line=-1.5, at=min95_Value+200)
+        side=1, line=-1.5, at=min95_Line)
   # Add legend
-  legend(x=950, y=87, inset = 0.05,
+  legend(x=xLeg, y=yLeg, inset = 0.05,
          legend = c("Total","Very common","Common","Low frequency", "Rare"),
-         col=fullColors, pch = c(20,20,20), cex=1, pt.cex = 2, bty="n", y.intersp = 0.50)
+         col=fullColors, pch = c(20,20,20), cex=1, pt.cex = 2, bty="n", y.intersp = 1)
 }
 
 # Summary plotting function, from array. This function saves the plots generate to the disk (in .png format)
-resample_Plot_PNG <- function(resamplingArray, colors, data.dir){
+resample_Plot_PNG <- function(resamplingArray, colors, largePopFlag=FALSE, data.dir){
   # Extract the scenario name from the resampling array
   scenName <- unique(dimnames(resamplingArray)[[3]])
   # Call png command, to save resampling plot to disk. To determine a unique file name to save plot, 
@@ -542,13 +546,25 @@ resample_Plot_PNG <- function(resamplingArray, colors, data.dir){
           xlab="Number of Individuals", ylab="Percent Diversity Representation", main=scenName)
   # Mark the 95% threshold line, as well as the 95% minimum sampling size
   abline(h=95, col="black", lty=3); abline(v=min95_Value, col="black")
+  # Depending on total population size, plot text and legends in different areas of the graph
+  if(largePopFlag==FALSE){
+    # nInd = 1200 graphs
+    min95_Line <- min95_Value+200
+    xLeg <- 950
+    yLeg <- 87
+  } else{
+    # nInd = 4800 graphs
+    min95_Line <- min95_Value+700
+    xLeg <- 3500
+    yLeg <- 60
+  }
   # Add text for the minimum sampling size line
   mtext(text=paste0("Minimum sampling size (95%) = ", min95_Value),
-        side=1, line=-1.5, at=min95_Value+200)
+        side=1, line=-1.5, at=min95_Line)
   # Add legend
-  legend(x=950, y=87, inset = 0.05,
+  legend(x=xLeg, y=yLeg, inset = 0.05,
          legend = c("Total","Very common","Common","Low frequency", "Rare"),
-         col=fullColors, pch = c(20,20,20), cex=1, pt.cex = 2, bty="n", y.intersp = 0.50)
+         col=fullColors, pch = c(20,20,20), cex=1, pt.cex = 2, bty="n", y.intersp = 1)
   # Turn off plotting device
   dev.off()
 }
