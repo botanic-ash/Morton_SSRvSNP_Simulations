@@ -24,7 +24,7 @@ library(adegenet)
 # Set working directory to the GitHub repo (containing scripts and fastSimcoal outputs;
 # this is a file located on the RAID1 drive, for space reasons, and linked in the home directory)
 # The demo_dnaMarkerIssue_fsc.sh BASH script must be present within this folder
-sim.wd <- "~/Shared/SSRvSNP_Sim/Code/SimulationOutputs/demo_dnaMarkerIssue/"
+sim.wd <- "/home/akoontz/Shared/SSRvSNP_Sim/Code/SimulationOutputs/demo_dnaMarkerIssue/"
 setwd(sim.wd)
 
 # ----VARIABLES----
