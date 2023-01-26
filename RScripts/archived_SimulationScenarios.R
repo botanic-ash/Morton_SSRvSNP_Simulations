@@ -19,7 +19,7 @@ library(hierfstat)
 
 # Set working directory to the GitHub repo (containing scripts and fastSimcoal outputs;
 # this is a file located on the RAID1 drive, for space reasons, and linked in the home directory)
-sim.wd <- "~/Shared/SSRvSNP_Sim/Code/"
+sim.wd <- "/home/akoontz/Shared/SSRvSNP_Sim/Code/"
 setwd(sim.wd)
 # Read in relevant functions
 source("RScripts/functions_SSRvSNP_Sim.R")
