@@ -1,6 +1,6 @@
-# %%%%%%%%%%%%%%%%%%%%%%%%%%%
-# %%% SUBSET AND RESAMPLE %%%
-# %%%%%%%%%%%%%%%%%%%%%%%%%%%
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# %%% SUBSET AND RESAMPLE MSAT AND SNP SIMULATED DATASETS %%%
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 # This script reads in genind files generated from previously run fastSimcoal simulations,
 # then subsets each file to specify a group of "ex situ" (garden) individuals. The ex situ
@@ -19,14 +19,13 @@ library(parallel)
 library(RColorBrewer)
 library(scales)
 
-# Set working directory to the GitHub repo (containing scripts and fastSimcoal outputs;
-# this is a file located on the RAID1 drive, for space reasons, and linked in the home directory)
-sim.wd <- "~/Shared/SSRvSNP_Sim/Code/"
+# Set working directory to the GitHub repo (containing scripts and fastSimcoal outputs)
+sim.wd <- "/home/akoontz/Shared/SSRvSNP_Sim/Code/"
 setwd(sim.wd)
 # Read in relevant functions
 source("RScripts/functions_SSRvSNP_Sim.R")
 # Parallelism: specify number of cores to use
-num_cores <- 8
+num_cores <- detectCores() - 8
 # Flags for processing different datasets (nInd=1200 and nInd=4800)
 nInd_1200_Flag <- 1
 nInd_4800_Flag <- 1
@@ -58,52 +57,52 @@ if(nInd_1200_Flag==1){
   
   # %%% Summarize simulations ----
   # MSAT
-  # summarize_simulations(MSAT_geninds)
+  summarize_simulations(MSAT_geninds)
   # # DNA
-  # summarize_simulations(DNA_geninds)
+  summarize_simulations(DNA_geninds)
   # Plot a histogram of allele frequencies for one of the DNA smiulations
-  # makeAlleleFreqHist(DNA_geninds[[4]][[3]], 
-  #                    title="Simulated DNA: 1,000 loci, mutation.rate=5e-6 (4 pops, high migration)")
+  makeAlleleFreqHist(DNA_geninds[[4]][[3]],
+                     title="Simulated DNA: 1,000 loci, mutation.rate=5e-6 (4 pops, high migration)")
   
   # %%% Resampling ----
   # Specify number of resampling replicates, to use for both marker types
   num_reps <- 5
   
-  # Run resampling in parallel, and save the resampling array result to a specified location on the disk
   # MSAT 
+  # Declare filepath to save resampling array to
+  MSAT_resampArr_filepath <- paste0(sim.wd, "SimulationOutputs/MSAT_marker/data.MSAT/MSAT_N1200_resampArr.Rdata")
+  # Run resampling in parallel, and save the resampling array result to specified location
   MSAT_resamplingArrays <- mclapply(MSAT_geninds, Resample_genList, mc.cores = num_cores)
-  saveRDS(MSAT_resamplingArrays, 
-          file=paste0(sim.wd, "SimulationOutputs/MSAT_marker/data.MSAT/MSAT_N1200_resampArr.Rdata"))
+  saveRDS(MSAT_resamplingArrays, file=MSAT_resampArr_filepath)
+  
   # DNA
+  # Declare filepath to save resampling array to
+  DNA_resampArr_filepath <- paste0(sim.wd, "SimulationOutputs/DNA_marker/data.DNA/DNA_N1200_resampArr.Rdata")
+  # Run resampling in parallel, and save the resampling array result to specified location
   DNA_resamplingArrays <- mclapply(DNA_geninds, Resample_genList, mc.cores = num_cores)
-  saveRDS(DNA_resamplingArrays,
-          file=paste0(sim.wd, "SimulationOutputs/DNA_marker/data.DNA/DNA_N1200_resampArr.Rdata"))
+  saveRDS(DNA_resamplingArrays, file=DNA_resampArr_filepath)
   
   # %%% Summarize resampling results ----
   # Calculate 95% minimum sampling size, and the mean values of each category, for all scenarios
   # MSAT
-  # MSAT_min95_Means <- rapply(MSAT_resamplingArrays, resample_min95_mean, how = "list")
-  # MSAT_meanValues <- rapply(MSAT_resamplingArrays, resample_meanValues, how = "list")
-  # # DNA
-  # DNA_min95Values <- rapply(DNA_resamplingArrays, resample_min95_mean, how = "list")
-  # DNA_meanValues <- rapply(DNA_resamplingArrays, resample_meanValues, how = "list")
+  MSAT_min95_Means <- rapply(MSAT_resamplingArrays, resample_min95_mean, how = "list")
+  MSAT_meanValues <- rapply(MSAT_resamplingArrays, resample_meanValues, how = "list")
+  # DNA
+  DNA_min95Values <- rapply(DNA_resamplingArrays, resample_min95_mean, how = "list")
+  DNA_meanValues <- rapply(DNA_resamplingArrays, resample_meanValues, how = "list")
   
   # %%% Plotting ----
   # Pick plot colors (for all plots!)
-  # plotColors <- c("red","red4","darkorange3","coral","purple")
-  # # Specify the directories to save plots to
-  # N1200_MSAT_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N1200/MSAT/"
-  # N1200_DNA_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N1200/DNA/"
-  # 
-  # # Plotting commands nested in invisible function, to prevent text from being printed
-  # # MSAT
-  # invisible(rapply(MSAT_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N1200_MSAT_plotDir))
-  # # DNA
-  # invisible(rapply(DNA_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N1200_DNA_plotDir))
-  
-  # %%% Build and run linear models ----
-  # Capture all explanatory variables into a single data.frame
-  # params <- data.frame(expand.grid(n.pop=c(1,4,16), mig.Rate=c(0.001,0.01), marker=c("MSAT", "DNA")))
+  plotColors <- c("red","red4","darkorange3","coral","purple")
+  # Specify the directories to save plots to
+  N1200_MSAT_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N1200/MSAT/"
+  N1200_DNA_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N1200/DNA/"
+
+  # Plotting commands nested in invisible function, to prevent text from being printed
+  # MSAT
+  invisible(rapply(MSAT_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N1200_MSAT_plotDir))
+  # DNA
+  invisible(rapply(DNA_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N1200_DNA_plotDir))
 }
 
 # %%% INCREASED SIMULATIONS: NIND 4800 %%% ----
@@ -135,43 +134,49 @@ if(nInd_4800_Flag==1){
   
   # %%% Summarize simulations ----
   # MSAT
-  # summarize_simulations(MSAT_N4800_geninds)
+  summarize_simulations(MSAT_N4800_geninds)
   # # DNA
-  # summarize_simulations(DNA_N4800_geninds)
+  summarize_simulations(DNA_N4800_geninds)
   
   # %%% Resampling ----
   # Specify number of resampling replicates, to use for both marker types
   num_reps <- 5
   
-  # Run resampling in parallel, and save the resampling array result to a specified location on the disk
   # MSAT 
+  # Declare filepath to save resampling array to
+  MSAT_N4800_resampArr_filepath <- paste0(sim.wd, "SimulationOutputs/MSAT_N4800_marker/data.MSAT/MSAT_N4800_resampArr.Rdata")
+  # Run resampling in parallel, and save the resampling array result to specified location
   MSAT_N4800_resamplingArrays <- mclapply(MSAT_N4800_geninds, Resample_genList, mc.cores = num_cores)
-  saveRDS(MSAT_N4800_resamplingArrays, 
-          file=paste0(sim.wd, "SimulationOutputs/MSAT_N4800_marker/data.MSAT/MSAT_N4800_resampArr.Rdata"))
+  saveRDS(MSAT_N4800_resamplingArrays, file=MSAT_N4800_resampArr_filepath)
+  
   # DNA
+  # Declare filepath to save resampling array to
+  DNA_N4800_resampArr_filepath <- paste0(sim.wd, "SimulationOutputs/DNA_N4800_marker/data.DNA/DNA_N4800_resampArr.Rdata")
+  # Run resampling in parallel, and save the resampling array result to specified location
   DNA_N4800_resamplingArrays <- mclapply(DNA_N4800_geninds, Resample_genList, mc.cores = num_cores)
-  saveRDS(DNA_N4800_resamplingArrays,
-          file=paste0(sim.wd, "SimulationOutputs/DNA_N4800_marker/data.DNA/DNA_N4800_resampArr.Rdata"))
+  saveRDS(DNA_N4800_resamplingArrays, file=DNA_N4800_resampArr_filepath)
   
   # %%% Summarize resampling results ----
   # # Calculate 95% minimum sampling size, and the mean values of each category, for all scenarios
   # MSAT
-  # MSAT_N4800_min95_Means <- rapply(MSAT_N4800_resamplingArrays, resample_min95_mean, how = "list")
-  # MSAT_N4800_meanValues <- rapply(MSAT_N4800_resamplingArrays, resample_meanValues, how = "list")
-  # # DNA
-  # DNA_N4800_min95Values <- rapply(DNA_N4800_resamplingArrays, resample_min95_mean, how = "list")
-  # DNA_N4800_meanValues <- rapply(DNA_N4800_resamplingArrays, resample_meanValues, how = "list")
-  # 
-  # # %%% Plotting ----
-  # # Pick plot colors (for all plots!)
-  # plotColors <- c("red","red4","darkorange3","coral","purple")
-  # # Specify the directories to save plots to
-  # N4800_MSAT_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N4800/MSAT/"
-  # N4800_DNA_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N4800/DNA/"
-  # 
-  # # Plotting commands nested in invisible function, to prevent text from being printed
-  # # MSAT
-  # invisible(rapply(MSAT_N4800_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N4800_MSAT_plotDir))
-  # # DNA
-  # invisible(rapply(DNA_N4800_resamplingArrays, resample_Plot_PNG, colors=plotColors, data.dir=N4800_DNA_plotDir))
+  MSAT_N4800_min95_Means <- rapply(MSAT_N4800_resamplingArrays, resample_min95_mean, how = "list")
+  MSAT_N4800_meanValues <- rapply(MSAT_N4800_resamplingArrays, resample_meanValues, how = "list")
+  # DNA
+  DNA_N4800_min95Values <- rapply(DNA_N4800_resamplingArrays, resample_min95_mean, how = "list")
+  DNA_N4800_meanValues <- rapply(DNA_N4800_resamplingArrays, resample_meanValues, how = "list")
+
+  # %%% Plotting ----
+  # Pick plot colors (for all plots!)
+  plotColors <- c("red","red4","darkorange3","coral","purple")
+  # Specify the directories to save plots to
+  N4800_MSAT_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N4800/MSAT/"
+  N4800_DNA_plotDir <- "~/Documents/SSRvSNP/Simulations/Documentation/Images/ResamplingCurves_20221215/N4800/DNA/"
+
+  # Plotting commands nested in invisible function, to prevent text from being printed
+  # MSAT
+  invisible(rapply(MSAT_N4800_resamplingArrays, resample_Plot_PNG, 
+                   colors=plotColors, largePopFlag=TRUE, data.dir=N4800_MSAT_plotDir))
+  # DNA
+  invisible(rapply(DNA_N4800_resamplingArrays, resample_Plot_PNG, 
+                   colors=plotColors, largePopFlag=TRUE, data.dir=N4800_DNA_plotDir))
 }
