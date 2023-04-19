@@ -14,7 +14,7 @@
 #      analogous to the ex situ representation functions used in the Empirical analysis, and 
 #      remove missing data from objects (even though simulations generate no missing data).
 
-library(strataG)
+#library(strataG)
 library(adegenet)
 library(stringr)
 library(hierfstat)

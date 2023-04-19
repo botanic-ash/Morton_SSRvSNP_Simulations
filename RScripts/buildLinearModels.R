@@ -11,7 +11,9 @@
 # parameters (our explanatory variables) on MSSEs (our response variables). 
 
 # Set working directory to the GitHub repo (containing scripts and fastSimcoal outputs)
-sim.wd <- "/home/akoontz/Shared/SSRvSNP_Sim/Code/"
+#sim.wd <- "/home/akoontz/Shared/SSRvSNP_Sim/Code/"
+sim.wd <- "/Users/Ashley/Desktop/Hoban/Hoban_rotation_2023/Morton_SSRvSNP_Simulations/"
+
 setwd(sim.wd)
 # Read in relevant functions
 source("RScripts/functions_SSRvSNP_Sim.R")
