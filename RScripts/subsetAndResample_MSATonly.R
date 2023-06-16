@@ -2,15 +2,11 @@
 # %%% SUBSET AND RESAMPLE MSAT AND SNP SIMULATED DATASETS %%%
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-# This script reads in genind files generated from previously run fastSimcoal simulations,
-# then subsets each file to specify a group of "ex situ" (garden) individuals. The ex situ
-# representation (i.e. how well do these garden individuals represent total allelic diversity) is calculated.
+# This script reads in genind files generated from previously run fastSimcoal simulations, then subsets each file to specify a group of "ex situ" (garden) individuals. The ex situ representation (i.e. how well do these garden individuals represent total allelic diversity) is calculated and visualized.
 
-# Then, the remaining individuals ("wild") are resampled iteratively, and the allelic diversity
-# of sample subsets (in comparison to the whole of wild allelic diversity) is calculated, then plotted
+# Then, the remaining individuals ("wild") are resampled iteratively, and the allelic diversity of sample subsets (in comparison to the whole of wild allelic diversity) is calculated, then plotted
 
-# In order to function iteratively over large objects (i.e. lists of genind objects), the steps
-# in this script use many apply family functions
+# In order to function iteratively over large objects (i.e. lists of genind objects), the steps in this script use many apply family functions
 
 library(strataG)
 library(adegenet)
