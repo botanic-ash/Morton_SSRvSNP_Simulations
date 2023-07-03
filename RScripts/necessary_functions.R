@@ -385,24 +385,28 @@ compare_w_g<- function(locus, input_real_data, input_error_data){
   
   # Df with info across allleles summarized
   loci_df <- data.frame(locus) %>%
-    # Makec columns with observed heterozygosity
+    # Make columns with observed heterozygosity
     mutate(wild_real = locus_real_data[[3]],  # Third item in locus_data list is a the number observed heterozygotes in the wild
            garden_real = locus_real_data[[6]], # Sixth item in locus_data list is a the number observed heterozygotes in the garden
            wild_error = locus_error_data[[3]],  # Third item in locus_data list is a the number observed heterozygotes in the wild
            garden_error = locus_error_data[[6]]) %>% # Sixth item in locus_data list is a the number observed heterozygotes in the garden 
     # Make above tidy
-    pivot_longer(cols = c(wild_real, garden_real, wild_error, garden_error), names_to = "dataset", values_to = "exp_het") %>%
+    pivot_longer(cols = c(wild_real, garden_real, wild_error, garden_error), names_to = "dataset", values_to = "obs_het") %>%
     
     # Calc expected heterozygosity with 1 - (exp frequencies of all homozygotes based on frequencies of each allele)
-    mutate(obs_het = ifelse(dataset == "wild_real", 1-sum(na.omit(subset(alleles_df, dataset == "wild_real", select = c(allele_freq)))^2),
+    mutate(exp_het = ifelse(dataset == "wild_real", 1-sum(na.omit(subset(alleles_df, dataset == "wild_real", select = c(allele_freq)))^2),
                             ifelse(dataset == "garden_real", 1-sum(na.omit(subset(alleles_df, dataset == "garden_real", select = c(allele_freq)))^2),
                                    ifelse(dataset == "wild_error", 1-sum(na.omit(subset(alleles_df, dataset == "wild_error", select = c(allele_freq)))^2), 1-sum(na.omit(subset(alleles_df, dataset == "garden_error", select = c(allele_freq)))^2))))) %>%
+    
+    # Calc F (inbreeding coefficient) with F = (Exp Het - Obs Het) / Exp Het 
+    mutate(inbreeding_coeff = (exp_het - obs_het) / exp_het) %>%
     
     # Add column with number of alleles per dataset
     mutate(num_alleles = ifelse(dataset == "wild_real", length(wild_real_alleles), 
                                 ifelse(dataset == "garden_real", length(garden_real_alleles),  
                                        ifelse(dataset == "wild_error", length(wild_error_alleles), length(garden_error_alleles)))),
-           prop_rare_wild_alleles_captured = ifelse(dataset == "wild_real", sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare" & alleles_df$in_garden_real == T)/sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare"),
+           #Need to fix code below such that if there are 0 of a type of allele in the wild, representation will be 1?
+           prop_rare_wild_alleles_captured = ifelseifelse(dataset == "wild_real", sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare" & alleles_df$in_garden_real == T)/sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare"),
                                                     ifelse(dataset == "wild_error", sum(grepl("wild_error", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare" & alleles_df$in_garden_error == T)/sum(grepl("wild_error", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare"), NA)), 
            prop_lowfreq_wild_alleles_captured = ifelse(dataset == "wild_real", sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Low Frequency" & alleles_df$in_garden_real == T)/sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Low Frequency"),
                                                        ifelse(dataset == "wild_error", sum(grepl("wild_error", alleles_df$dataset) & alleles_df$allele_freq_cat == "Low Frequency" & alleles_df$in_garden_error == T)/sum(grepl("wild_error", alleles_df$dataset) & alleles_df$allele_freq_cat == "Low Frequency"), NA)), 
