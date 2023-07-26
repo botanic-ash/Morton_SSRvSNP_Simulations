@@ -1,3 +1,5 @@
+#### Packages to load if workshopping this code ####
+
 # Austin's packages
 library(adegenet)
 library(stringr)
@@ -17,7 +19,7 @@ library(forcats)
 library(ggnewscale)
 
 
-####Creating functions for importing initial MSAT data####
+#### Functions for importing initial MSAT data ####
 
 # Create a function that is the opposite of %in%
 `%notin%` <- Negate(`%in%`)
@@ -171,7 +173,7 @@ import_gen2genalex_files = function(mypath, mypattern) {
   temp_list_3 #retun
 }
 
-###functions for adding error and obtained allele frequencies
+#### Functions for adding error and obtaining allele frequencies ####
 
 # Function for obtaining allele frequencies at each locus
 # Input: Desired dataframe for which you will obtain allele frequency data 
@@ -285,7 +287,7 @@ simulating_error <- function(data_for_editing, syst_err_rate, stoch_err_rate, ms
 }
 
 
-# Function to get the smallest alleles and their proportions from the current nested list format
+#### Function to get the smallest alleles and their proportions from the current nested list format ####
 get_df_of_sm_alleles <- function(x) {   
   prop_df <- x[[2]]
   # Get smallest allele info
@@ -308,6 +310,9 @@ get_df_of_sm_alleles <- function(x) {
   return(df)
 }
 
+
+
+#### Functions to compare wild and garden datasets ####
 
 # Very similar to get_alleles_and_freqs function except that the input df should have a location column specifying whether the individual is in the garden or the wild and then outputs a list of lists containing relevant summary information at each locus
 get_alleles_and_freqs_w_g <- function(input_data){
@@ -349,7 +354,9 @@ get_alleles_and_freqs_w_g <- function(input_data){
 }
 
 
-# A function that takes in a locus number and a dataframe that contains garden and wild alleles (output of get_alleles_and_freqs_w_g)
+# A function that takes in a locus number and a dataframe that contains garden and wild alleles (output of get_alleles_and_freqs_w_g) amd returns 2 dfs in a list
+  # Df 1: Contains all summarized information at each allele for each locus 
+  # Df 2: Contains all information at each locus
 compare_w_g<- function(locus, input_real_data, input_error_data){
   
   # Pull out the list (which has 6 subset lists) that corresponds to the input locus
@@ -405,8 +412,7 @@ compare_w_g<- function(locus, input_real_data, input_error_data){
     mutate(num_alleles = ifelse(dataset == "wild_real", length(wild_real_alleles), 
                                 ifelse(dataset == "garden_real", length(garden_real_alleles),  
                                        ifelse(dataset == "wild_error", length(wild_error_alleles), length(garden_error_alleles)))),
-           #Need to fix code below such that if there are 0 of a type of allele in the wild, representation will be 1?
-           prop_rare_wild_alleles_captured = ifelseifelse(dataset == "wild_real", sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare" & alleles_df$in_garden_real == T)/sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare"),
+           prop_rare_wild_alleles_captured = ifelse(dataset == "wild_real", sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare" & alleles_df$in_garden_real == T)/sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare"),
                                                     ifelse(dataset == "wild_error", sum(grepl("wild_error", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare" & alleles_df$in_garden_error == T)/sum(grepl("wild_error", alleles_df$dataset) & alleles_df$allele_freq_cat == "Rare"), NA)), 
            prop_lowfreq_wild_alleles_captured = ifelse(dataset == "wild_real", sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Low Frequency" & alleles_df$in_garden_real == T)/sum(grepl("wild_real", alleles_df$dataset) & alleles_df$allele_freq_cat == "Low Frequency"),
                                                        ifelse(dataset == "wild_error", sum(grepl("wild_error", alleles_df$dataset) & alleles_df$allele_freq_cat == "Low Frequency" & alleles_df$in_garden_error == T)/sum(grepl("wild_error", alleles_df$dataset) & alleles_df$allele_freq_cat == "Low Frequency"), NA)), 
@@ -421,3 +427,55 @@ compare_w_g<- function(locus, input_real_data, input_error_data){
   
 }
 
+
+#### Function for resampling ####
+
+# AMHs take on the resampling function that is commonly used in Hoban lab papers, requires 2 inputs: a dataset with the individuals alleles at each locus and the number of resampling reps to conduct
+resampling_diversity <- function(ind_data, reps){
+  # Filter input dataframe to only look at wild individuals (exclude garden individuals)
+  wild_ind_data <- ind_data %>% dplyr::filter(location == "wild")
+  # Get the list of alleles and their frequencies using the get_alleles_and_freqs function
+  allele_freq_data <- get_alleles_and_freqs(wild_ind_data)
+  # Get the the number of alleles at each locus 
+  wild_allele_counts_df <- as.data.frame(do.call(rbind, lapply(allele_freq_data, function(x) lengths(x)[1])))
+  # Get the the number of alleles at across all loci 
+  total_allele_count <- colSums(wild_allele_counts_df) 
+  # Get the number of rows and thereby the number individuals in the wild dataset
+  n_samples = nrow(wild_ind_data)
+  # Make a sequence from 1 to the total number of reps/samples that increases by 1 for input into the nested lapplys below
+  ind_list = seq(1, n_samples, by = 1)
+  rep_list = seq(1, reps, by = 1)
+  
+  # Across the list of reps made in the step above, apply the below function
+  sampled_wild_ind_allele_data_all_reps <- lapply(rep_list, function(rep_count){
+    
+    # Across the list of numbers individuals made in the step above, apply the below function which will output a list of dfs that each contain a single resample run with the unique number of individuals with the list number equaling the number of individuals included in the subsample
+    sampled_wild_ind_allele_data <- lapply(ind_list, function(ind_count){
+      # Randomly sample the number of individuals specified by ind_count without replacement from the Ind column of the dataset containing all of the allele data of each individuals
+      sampled_ind_IDs <- sample(wild_ind_data$Ind, size = ind_count, replace = F)
+      # Make a new df that contains only the individuals which were randomly sampled in the step above
+      sampled_wild_ind_data <- wild_ind_data %>% dplyr::filter(Ind %in% sampled_ind_IDs)
+      # Get the list of alleles and their frequencies using the get_alleles_and_freqs function
+      sampled_wild_ind_allele_data <- get_alleles_and_freqs(sampled_wild_ind_data)
+      # Get the the number of alleles at each locus 
+      sampled_allele_counts_df <- as.data.frame(do.call(rbind, lapply(sampled_wild_ind_allele_data, function(x) lengths(x)[1])))
+      # Get the proportion of alleles in the current resampling run relative to the number in the full dataset at each locus
+      prop_alleles_sampled <- sampled_allele_counts_df/wild_allele_counts_df
+      # Return the the proportion of alleles in the current resampling run at each locus as well as at all loci
+      return(rbind(prop_alleles_sampled, colSums(sampled_allele_counts_df)/total_allele_count))
+    })
+    # Bind the result of the lapply across the list of numbers individuals together by column into a single df such that each unique column represents a unique number of individuals included in the subsample and each row represents the proportion of alleles in the subsample 
+    resample_df <- do.call(cbind, sampled_wild_ind_allele_data)
+    # Rename the column names to reflect the number of individuals, makes it easier to use pivot_longer on this df
+    colnames(resample_df) <- paste0(ind_list, " ind(s) sampled")
+    # Add 2 columns to the front of the resample_df that labels each row with the corresponding locus number and adds a row that contains information on which resample rep the loop is on (to make sure the df made later is tidy) and returns that df
+    return(cbind(data.frame(locus= c(loci, "all"), rep = rep_count), resample_df))
+  })
+  # Bind the result of the lapply across the list of numbers of resample reps together by row into a single df
+  full_resample_df_all_reps <- do.call(rbind, sampled_wild_ind_allele_data_all_reps) %>%
+    # Pivot the result of the rbind such that the columns that end in "ind(s) sampled" are combined into 2 rows, one with the number of individuals sampled (previously the column names) and the other with the corresponding proportion of alleles captured (the information previously contained in each row)
+    pivot_longer(cols = ends_with(" ind(s) sampled"), names_to = "inds_sampled", values_to = "prop_alleles_captured") %>%
+    # Keep only the numeric value in the inds_sampled row
+    mutate(inds_sampled = extract_numeric(inds_sampled))
+  return(full_resample_df_all_reps)
+}
