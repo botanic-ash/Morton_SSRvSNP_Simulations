@@ -33,8 +33,6 @@ library(future.apply)
 
 plan(multisession, workers = detectCores() - 1) # A part of the futures package which will enable my apply functions to be paralleleized regardless of the OS I am using 
 
-source("/Users/Ashley/Desktop/Fall\ 2019/stats/diagPlots.R") # This is from my stats prof at TAMUCC, it provides the SW p value to tell if things are significantly non-normal
-
 # Set working directory to the GitHub repo (containing scripts and fastSimcoal outputs)
 sim.wd <- "/Users/Ashley/Desktop/Hoban/Hoban_rotation_2023/Morton_SSRvSNP_Simulations/"
 arq.wd <- "/Users/Ashley/Desktop/Hoban/Hoban_rotation_2023/Morton_SSRvSNP_Simulations/SimulationOutputs/MSAT_marker/MSAT_ArlequinFiles"
@@ -42,6 +40,8 @@ setwd(sim.wd)
 
 # Load custom functions
 source(paste0(sim.wd, "RScripts/necessary_functions.R"))
+
+source(paste0(sim.wd, "RScripts/diagPlots.R")) # This is from my stats prof at TAMUCC, it provides the SW p value to tell if things are significantly non-normal
 
 
 ####Loading the already simulated population data####
