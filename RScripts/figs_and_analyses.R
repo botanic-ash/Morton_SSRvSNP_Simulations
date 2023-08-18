@@ -113,7 +113,7 @@ loci_info_df_for_graphing  %>%
 
 
 # Plot inbreeding coefficient from the wild datasets of all combos of error rates against next to the single real
-loci_info_df  %>%
+loci_info_df_for_graphing  %>%
   mutate(dataset = fct_relevel(dataset, "wild_real", "garden_real", "wild_error", "garden_error")) %>%
   filter(dataset %notin% c("garden_error", "garden_real")) %>%
   ggplot() +
@@ -123,7 +123,7 @@ loci_info_df  %>%
   ylab("Inbreeding coefficient (F)") +
   xlab("Stochastic error rate") +
   theme_classic()
-#Interpretation: at higher stochastic error rates, inbreeding coeff increases, but at higher systematc error rates inbreeding coeff decreases
+#Interpretation: at higher stochastic error rates, inbreeding coeff increases, but at higher systematic error rates inbreeding coeff decreases
 
 
 ### ANOVA(s) ###
@@ -174,6 +174,20 @@ loci_info_df_for_graphing  %>%
   facet_grid(~ syst_err_rate) +
   labs(colour = "Systematic error rate") +
   ylab("Total number of alleles per locus") +
+  xlab("Stochastic error rate") +
+  theme_classic()
+ggsave(paste0(sim.wd, "/Figs/num_alleles_boxplots.png"), width = 7, height = 3)
+
+loci_info_df_for_graphing  %>%
+  mutate(dataset = fct_relevel(dataset, "wild_real", "garden_real", "wild_error", "garden_error")) %>%
+  filter(dataset %notin% c("garden_error", "garden_real")) %>%
+  group_by(stoch_err_rate, syst_err_rate, rep) %>%
+  summarize(num_alleles = sum(num_alleles)) %>%
+  ggplot() +
+  geom_boxplot(aes(y = num_alleles, x = as.factor(stoch_err_rate), color = as.factor(syst_err_rate))) +
+  facet_grid(~ syst_err_rate) +
+  labs(colour = "Systematic error rate") +
+  ylab("Total number of alleles") +
   xlab("Stochastic error rate") +
   theme_classic()
 ggsave(paste0(sim.wd, "/Figs/num_alleles_boxplots.png"), width = 7, height = 3)
@@ -527,4 +541,3 @@ loci_info_df_for_graphing %>%
 
 
 #### Want to make a graph that shows the number of reps that have changed the identity of the 1st 2nd and 3rd least frequent allele!####
-
